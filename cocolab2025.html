@@ -1,869 +1,811 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cycloid Talent Te Acompaña - Nuevos Cambios Normativos 2025</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-            color: #333;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            background: white;
-            min-height: 100vh;
-        }
-
-        .header {
-            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
-            color: white;
-            padding: 2rem;
-            text-align: center;
-        }
-
-        .header h1 {
-            font-size: 2.5rem;
-            margin-bottom: 0.5rem;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-        }
-
-        .header .subtitle {
-            font-size: 1.2rem;
-            opacity: 0.9;
-        }
-
-        .header .date {
-            font-size: 1rem;
-            margin-top: 1rem;
-            background: rgba(255,255,255,0.2);
-            padding: 0.5rem 1rem;
-            border-radius: 20px;
-            display: inline-block;
-        }
-
-        .alert-box {
-            background: rgba(255,255,255,0.9);
-            color: #2a5298;
-            padding: 1.5rem;
-            border-radius: 10px;
-            margin-top: 1rem;
-            border: 2px solid #fff;
-        }
-
-        .alert-box h3 {
-            color: #1e3c72;
-            margin-bottom: 0.5rem;
-        }
-
-        .content {
-            padding: 2rem;
-        }
-
-        .section {
-            margin-bottom: 3rem;
-            background: #f8f9fa;
-            padding: 2rem;
-            border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-        }
-
-        .section h2 {
-            color: #1e3c72;
-            font-size: 1.8rem;
-            margin-bottom: 1rem;
-            border-bottom: 3px solid #2a5298;
-            padding-bottom: 0.5rem;
-        }
-
-        .section h3 {
-            color: #2a5298;
-            font-size: 1.4rem;
-            margin: 1.5rem 0 1rem 0;
-        }
-
-        .highlight-box {
-            background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
-            padding: 1.5rem;
-            border-radius: 8px;
-            margin: 1rem 0;
-            border-left: 5px solid #ff6b6b;
-        }
-
-        .highlight-box h4 {
-            color: #d63031;
-            margin-bottom: 0.5rem;
-        }
-
-        .composition-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 1.5rem;
-            margin: 1.5rem 0;
-        }
-
-        .composition-card {
-            background: white;
-            padding: 1.5rem;
-            border-radius: 8px;
-            border: 2px solid #e9ecef;
-            transition: transform 0.3s ease;
-        }
-
-        .composition-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 15px rgba(0,0,0,0.1);
-        }
-
-        .composition-card h4 {
-            color: #1e3c72;
-            margin-bottom: 1rem;
-            font-size: 1.2rem;
-        }
-
-        .timeline {
-            background: white;
-            padding: 1.5rem;
-            border-radius: 8px;
-            margin: 1rem 0;
-        }
-
-        .timeline-item {
-            display: flex;
-            align-items: center;
-            margin-bottom: 1rem;
-            padding: 1rem;
-            background: #f1f3f4;
-            border-radius: 5px;
-        }
-
-        .timeline-number {
-            background: #2a5298;
-            color: white;
-            width: 30px;
-            height: 30px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-right: 1rem;
-            font-weight: bold;
-        }
-
-        .comparison-table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 1.5rem 0;
-            background: white;
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-        }
-
-        .comparison-table th {
-            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
-            color: white;
-            padding: 1rem;
-            text-align: left;
-            font-weight: bold;
-        }
-
-        .comparison-table td {
-            padding: 1rem;
-            border-bottom: 1px solid #e9ecef;
-            vertical-align: top;
-        }
-
-        .comparison-table tr:nth-child(even) {
-            background: #f8f9fa;
-        }
-
-        .derogated {
-            background: #ffebee !important;
-            color: #c62828;
-        }
-
-        .new {
-            background: #e8f5e8 !important;
-            color: #2e7d32;
-        }
-
-        .warning {
-            background: #fff3cd;
-            border: 1px solid #ffeaa7;
-            color: #856404;
-            padding: 1rem;
-            border-radius: 5px;
-            margin: 1rem 0;
-        }
-
-        .success {
-            background: #d4edda;
-            border: 1px solid #c3e6cb;
-            color: #155724;
-            padding: 1rem;
-            border-radius: 5px;
-            margin: 1rem 0;
-        }
-
-        .error {
-            background: #f8d7da;
-            border: 1px solid #f5c6cb;
-            color: #721c24;
-            padding: 1rem;
-            border-radius: 5px;
-            margin: 1rem 0;
-        }
-
-        .responsibilities-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 2rem;
-            margin: 2rem 0;
-        }
-
-        .responsibility-card {
-            background: white;
-            padding: 2rem;
-            border-radius: 10px;
-            border-top: 4px solid #2a5298;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-        }
-
-        .responsibility-card h4 {
-            color: #1e3c72;
-            margin-bottom: 1rem;
-            font-size: 1.3rem;
-        }
-
-        .responsibility-card ul {
-            list-style: none;
-            padding: 0;
-        }
-
-        .responsibility-card li {
-            padding: 0.5rem 0;
-            padding-left: 1.5rem;
-            position: relative;
-        }
-
-        .responsibility-card li:before {
-            content: "✓";
-            position: absolute;
-            left: 0;
-            color: #28a745;
-            font-weight: bold;
-        }
-
-        .exclusion-box {
-            background: #fff3cd;
-            border: 2px solid #ffc107;
-            padding: 1.5rem;
-            border-radius: 8px;
-            margin: 1rem 0;
-        }
-
-        .exclusion-box h4 {
-            color: #856404;
-            margin-bottom: 1rem;
-        }
-
-        .law-reference {
-            background: #e3f2fd;
-            border-left: 4px solid #2196f3;
-            padding: 1rem;
-            margin: 1rem 0;
-            border-radius: 0 5px 5px 0;
-        }
-
-        .law-reference h5 {
-            color: #1976d2;
-            margin-bottom: 0.5rem;
-        }
-
-        .cycloid-support {
-            background: linear-gradient(135deg, #20c997 0%, #17a2b8 100%);
-            color: white;
-            padding: 2rem;
-            border-radius: 15px;
-            text-align: center;
-            margin: 2rem 0;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
-        }
-
-        .cycloid-support h3 {
-            color: white;
-            margin-bottom: 1rem;
-            font-size: 1.8rem;
-        }
-
-        .footer {
-            background: #1e3c72;
-            color: white;
-            text-align: center;
-            padding: 2rem;
-        }
-
-        @media (max-width: 768px) {
-            .header h1 {
-                font-size: 2rem;
-            }
-            
-            .content {
-                padding: 1rem;
-            }
-            
-            .section {
-                padding: 1rem;
-            }
-            
-            .composition-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-    </style>
-</head>
-<body>
-    <div class="container">
-        <header class="header">
-            <h1>Cycloid Talent Te Acompaña</h1>
-            <div class="subtitle">Navegando Juntos los Cambios Normativos de 2025</div>
-            <div class="date">Resolución 3461 de 2025 | Vigente desde 1 de Septiembre</div>
-            
-            <div class="alert-box">
-                <h3>SABEMOS QUE LOS CAMBIOS AL INICIO SON DIFÍCILES</h3>
-                <p>La nueva normatividad trae ajustes importantes a los Comités de Convivencia Laboral, pero <strong>juntos navegaremos estos cambios</strong> de manera organizada y exitosa</p>
-            </div>
-        </header>
-
-        <main class="content">
-            <section class="cycloid-support">
-                <h3>Tu Socio de Confianza en Esta Transición</h3>
-                <p style="font-size: 1.1rem; margin-bottom: 1rem;">
-                    En Cycloid Talent SAS entendemos que adaptarse a nuevas normativas puede generar inquietudes. 
-                    Por eso te acompañamos paso a paso en la evolución de tus sistemas SG-SST hacia el pleno cumplimiento.
-                </p>
-                <div style="background: rgba(255,255,255,0.2); padding: 1rem; border-radius: 10px; margin-top: 1rem;">
-                    <strong>Nuestro compromiso:</strong> Transformar la complejidad normativa en tranquilidad operacional
-                </div>
-            </section>
-
-            <section class="section">
-                <h2>Tabla Comparativa: Normativa Anterior vs. Nueva</h2>
-                
-                <table class="comparison-table">
-                    <thead>
-                        <tr>
-                            <th>Aspecto</th>
-                            <th>Normativa Anterior (DEROGADA)</th>
-                            <th>Nueva Normativa (Resolución 3461/2025)</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td><strong>Normas Base</strong></td>
-                            <td class="derogated">Resoluciones 652 y 1356 de 2012</td>
-                            <td class="new">Resolución 3461 de 2025</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Composición CCL</strong></td>
-                            <td class="derogated">2 representantes por cada parte + suplentes para empresas >20 trabajadores</td>
-                            <td class="new">
-                                • <5 trabajadores: 1 empleador + 1 trabajador<br>
-                                • 5-20 trabajadores: 1+1 suplente por cada parte<br>
-                                • >20 trabajadores: 2+2 suplentes por cada parte
-                            </td>
-                        </tr>
-                        <tr>
-                            <td><strong>Elección</strong></td>
-                            <td class="derogated">Sin especificación de voto secreto</td>
-                            <td class="new">Voto secreto OBLIGATORIO con escrutinio público</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Inhabilidades</strong></td>
-                            <td class="derogated">No especificadas claramente</td>
-                            <td class="new">Exclusión de 1 año para involucrados en quejas</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Plazos</strong></td>
-                            <td class="derogated">Días laborales, menos específicos</td>
-                            <td class="new">Días naturales, máximo 65 días para resolución</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Acoso Sexual</strong></td>
-                            <td class="derogated">Competencia del CCL</td>
-                            <td class="new">CCL NO competente (Ley 2365/2024)</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Primeros Auxilios Psicológicos</strong></td>
-                            <td class="derogated">No requeridos</td>
-                            <td class="new">OBLIGATORIOS para CCL, brigadas, COPASST, SG-SST</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Responsabilidades ARL</strong></td>
-                            <td class="derogated">Limitadas</td>
-                            <td class="new">Específicas con REPORTE MENSUAL al MinTrabajo</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Reuniones</strong></td>
-                            <td class="derogated">Sin frecuencia obligatoria</td>
-                            <td class="new">MENSUALES obligatorias + extraordinarias</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Enfoque de Género</strong></td>
-                            <td class="derogated">No contemplado</td>
-                            <td class="new">Integral con elementos diferenciales e interseccionales</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Servicios Temporales</strong></td>
-                            <td class="derogated">No especificado</td>
-                            <td class="new">Procedimiento específico: CCL empresa usuaria</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Seguimiento</strong></td>
-                            <td class="derogated">Básico</td>
-                            <td class="new">Mensual a compromisos, informes trimestrales y anuales</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Ámbito de Aplicación</strong></td>
-                            <td class="derogated">Empleadores y trabajadores dependientes</td>
-                            <td class="new">Ampliado: incluye independientes, contratistas, estudiantes, informales, ARL</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </section>
-
-            <section class="section">
-                <h2>Fundamento Normativo de los Cambios</h2>
-                
-                <div class="law-reference">
-                    <h5>Marco Legal que Fundamenta la Actualización</h5>
-                    <p>La Resolución 3461 de 2025 responde a la necesidad de alinear la normatividad colombiana con estándares internacionales y leyes nacionales recientes.</p>
-                </div>
-                
-                <div class="responsibilities-grid">
-                    <div class="responsibility-card">
-                        <h4>Tratados Internacionales</h4>
-                        <ul>
-                            <li>Convenio C190 de 2019 de la OIT (mundo laboral libre de violencia y acoso)</li>
-                            <li>Convención sobre Eliminación de Discriminación contra las Mujeres</li>
-                            <li>Enfoque de género en prevención de acoso laboral</li>
-                        </ul>
-                    </div>
-                    
-                    <div class="responsibility-card">
-                        <h4>Leyes Nacionales Recientes</h4>
-                        <ul>
-                            <li>Ley 2209 de 2022: Amplía caducidad de acciones por acoso a 3 años</li>
-                            <li>Ley 2466 de 2025: Reforma Laboral para trabajo decente y digno</li>
-                            <li>Ley 2365 de 2024: Prevención acoso sexual en ámbito laboral</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <div class="highlight-box">
-                    <h4>Objetivos de la Modernización Normativa</h4>
-                    <p>Garantizar un trabajo libre de violencias y acoso, con enfoque de género y alcance ampliado que incluye trabajadores formales, informales, de economía popular, pasantes, aprendices, voluntarios, personas en busca de empleo y despedidas.</p>
-                </div>
-            </section>
-
-            <section class="section">
-                <h2>Ámbito de Aplicación Ampliado</h2>
-                
-                <div class="success">
-                    <strong>La Resolución 3461 de 2025 amplía su alcance a:</strong>
-                    <ul style="margin-top: 1rem; list-style-type: disc; margin-left: 2rem;">
-                        <li><strong>Empleadores</strong> (públicos y privados)</li>
-                        <li><strong>Contratantes y contratistas</strong></li>
-                        <li><strong>Trabajadores dependientes e independientes</strong></li>
-                        <li><strong>Estudiantes</strong></li>
-                        <li><strong>Administradoras de Riesgos Laborales (ARL)</strong></li>
-                        <li><strong>Trabajadores informales y de economía popular</strong></li>
-                        <li><strong>Personas en formación</strong> (pasantes, aprendices)</li>
-                        <li><strong>Voluntarios</strong></li>
-                        <li><strong>Personas en busca de empleo y postulantes</strong></li>
-                        <li><strong>Personas despedidas</strong></li>
-                    </ul>
-                </div>
-            </section>
-
-            <section class="section">
-                <h2>Composición del Comité de Convivencia Laboral</h2>
-                
-                <div class="composition-grid">
-                    <div class="composition-card">
-                        <h4>Menos de 5 trabajadores</h4>
-                        <p><strong>Composición:</strong></p>
-                        <ul>
-                            <li>• 1 representante del empleador</li>
-                            <li>• 1 representante de los trabajadores</li>
-                            <li>• Sin suplentes</li>
-                        </ul>
-                    </div>
-                    
-                    <div class="composition-card">
-                        <h4>Entre 5 y 20 trabajadores</h4>
-                        <p><strong>Composición:</strong></p>
-                        <ul>
-                            <li>• 1 representante del empleador + 1 suplente</li>
-                            <li>• 1 representante de los trabajadores + 1 suplente</li>
-                            <li>• Total: 4 personas</li>
-                        </ul>
-                    </div>
-                    
-                    <div class="composition-card">
-                        <h4>Más de 20 trabajadores</h4>
-                        <p><strong>Composición:</strong></p>
-                        <ul>
-                            <li>• 2 representantes del empleador + 2 suplentes</li>
-                            <li>• 2 representantes de los trabajadores + 2 suplentes</li>
-                            <li>• Total: 8 personas</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <div class="highlight-box">
-                    <h4>Elección por Voto Secreto</h4>
-                    <p>Los representantes de los trabajadores deben elegirse mediante <strong>votación secreta</strong> que represente la expresión libre, espontánea y auténtica de todos los trabajadores, mediante escrutinio público con procedimiento adoptado por cada empresa.</p>
-                </div>
-
-                <div class="exclusion-box">
-                    <h4>Inhabilidades Específicas</h4>
-                    <p><strong>NO pueden conformar el Comité:</strong></p>
-                    <ul style="margin-top: 0.5rem;">
-                        <li>• Trabajadores que hayan tenido quejas de acoso laboral formuladas en su contra en el <strong>año anterior</strong></li>
-                        <li>• Trabajadores que hayan sido <strong>víctimas de acoso laboral</strong> en el año anterior a la conformación</li>
-                    </ul>
-                </div>
-
-                <div class="warning">
-                    <strong>Empresas de Servicios Temporales:</strong><br>
-                    Las quejas de trabajadores en misión deben tramitarse en primera instancia ante el CCL de la <strong>empresa usuaria</strong>, con participación de al menos un representante del CCL de la empresa temporal, garantizando articulación efectiva entre ambas organizaciones.
-                </div>
-            </section>
-
-            <section class="section">
-                <h2>Rol y Alcance del Comité</h2>
-                
-                <div class="success">
-                    <strong>El CCL es una instancia PREVENTIVA con rol:</strong>
-                    <ul style="margin-top: 1rem; list-style-type: disc; margin-left: 2rem;">
-                        <li><strong>Preventivo:</strong> Evita situaciones de acoso</li>
-                        <li><strong>Orientador:</strong> Guía a las partes involucradas</li>
-                        <li><strong>Conciliador:</strong> Facilita acuerdos entre partes</li>
-                        <li><strong>Canalizador:</strong> Direcciona casos según corresponda</li>
-                    </ul>
-                </div>
-
-                <div class="error">
-                    <strong>IMPORTANTE: El CCL NO determina si hay acoso laboral</strong><br>
-                    Su objetivo es proteger a los trabajadores contra riesgos psicosociales y facilitar la resolución de conflictos.
-                </div>
-
-                <div class="error">
-                    <strong>EXCLUSIÓN: Acoso Sexual</strong><br>
-                    El Comité de Convivencia <strong>NO es competente</strong> para casos de acoso sexual y violencia por razones de género, ya que estas conductas no son conciliables. La alta dirección o jefe de talento humano debe establecer procedimiento específico para estas quejas (Ley 2365 de 2024).
-                </div>
-            </section>
-
-            <section class="section">
-                <h2>Plazos y Procedimientos Específicos</h2>
-                
-                <div class="timeline">
-                    <h3>Cronograma de Actuación (Días Naturales)</h3>
-                    
-                    <div class="timeline-item">
-                        <div class="timeline-number">5</div>
-                        <div>
-                            <strong>Recibir y dar trámite a quejas</strong><br>
-                            5 días naturales máximo para iniciar el procedimiento
-                        </div>
-                    </div>
-                    
-                    <div class="timeline-item">
-                        <div class="timeline-number">5-15</div>
-                        <div>
-                            <strong>Examinar casos confidencialmente</strong><br>
-                            5 días naturales (ampliable 10 días más, máximo 15 total)
-                        </div>
-                    </div>
-                    
-                    <div class="timeline-item">
-                        <div class="timeline-number">5</div>
-                        <div>
-                            <strong>Escuchar partes individualmente</strong><br>
-                            5 días naturales máximo
-                        </div>
-                    </div>
-                    
-                    <div class="timeline-item">
-                        <div class="timeline-number">5-15</div>
-                        <div>
-                            <strong>Reuniones de diálogo y compromisos</strong><br>
-                            Entre 5 días (después de escuchar partes) hasta 15 días máximo
-                        </div>
-                    </div>
-                    
-                    <div class="timeline-item">
-                        <div class="timeline-number">65</div>
-                        <div>
-                            <strong>LÍMITE MÁXIMO</strong><br>
-                            65 días naturales para resolución completa del procedimiento preventivo
-                        </div>
-                    </div>
-                </div>
-
-                <div class="highlight-box">
-                    <h4>Principios del Procedimiento</h4>
-                    <p><strong>Celeridad • Eficacia • Imparcialidad • Confidencialidad • No Discriminación</strong></p>
-                    <p>El proceso debe ser participativo, transparente y respetuoso, garantizando confidencialidad para proteger de represalias.</p>
-                </div>
-            </section>
-
-            <section class="section">
-                <h2>Responsabilidades Ampliadas de Empleadores</h2>
-                
-                <div class="responsibilities-grid">
-                    <div class="responsibility-card">
-                        <h4>Medidas Preventivas Obligatorias</h4>
-                        <ul>
-                            <li>Formular política clara de prevención del acoso laboral</li>
-                            <li>Elaborar manuales de convivencia detallados</li>
-                            <li>Implementar acciones con perspectiva de género</li>
-                            <li>Capacitar sobre no discriminación y resolución de conflictos</li>
-                            <li>Establecer espacios de atención psicológica</li>
-                            <li>Socializar rutas de salud mental para trabajadores</li>
-                            <li>Coordinar capacitación en primeros auxilios psicológicos</li>
-                        </ul>
-                    </div>
-                    
-                    <div class="responsibility-card">
-                        <h4>Medidas Correctivas</h4>
-                        <ul>
-                            <li>Intervención específica en factores de riesgo psicosociales</li>
-                            <li>Facilitar traslados cuando sea recomendado médicamente</li>
-                            <li>Mantener canales de atención (presencial/virtual)</li>
-                            <li>Atender recomendaciones del CCL</li>
-                            <li>Seguimiento mensual a compromisos</li>
-                        </ul>
-                    </div>
-                    
-                    <div class="responsibility-card">
-                        <h4>Primeros Auxilios Psicológicos</h4>
-                        <ul>
-                            <li>Capacitación obligatoria para CCL</li>
-                            <li>Entrenamiento de brigadas de emergencia</li>
-                            <li>Capacitación del COPASST</li>
-                            <li>Formación de líderes del SG-SST</li>
-                            <li>Coordinación con ARL para capacitación</li>
-                        </ul>
-                    </div>
-                </div>
-            </section>
-
-            <section class="section">
-                <h2>Responsabilidades de las ARL</h2>
-                
-                <div class="warning">
-                    <strong>REPORTE MENSUAL OBLIGATORIO AL MINISTERIO DEL TRABAJO</strong><br>
-                    Las ARL deben reportar mensualmente todas sus acciones relacionadas con prevención de acoso laboral.
-                </div>
-                
-                <div class="responsibilities-grid">
-                    <div class="responsibility-card">
-                        <h4>Asesoría y Asistencia Técnica</h4>
-                        <ul>
-                            <li>Desarrollo de medidas preventivas y correctivas</li>
-                            <li>Promoción de salud mental</li>
-                            <li>Socialización de rutas de atención</li>
-                            <li>Canalización a servicios de atención</li>
-                        </ul>
-                    </div>
-                    
-                    <div class="responsibility-card">
-                        <h4>Prevención con Enfoque de Género</h4>
-                        <ul>
-                            <li>Acciones de prevención de violencia laboral</li>
-                            <li>Perspectiva de género en acoso laboral</li>
-                            <li>Enfoque diferencial e interseccional</li>
-                            <li>Violencias contra las mujeres en ámbito laboral</li>
-                        </ul>
-                    </div>
-                    
-                    <div class="responsibility-card">
-                        <h4>Apoyo y Capacitación</h4>
-                        <ul>
-                            <li>Apoyo emocional no presencial</li>
-                            <li>Múltiples canales (teléfono, WhatsApp, redes)</li>
-                            <li>Capacitación a miembros del CCL</li>
-                            <li>Primeros auxilios psicológicos</li>
-                        </ul>
-                    </div>
-                </div>
-            </section>
-
-            <section class="section">
-                <h2>Tabla Comparativa: Normativa Anterior vs. Nueva</h2>
-                
-                <table class="comparison-table">
-                    <thead>
-                        <tr>
-                            <th>Aspecto</th>
-                            <th>Normativa Anterior (DEROGADA)</th>
-                            <th>Nueva Normativa (Resolución 3461/2025)</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td><strong>Normas Base</strong></td>
-                            <td class="derogated">Resoluciones 652 y 1356 de 2012</td>
-                            <td class="new">Resolución 3461 de 2025</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Composición CCL</strong></td>
-                            <td class="derogated">2 representantes por cada parte + suplentes para empresas >20 trabajadores</td>
-                            <td class="new">
-                                • <5 trabajadores: 1 empleador + 1 trabajador<br>
-                                • 5-20 trabajadores: 1+1 suplente por cada parte<br>
-                                • >20 trabajadores: 2+2 suplentes por cada parte
-                            </td>
-                        </tr>
-                        <tr>
-                            <td><strong>Elección</strong></td>
-                            <td class="derogated">Sin especificación de voto secreto</td>
-                            <td class="new">Voto secreto OBLIGATORIO con escrutinio público</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Inhabilidades</strong></td>
-                            <td class="derogated">No especificadas claramente</td>
-                            <td class="new">Exclusión de 1 año para involucrados en quejas</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Plazos</strong></td>
-                            <td class="derogated">Días laborales, menos específicos</td>
-                            <td class="new">Días naturales, máximo 65 días para resolución</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Acoso Sexual</strong></td>
-                            <td class="derogated">Competencia del CCL</td>
-                            <td class="new">CCL NO competente (Ley 2365/2024)</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Primeros Auxilios Psicológicos</strong></td>
-                            <td class="derogated">No requeridos</td>
-                            <td class="new">OBLIGATORIOS para CCL, brigadas, COPASST, SG-SST</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Responsabilidades ARL</strong></td>
-                            <td class="derogated">Limitadas</td>
-                            <td class="new">Específicas con REPORTE MENSUAL al MinTrabajo</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </section>
-
-            <section class="section">
-                <h2>Cómo Cycloid Talent Te Acompaña en Esta Transición</h2>
-                
-                <div style="background: #e3f2fd; padding: 1.5rem; border-radius: 8px; margin: 1.5rem 0; border-left: 5px solid #2196f3;">
-                    <h4 style="color: #1976d2; margin-bottom: 1rem;">Nuestro Enfoque de Acompañamiento</h4>
-                    <p style="color: #1565c0;">
-                        Entendemos que enfrentarse a nuevas normativas puede generar incertidumbre. Por eso, en Cycloid Talent 
-                        no solo implementamos cambios: <strong>te acompañamos en el proceso</strong>, explicamos cada paso, 
-                        y aseguramos que tu equipo se sienta cómodo y seguro con las nuevas responsabilidades.
-                    </p>
-                </div>
-
-                <div class="composition-grid">
-                    <div class="composition-card">
-                        <h4>Evaluación Conjunta</h4>
-                        <p>Revisamos juntos tu SG-SST actual para entender qué necesita evolucionar</p>
-                        <div style="background: #e8f5e8; padding: 0.5rem; border-radius: 5px; margin-top: 0.5rem;">
-                            <strong>Diagnóstico colaborativo</strong>
-                        </div>
-                    </div>
-                    
-                    <div class="composition-card">
-                        <h4>Implementación Gradual</h4>
-                        <p>Adaptamos paso a paso tu sistema, respetando tus tiempos y procesos</p>
-                        <div style="background: #e8f5e8; padding: 0.5rem; border-radius: 5px; margin-top: 0.5rem;">
-                            <strong>Sin disrupciones</strong>
-                        </div>
-                    </div>
-                    
-                    <div class="composition-card">
-                        <h4>Capacitación Integral</h4>
-                        <p>Entrenamos a tu equipo con metodologías didácticas y comprensibles</p>
-                        <div style="background: #e8f5e8; padding: 0.5rem; border-radius: 5px; margin-top: 0.5rem;">
-                            <strong>Aprendizaje efectivo</strong>
-                        </div>
-                    </div>
-                    
-                    <div class="composition-card">
-                        <h4>Soporte Continuo</h4>
-                        <p>Te acompañamos después de la implementación para resolver dudas</p>
-                        <div style="background: #e8f5e8; padding: 0.5rem; border-radius: 5px; margin-top: 0.5rem;">
-                            <strong>Tranquilidad permanente</strong>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <section class="section">
-                <h2>Marco Legal de Referencia</h2>
-                
-                <div class="success">
-                    <strong>Vigencia:</strong> La Resolución 3461 de 2025 rige desde el 1 de septiembre de 2025.
-                </div>
-                
-                <div class="warning">
-                    <strong>Deroga:</strong> Resoluciones 652 y 1356 de 2012
-                </div>
-                
-                <div class="error">
-                    <strong>Sanciones:</strong> Incumplimiento sancionado según artículo 91 Decreto 1295/1994, 
-                    modificado por artículo 115 Decreto 2150/1995 y artículo 13 Ley 1562/2012. 
-                    Competencia de Direcciones Territoriales del Ministerio del Trabajo.
-                </div>
-
-                <div style="background: #e3f2fd; border: 2px solid #2196f3; padding: 1.5rem; border-radius: 8px; margin: 1.5rem 0; text-align: center;">
-                    <h4 style="color: #1976d2; margin-bottom: 1rem;">Consulte el Documento Oficial Completo</h4>
-                    <a href="https://www.funcionpublica.gov.co/eva/gestornormativo/norma.php?i=262916" 
-                       target="_blank" 
-                       style="background: #2196f3; color: white; padding: 1rem 2rem; border-radius: 8px; text-decoration: none; display: inline-block; font-weight: bold; transition: all 0.3s ease;"
-                       onmouseover="this.style.background='#1976d2'"
-                       onmouseout="this.style.background='#2196f3'">
-                       📄 Resolución 3461 de 2025 - Ministerio del Trabajo<br>
-                       <span style="font-size: 0.9rem; opacity: 0.9;">Gestor Normativo - Función Pública</span>
-                    </a>
-                </div>
-            </section>
-        </main>
-
-        <footer class="footer">
-            <div style="margin-bottom: 1.5rem; padding: 1.5rem; background: rgba(255,255,255,0.1); border-radius: 10px;">
-                <h3 style="color: white; margin-bottom: 1rem; font-size: 1.3rem;">Cycloid Talent SAS - Tu Socio en SST</h3>
-                <div style="font-size: 1.1rem; margin-bottom: 0.5rem;"><strong>Juntos navegamos los cambios normativos</strong></div>
-                <div style="font-size: 0.95rem; opacity: 0.9;">
-                    Acompañamiento integral en la transición hacia el cumplimiento de la Resolución 3461 de 2025
-                </div>
-                <div style="font-size: 0.9rem; margin-top: 0.5rem; opacity: 0.8;">
-                    Consultoría SST | Implementación | Capacitación | Soporte Continuo
-                </div>
-            </div>
-            <p>&copy; 2025 - Cycloid Talent SAS | Resolución 3461 de 2025 - Ministerio del Trabajo</p>
-            <p>Información actualizada al 11 de septiembre de 2025</p>
-        </footer>
-    </div>
-</body>
+<!DOCTYPE HTML>
+<!--
+	Editorial by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>COCOLAB 2025 - Cycloid Talent SAS</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<meta name="description" content="COCOLAB 2025 - Cycloid Talent Te Acompaña - Nuevos Cambios Normativos 2025" />
+		<meta name="keywords" content="COCOLAB 2025, Cycloid Talent, SST, Resolución 3461, Comité Convivencia Laboral" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<link rel="icon" type="image/x-icon" href="images/favicon.ico" />
+		<style>
+			/* Logo optimizations */
+			.logo img {
+				height: 40px;
+				width: auto;
+				margin-right: 10px;
+				vertical-align: middle;
+			}
+			
+			@media screen and (max-width: 736px) {
+				.logo img {
+					height: 30px;
+				}
+				.logo strong {
+					font-size: 0.9em;
+				}
+			}
+			
+			@media screen and (max-width: 480px) {
+				.logo img {
+					height: 25px;
+					margin-right: 8px;
+				}
+				.logo strong {
+					font-size: 0.8em;
+				}
+			}
+
+			/* Custom styles for COCOLAB 2025 content using HTML5UP colors */
+			.alert-box {
+				background: rgba(114, 146, 180, 0.1);
+				border: 2px solid #729240;
+				padding: 1.5rem;
+				border-radius: 0.375em;
+				margin: 2rem 0;
+			}
+			
+			.cycloid-support {
+				background: rgba(114, 146, 180, 0.1);
+				border-left: 4px solid #729240;
+				padding: 1rem;
+				margin: 1rem 0;
+				border-radius: 0 0.375em 0.375em 0;
+			}
+			
+			.comparison-table {
+				width: 100%;
+				border-collapse: collapse;
+				margin: 1.5rem 0;
+				background: white;
+				border-radius: 0.375em;
+				overflow: hidden;
+				box-shadow: 0 0.125em 0.25em rgba(0,0,0,0.1);
+			}
+			
+			.comparison-table th {
+				background: #729240;
+				color: white;
+				padding: 1rem;
+				text-align: left;
+				font-weight: bold;
+			}
+			
+			.comparison-table td {
+				padding: 1rem;
+				border-bottom: 1px solid #e6e6e6;
+				vertical-align: top;
+			}
+			
+			.comparison-table tr:nth-child(even) {
+				background: #f8f8f8;
+			}
+			
+			.derogated {
+				background: #ffebee !important;
+				color: #c62828;
+			}
+			
+			.new {
+				background: #e8f5e8 !important;
+				color: #2e7d32;
+			}
+			
+			.highlight-box {
+				background: rgba(255, 206, 84, 0.1);
+				border-left: 5px solid #ffce54;
+				padding: 1.5rem;
+				border-radius: 0.375em;
+				margin: 1rem 0;
+			}
+			
+			.composition-grid {
+				display: grid;
+				grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+				gap: 1.5rem;
+				margin: 1.5rem 0;
+			}
+			
+			.composition-card {
+				background: white;
+				padding: 1.5rem;
+				border-radius: 0.375em;
+				border: 2px solid #e6e6e6;
+				transition: transform 0.3s ease;
+			}
+			
+			.composition-card:hover {
+				transform: translateY(-5px);
+				box-shadow: 0 0.5em 1em rgba(0,0,0,0.1);
+			}
+			
+			.timeline {
+				background: white;
+				padding: 1.5rem;
+				border-radius: 0.375em;
+				margin: 1rem 0;
+				border: 2px solid #e6e6e6;
+			}
+			
+			.timeline-item {
+				display: flex;
+				align-items: center;
+				margin-bottom: 1rem;
+				padding: 1rem;
+				background: #f8f8f8;
+				border-radius: 0.375em;
+			}
+			
+			.timeline-number {
+				background: #729240;
+				color: white;
+				width: 30px;
+				height: 30px;
+				border-radius: 50%;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				margin-right: 1rem;
+				font-weight: bold;
+			}
+			
+			.responsibilities-grid {
+				display: grid;
+				grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+				gap: 2rem;
+				margin: 2rem 0;
+			}
+			
+			.responsibility-card {
+				background: white;
+				padding: 2rem;
+				border-radius: 0.375em;
+				border-top: 4px solid #729240;
+				box-shadow: 0 0.125em 0.25em rgba(0,0,0,0.1);
+			}
+			
+			.responsibility-card ul {
+				list-style: none;
+				padding: 0;
+			}
+			
+			.responsibility-card li {
+				padding: 0.5rem 0;
+				padding-left: 1.5rem;
+				position: relative;
+			}
+			
+			.responsibility-card li:before {
+				content: "✓";
+				position: absolute;
+				left: 0;
+				color: #729240;
+				font-weight: bold;
+			}
+			
+			.exclusion-box {
+				background: #fff3cd;
+				border: 2px solid #ffce54;
+				padding: 1.5rem;
+				border-radius: 0.375em;
+				margin: 1rem 0;
+			}
+			
+			.law-reference {
+				background: rgba(114, 146, 180, 0.1);
+				border-left: 4px solid #729240;
+				padding: 1rem;
+				margin: 1rem 0;
+				border-radius: 0 0.375em 0.375em 0;
+			}
+			
+			.warning {
+				background: #fff3cd;
+				border: 1px solid #ffce54;
+				color: #856404;
+				padding: 1rem;
+				border-radius: 0.375em;
+				margin: 1rem 0;
+			}
+			
+			.success {
+				background: #d4edda;
+				border: 1px solid #c3e6cb;
+				color: #155724;
+				padding: 1rem;
+				border-radius: 0.375em;
+				margin: 1rem 0;
+			}
+			
+			.error {
+				background: #f8d7da;
+				border: 1px solid #f5c6cb;
+				color: #721c24;
+				padding: 1rem;
+				border-radius: 0.375em;
+				margin: 1rem 0;
+			}
+
+			/* Full width layout adjustments */
+			#wrapper {
+				width: 100%;
+				max-width: none;
+			}
+			
+			#main {
+				width: 100%;
+			}
+			
+			.inner {
+				max-width: none;
+				width: 100%;
+			}
+		</style>
+	</head>
+	<body class="is-preload">
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Main -->
+					<div id="main">
+						<div class="inner">
+
+							<!-- Header -->
+								<header id="header">
+									<a href="index.html" class="logo">
+										<img src="images/CYCLOID TALENT-sin fondo.png" alt="Cycloid Talent SAS" />
+										<strong>Cycloid Talent</strong> SAS
+									</a>
+								</header>
+
+							<!-- Banner -->
+								<section id="banner">
+									<div class="content">
+										<header>
+											<h1>Cycloid Talent Te Acompaña</h1>
+											<p>Navegando Juntos los Cambios Normativos de 2025</p>
+										</header>
+										<div class="alert-box">
+											<h3>SABEMOS QUE LOS CAMBIOS AL INICIO SON DIFÍCILES</h3>
+											<p>La nueva normatividad trae ajustes importantes a los Comités de Convivencia Laboral, pero <strong>juntos navegaremos estos cambios</strong> de manera organizada y exitosa</p>
+										</div>
+									</div>
+									<span class="image object">
+										<img src="images/LOGO_SST.png" alt="COCOLAB 2025" />
+									</span>
+								</section>
+							<!-- Comparative Table Section -->
+								<section>
+									<header class="major">
+										<h2>Tabla Comparativa: Normativa Anterior vs. Nueva</h2>
+									</header>
+									
+									<table class="comparison-table">
+										<thead>
+											<tr>
+												<th>Aspecto</th>
+												<th>Normativa Anterior (DEROGADA)</th>
+												<th>Nueva Normativa (Resolución 3461/2025)</th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr>
+												<td><strong>Normas Base</strong></td>
+												<td class="derogated">Resoluciones 652 y 1356 de 2012</td>
+												<td class="new">Resolución 3461 de 2025</td>
+											</tr>
+											<tr>
+												<td><strong>Composición CCL</strong></td>
+												<td class="derogated">2 representantes por cada parte + suplentes para empresas >20 trabajadores</td>
+												<td class="new">
+													• <5 trabajadores: 1 empleador + 1 trabajador<br>
+													• 5-20 trabajadores: 1+1 suplente por cada parte<br>
+													• >20 trabajadores: 2+2 suplentes por cada parte
+												</td>
+											</tr>
+											<tr>
+												<td><strong>Elección</strong></td>
+												<td class="derogated">Sin especificación de voto secreto</td>
+												<td class="new">Voto secreto OBLIGATORIO con escrutinio público</td>
+											</tr>
+											<tr>
+												<td><strong>Inhabilidades</strong></td>
+												<td class="derogated">No especificadas claramente</td>
+												<td class="new">Exclusión de 1 año para involucrados en quejas</td>
+											</tr>
+											<tr>
+												<td><strong>Plazos</strong></td>
+												<td class="derogated">Días laborales, menos específicos</td>
+												<td class="new">Días naturales, máximo 65 días para resolución</td>
+											</tr>
+											<tr>
+												<td><strong>Acoso Sexual</strong></td>
+												<td class="derogated">Competencia del CCL</td>
+												<td class="new">CCL NO competente (Ley 2365/2024)</td>
+											</tr>
+											<tr>
+												<td><strong>Primeros Auxilios Psicológicos</strong></td>
+												<td class="derogated">No requeridos</td>
+												<td class="new">OBLIGATORIOS para CCL, brigadas, COPASST, SG-SST</td>
+											</tr>
+											<tr>
+												<td><strong>Responsabilidades ARL</strong></td>
+												<td class="derogated">Limitadas</td>
+												<td class="new">Específicas con REPORTE MENSUAL al MinTrabajo</td>
+											</tr>
+											<tr>
+												<td><strong>Reuniones</strong></td>
+												<td class="derogated">Sin frecuencia obligatoria</td>
+												<td class="new">MENSUALES obligatorias + extraordinarias</td>
+											</tr>
+											<tr>
+												<td><strong>Enfoque de Género</strong></td>
+												<td class="derogated">No contemplado</td>
+												<td class="new">Integral con elementos diferenciales e interseccionales</td>
+											</tr>
+											<tr>
+												<td><strong>Servicios Temporales</strong></td>
+												<td class="derogated">No especificado</td>
+												<td class="new">Procedimiento específico: CCL empresa usuaria</td>
+											</tr>
+											<tr>
+												<td><strong>Seguimiento</strong></td>
+												<td class="derogated">Básico</td>
+												<td class="new">Mensual a compromisos, informes trimestrales y anuales</td>
+											</tr>
+											<tr>
+												<td><strong>Ámbito de Aplicación</strong></td>
+												<td class="derogated">Empleadores y trabajadores dependientes</td>
+												<td class="new">Ampliado: incluye independientes, contratistas, estudiantes, informales, ARL</td>
+											</tr>
+										</tbody>
+									</table>
+								</section>
+
+							<!-- Legal Foundation Section -->
+								<section>
+									<header class="major">
+										<h2>Fundamento Normativo de los Cambios</h2>
+									</header>
+									
+									<div class="law-reference">
+										<h5>Marco Legal que Fundamenta la Actualización</h5>
+										<p>La Resolución 3461 de 2025 responde a la necesidad de alinear la normatividad colombiana con estándares internacionales y leyes nacionales recientes.</p>
+									</div>
+									
+									<div class="responsibilities-grid">
+										<div class="responsibility-card">
+											<h4>Tratados Internacionales</h4>
+											<ul>
+												<li>Convenio C190 de 2019 de la OIT (mundo laboral libre de violencia y acoso)</li>
+												<li>Convención sobre Eliminación de Discriminación contra las Mujeres</li>
+												<li>Enfoque de género en prevención de acoso laboral</li>
+											</ul>
+										</div>
+										
+										<div class="responsibility-card">
+											<h4>Leyes Nacionales Recientes</h4>
+											<ul>
+												<li>Ley 2209 de 2022: Amplía caducidad de acciones por acoso a 3 años</li>
+												<li>Ley 2466 de 2025: Reforma Laboral para trabajo decente y digno</li>
+												<li>Ley 2365 de 2024: Prevención acoso sexual en ámbito laboral</li>
+											</ul>
+										</div>
+									</div>
+
+									<div class="highlight-box">
+										<h4>Objetivos de la Modernización Normativa</h4>
+										<p>Garantizar un trabajo libre de violencias y acoso, con enfoque de género y alcance ampliado que incluye trabajadores formales, informales, de economía popular, pasantes, aprendices, voluntarios, personas en busca de empleo y despedidas.</p>
+									</div>
+								</section>
+
+							<!-- Scope Section -->
+								<section>
+									<header class="major">
+										<h2>Ámbito de Aplicación Ampliado</h2>
+									</header>
+									
+									<div class="success">
+										<strong>La Resolución 3461 de 2025 amplía su alcance a:</strong>
+										<ul style="margin-top: 1rem; list-style-type: disc; margin-left: 2rem;">
+											<li><strong>Empleadores</strong> (públicos y privados)</li>
+											<li><strong>Contratantes y contratistas</strong></li>
+											<li><strong>Trabajadores dependientes e independientes</strong></li>
+											<li><strong>Estudiantes</strong></li>
+											<li><strong>Administradoras de Riesgos Laborales (ARL)</strong></li>
+											<li><strong>Trabajadores informales y de economía popular</strong></li>
+											<li><strong>Personas en formación</strong> (pasantes, aprendices)</li>
+											<li><strong>Voluntarios</strong></li>
+											<li><strong>Personas en busca de empleo y postulantes</strong></li>
+											<li><strong>Personas despedidas</strong></li>
+										</ul>
+									</div>
+								</section>
+
+							<!-- Committee Composition Section -->
+								<section>
+									<header class="major">
+										<h2>Composición del Comité de Convivencia Laboral</h2>
+									</header>
+									
+									<div class="composition-grid">
+										<div class="composition-card">
+											<h4>Menos de 5 trabajadores</h4>
+											<p><strong>Composición:</strong></p>
+											<ul>
+												<li>• 1 representante del empleador</li>
+												<li>• 1 representante de los trabajadores</li>
+												<li>• Sin suplentes</li>
+											</ul>
+										</div>
+										
+										<div class="composition-card">
+											<h4>Entre 5 y 20 trabajadores</h4>
+											<p><strong>Composición:</strong></p>
+											<ul>
+												<li>• 1 representante del empleador + 1 suplente</li>
+												<li>• 1 representante de los trabajadores + 1 suplente</li>
+												<li>• Total: 4 personas</li>
+											</ul>
+										</div>
+										
+										<div class="composition-card">
+											<h4>Más de 20 trabajadores</h4>
+											<p><strong>Composición:</strong></p>
+											<ul>
+												<li>• 2 representantes del empleador + 2 suplentes</li>
+												<li>• 2 representantes de los trabajadores + 2 suplentes</li>
+												<li>• Total: 8 personas</li>
+											</ul>
+										</div>
+									</div>
+
+									<div class="highlight-box">
+										<h4>Elección por Voto Secreto</h4>
+										<p>Los representantes de los trabajadores deben elegirse mediante <strong>votación secreta</strong> que represente la expresión libre, espontánea y auténtica de todos los trabajadores, mediante escrutinio público con procedimiento adoptado por cada empresa.</p>
+									</div>
+
+									<div class="exclusion-box">
+										<h4>Inhabilidades Específicas</h4>
+										<p><strong>NO pueden conformar el Comité:</strong></p>
+										<ul style="margin-top: 0.5rem;">
+											<li>• Trabajadores que hayan tenido quejas de acoso laboral formuladas en su contra en el <strong>año anterior</strong></li>
+											<li>• Trabajadores que hayan sido <strong>víctimas de acoso laboral</strong> en el año anterior a la conformación</li>
+										</ul>
+									</div>
+
+									<div class="warning">
+										<strong>Empresas de Servicios Temporales:</strong><br>
+										Las quejas de trabajadores en misión deben tramitarse en primera instancia ante el CCL de la <strong>empresa usuaria</strong>, con participación de al menos un representante del CCL de la empresa temporal, garantizando articulación efectiva entre ambas organizaciones.
+									</div>
+								</section>
+
+							<!-- Committee Role Section -->
+								<section>
+									<header class="major">
+										<h2>Rol y Alcance del Comité</h2>
+									</header>
+									
+									<div class="success">
+										<strong>El CCL es una instancia PREVENTIVA con rol:</strong>
+										<ul style="margin-top: 1rem; list-style-type: disc; margin-left: 2rem;">
+											<li><strong>Preventivo:</strong> Evita situaciones de acoso</li>
+											<li><strong>Orientador:</strong> Guía a las partes involucradas</li>
+											<li><strong>Conciliador:</strong> Facilita acuerdos entre partes</li>
+											<li><strong>Canalizador:</strong> Direcciona casos según corresponda</li>
+										</ul>
+									</div>
+
+									<div class="error">
+										<strong>IMPORTANTE: El CCL NO determina si hay acoso laboral</strong><br>
+										Su objetivo es proteger a los trabajadores contra riesgos psicosociales y facilitar la resolución de conflictos.
+									</div>
+
+									<div class="error">
+										<strong>EXCLUSIÓN: Acoso Sexual</strong><br>
+										El Comité de Convivencia <strong>NO es competente</strong> para casos de acoso sexual y violencia por razones de género, ya que estas conductas no son conciliables. La alta dirección o jefe de talento humano debe establecer procedimiento específico para estas quejas (Ley 2365 de 2024).
+									</div>
+								</section>
+
+							<!-- Timeline Section -->
+								<section>
+									<header class="major">
+										<h2>Plazos y Procedimientos Específicos</h2>
+									</header>
+									
+									<div class="timeline">
+										<h3>Cronograma de Actuación (Días Naturales)</h3>
+										
+										<div class="timeline-item">
+											<div class="timeline-number">5</div>
+											<div>
+												<strong>Recibir y dar trámite a quejas</strong><br>
+												5 días naturales máximo para iniciar el procedimiento
+											</div>
+										</div>
+										
+										<div class="timeline-item">
+											<div class="timeline-number">5-15</div>
+											<div>
+												<strong>Examinar casos confidencialmente</strong><br>
+												5 días naturales (ampliable 10 días más, máximo 15 total)
+											</div>
+										</div>
+										
+										<div class="timeline-item">
+											<div class="timeline-number">5</div>
+											<div>
+												<strong>Escuchar partes individualmente</strong><br>
+												5 días naturales máximo
+											</div>
+										</div>
+										
+										<div class="timeline-item">
+											<div class="timeline-number">5-15</div>
+											<div>
+												<strong>Reuniones de diálogo y compromisos</strong><br>
+												Entre 5 días (después de escuchar partes) hasta 15 días máximo
+											</div>
+										</div>
+										
+										<div class="timeline-item">
+											<div class="timeline-number">65</div>
+											<div>
+												<strong>LÍMITE MÁXIMO</strong><br>
+												65 días naturales para resolución completa del procedimiento preventivo
+											</div>
+										</div>
+									</div>
+
+									<div class="highlight-box">
+										<h4>Principios del Procedimiento</h4>
+										<p><strong>Celeridad • Eficacia • Imparcialidad • Confidencialidad • No Discriminación</strong></p>
+										<p>El proceso debe ser participativo, transparente y respetuoso, garantizando confidencialidad para proteger de represalias.</p>
+									</div>
+								</section>
+
+							<!-- Employer Responsibilities Section -->
+								<section>
+									<header class="major">
+										<h2>Responsabilidades Ampliadas de Empleadores</h2>
+									</header>
+									
+									<div class="responsibilities-grid">
+										<div class="responsibility-card">
+											<h4>Medidas Preventivas Obligatorias</h4>
+											<ul>
+												<li>Formular política clara de prevención del acoso laboral</li>
+												<li>Elaborar manuales de convivencia detallados</li>
+												<li>Implementar acciones con perspectiva de género</li>
+												<li>Capacitar sobre no discriminación y resolución de conflictos</li>
+												<li>Establecer espacios de atención psicológica</li>
+												<li>Socializar rutas de salud mental para trabajadores</li>
+												<li>Coordinar capacitación en primeros auxilios psicológicos</li>
+											</ul>
+										</div>
+										
+										<div class="responsibility-card">
+											<h4>Medidas Correctivas</h4>
+											<ul>
+												<li>Intervención específica en factores de riesgo psicosociales</li>
+												<li>Facilitar traslados cuando sea recomendado médicamente</li>
+												<li>Mantener canales de atención (presencial/virtual)</li>
+												<li>Atender recomendaciones del CCL</li>
+												<li>Seguimiento mensual a compromisos</li>
+											</ul>
+										</div>
+										
+										<div class="responsibility-card">
+											<h4>Primeros Auxilios Psicológicos</h4>
+											<ul>
+												<li>Capacitación obligatoria para CCL</li>
+												<li>Entrenamiento de brigadas de emergencia</li>
+												<li>Capacitación del COPASST</li>
+												<li>Formación de líderes del SG-SST</li>
+												<li>Coordinación con ARL para capacitación</li>
+											</ul>
+										</div>
+									</div>
+								</section>
+
+							<!-- ARL Responsibilities Section -->
+								<section>
+									<header class="major">
+										<h2>Responsabilidades de las ARL</h2>
+									</header>
+									
+									<div class="warning">
+										<strong>REPORTE MENSUAL OBLIGATORIO AL MINISTERIO DEL TRABAJO</strong><br>
+										Las ARL deben reportar mensualmente todas sus acciones relacionadas con prevención de acoso laboral.
+									</div>
+									
+									<div class="responsibilities-grid">
+										<div class="responsibility-card">
+											<h4>Asesoría y Asistencia Técnica</h4>
+											<ul>
+												<li>Desarrollo de medidas preventivas y correctivas</li>
+												<li>Promoción de salud mental</li>
+												<li>Socialización de rutas de atención</li>
+												<li>Canalización a servicios de atención</li>
+											</ul>
+										</div>
+										
+										<div class="responsibility-card">
+											<h4>Prevención con Enfoque de Género</h4>
+											<ul>
+												<li>Acciones de prevención de violencia laboral</li>
+												<li>Perspectiva de género en acoso laboral</li>
+												<li>Enfoque diferencial e interseccional</li>
+												<li>Violencias contra las mujeres en ámbito laboral</li>
+											</ul>
+										</div>
+										
+										<div class="responsibility-card">
+											<h4>Apoyo y Capacitación</h4>
+											<ul>
+												<li>Apoyo emocional no presencial</li>
+												<li>Múltiples canales (teléfono, WhatsApp, redes)</li>
+												<li>Capacitación a miembros del CCL</li>
+												<li>Primeros auxilios psicológicos</li>
+											</ul>
+										</div>
+									</div>
+								</section>
+
+							<!-- Cycloid Support Section -->
+								<section>
+									<header class="major">
+										<h2>Cómo Cycloid Talent Te Acompaña en Esta Transición</h2>
+									</header>
+									
+									<div style="background: rgba(114, 146, 180, 0.1); padding: 1.5rem; border-radius: 0.375em; margin: 1.5rem 0; border-left: 5px solid #729240;">
+										<h4 style="color: #729240; margin-bottom: 1rem;">Nuestro Enfoque de Acompañamiento</h4>
+										<p>
+											Entendemos que enfrentarse a nuevas normativas puede generar incertidumbre. Por eso, en Cycloid Talent 
+											no solo implementamos cambios: <strong>te acompañamos en el proceso</strong>, explicamos cada paso, 
+											y aseguramos que tu equipo se sienta cómodo y seguro con las nuevas responsabilidades.
+										</p>
+									</div>
+
+									<div class="composition-grid">
+										<div class="composition-card">
+											<h4>Evaluación Conjunta</h4>
+											<p>Revisamos juntos tu SG-SST actual para entender qué necesita evolucionar</p>
+											<div style="background: rgba(114, 146, 180, 0.1); padding: 0.5rem; border-radius: 0.375em; margin-top: 0.5rem;">
+												<strong>Diagnóstico colaborativo</strong>
+											</div>
+										</div>
+										
+										<div class="composition-card">
+											<h4>Implementación Gradual</h4>
+											<p>Adaptamos paso a paso tu sistema, respetando tus tiempos y procesos</p>
+											<div style="background: rgba(114, 146, 180, 0.1); padding: 0.5rem; border-radius: 0.375em; margin-top: 0.5rem;">
+												<strong>Sin disrupciones</strong>
+											</div>
+										</div>
+										
+										<div class="composition-card">
+											<h4>Capacitación Integral</h4>
+											<p>Entrenamos a tu equipo con metodologías didácticas y comprensibles</p>
+											<div style="background: rgba(114, 146, 180, 0.1); padding: 0.5rem; border-radius: 0.375em; margin-top: 0.5rem;">
+												<strong>Aprendizaje efectivo</strong>
+											</div>
+										</div>
+										
+										<div class="composition-card">
+											<h4>Soporte Continuo</h4>
+											<p>Te acompañamos después de la implementación para resolver dudas</p>
+											<div style="background: rgba(114, 146, 180, 0.1); padding: 0.5rem; border-radius: 0.375em; margin-top: 0.5rem;">
+												<strong>Tranquilidad permanente</strong>
+											</div>
+										</div>
+									</div>
+								</section>
+
+							<!-- Legal Framework Section -->
+								<section>
+									<header class="major">
+										<h2>Marco Legal de Referencia</h2>
+									</header>
+									
+									<div class="success">
+										<strong>Vigencia:</strong> La Resolución 3461 de 2025 rige desde el 1 de septiembre de 2025.
+									</div>
+									
+									<div class="warning">
+										<strong>Deroga:</strong> Resoluciones 652 y 1356 de 2012
+									</div>
+									
+									<div class="error">
+										<strong>Sanciones:</strong> Incumplimiento sancionado según artículo 91 Decreto 1295/1994, 
+										modificado por artículo 115 Decreto 2150/1995 y artículo 13 Ley 1562/2012. 
+										Competencia de Direcciones Territoriales del Ministerio del Trabajo.
+									</div>
+
+									<div style="background: rgba(114, 146, 180, 0.1); border: 2px solid #729240; padding: 1.5rem; border-radius: 0.375em; margin: 1.5rem 0; text-align: center;">
+										<h4 style="color: #729240; margin-bottom: 1rem;">Consulte el Documento Oficial Completo</h4>
+										<a href="https://www.funcionpublica.gov.co/eva/gestornormativo/norma.php?i=262916" 
+										   target="_blank" 
+										   class="button primary"
+										   style="display: inline-block; margin-top: 1rem;">
+										   📄 Resolución 3461 de 2025 - Ministerio del Trabajo
+										</a>
+										<p style="font-size: 0.9rem; margin-top: 0.5rem; opacity: 0.8;">Gestor Normativo - Función Pública</p>
+									</div>
+								</section>
+
+						</div>
+					</div>
+
+				<!-- Sidebar -->
+					<div id="sidebar">
+						<div class="inner">
+
+							<!-- Menu -->
+								<nav id="menu">
+									<header class="major">
+										<h2>Menú</h2>
+									</header>
+									<ul>
+										<li><a href="index.html">Inicio</a></li>
+										<li><a href="cocolab2025.html">COCOLAB 2025</a></li>
+									</ul>
+								</nav>
+
+							<!-- Section -->
+								<section>
+									<header class="major">
+										<h2>Marco Normativo</h2>
+									</header>
+									<div class="mini-posts">
+										<article>
+											<p><strong>Resolución 3461 de 2025</strong><br>Nueva normativa para Comités de Convivencia Laboral, vigente desde septiembre 1 de 2025.</p>
+										</article>
+										<article>
+											<p><strong>Ley 2365 de 2024</strong><br>Prevención del acoso sexual en el ámbito laboral. El CCL no es competente para estos casos.</p>
+										</article>
+										<article>
+											<p><strong>Convenio C190 OIT</strong><br>Fundamento internacional para un mundo laboral libre de violencia y acoso.</p>
+										</article>
+									</div>
+								</section>
+
+							<!-- Section -->
+								<section id="contacto">
+									<header class="major">
+										<h2>Contáctanos</h2>
+									</header>
+									<p>¿Necesitas acompañamiento en la transición hacia la nueva normativa? Nuestro equipo de expertos está listo para ayudarte a implementar los cambios de manera organizada y exitosa.</p>
+									<ul class="contact">
+										<li class="icon solid fa-envelope"><a href="mailto:cycloidtalent.sas@gmail.com">cycloidtalent.sas@gmail.com</a></li>
+										<li class="icon solid fa-phone"><a href="tel:3229074371">322 907 4371</a></li>
+										<li class="icon solid fa-map-marker-alt">Colombia<br />
+										Servicios a nivel nacional</li>
+									</ul>
+								</section>
+
+							<!-- Footer -->
+								<footer id="footer">
+									<p class="copyright">&copy; 2024 Cycloid Talent SAS. Todos los derechos reservados. | COCOLAB 2025 - Resolución 3461/2025 | Design: <a href="https://html5up.net">HTML5 UP</a>.</p>
+								</footer>
+
+						</div>
+					</div>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
 </html>

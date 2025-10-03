@@ -1,9 +1,135 @@
-Esta empresa, Cycloid Talent SAS, se especializa en ofrecer soluciones y servicios relacionados con la Seguridad y Salud en el Trabajo (SST).
-Las principales actividades que realiza son:
-• Consultoría y asesoría en el diseño, ejecución e implementación del Sistema de Gestión de Seguridad y Salud en el Trabajo (SG-SST). Esta consultoría se realiza bajo los requisitos legales vigentes establecidos por el Ministerio de Trabajo y el Ministerio de Salud y Protección Social, siguiendo directrices de obligatorio cumplimiento como el Decreto 1072 y la Resolución 0312 de 2019. Específicamente, se menciona su aplicación para instituciones educativas, de acuerdo con la realización de sus actividades.
-• Ofrecer Enterprisesst, un aplicativo web diseñado para clientes corporativos. Este aplicativo tiene como objetivo simplificar la gestión del Plan de Trabajo Anual en SST, permitiendo un acceso fácil y rápido a toda la documentación, capacitaciones, cronogramas, reportes y matrices necesarias, todo desde la palma de la mano.
-• Realizar Auditorías SG-SST.
-• Impartir cursos especializados, incluyendo el "Curso Brigada de Emergencia" y el "Curso 50 Horas".
-• Abordar temas específicos como el Riesgo Psicosocial y la figura del Vigía SST.
-• Ayudar en la creación y gestión del Reglamento de Higiene y Seguridad Industrial.
-También manejan el Reglamento Interno de Trabajo, la Misión y Visión, y el Tratamiento de Datos Personales. La empresa se identifica con los datos de contacto 3229074371 y [email protected].
+Perfecto, Edison. Ya tienes todo automatizado en Google Sheets y ahora quieres **mostrar esa información en una página web simple**, como una tabla que se actualiza automáticamente con los datos del calendario.
+
+Te explico **paso a paso** cómo lograrlo usando el método más directo, sin backend, sin librerías externas, y manteniéndolo fácil de mantener.
+
+---
+
+## ✅ OPCIÓN RECOMENDADA: Publicar la hoja como CSV y consumirla desde HTML
+
+### 🔹 PASO 1: Publicar tu hoja como CSV
+
+1. Abre tu hoja de cálculo.
+2. Ve a `Archivo > Compartir > Publicar en la web`.
+3. Selecciona:
+
+   * **Hoja específica** (no todo el documento)
+   * Formato: **Valores separados por comas (.csv)**
+4. Copia el **enlace CSV** que se genera, algo así como:
+
+```
+https://docs.google.com/spreadsheets/d/e/xxxxxxxxxxxxxxxxxxx/pub?output=csv
+```
+
+Guárdalo, lo usaremos en el HTML.
+
+---
+
+### 🔹 PASO 2: Crea el archivo HTML que muestra la tabla
+
+Aquí tienes un ejemplo de una página simple que lee ese CSV y lo convierte en una tabla interactiva:
+
+```html
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Agenda Cycloid</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 1rem;
+    }
+    th, td {
+      padding: 10px;
+      border: 1px solid #ddd;
+      text-align: left;
+    }
+    th {
+      background-color: #f2752e;
+      color: white;
+    }
+  </style>
+</head>
+<body>
+  <h2>Agenda de Consultores Cycloid</h2>
+  <table id="agenda">
+    <thead></thead>
+    <tbody></tbody>
+  </table>
+
+  <script>
+    const CSV_URL = "https://docs.google.com/spreadsheets/d/e/xxxxxxxxxxxxxxxxxxxx/pub?output=csv"; // ← Pega aquí tu enlace CSV
+
+    fetch(CSV_URL)
+      .then(response => response.text())
+      .then(data => {
+        const rows = data.split("\n").filter(r => r.trim() !== "");
+        const table = document.getElementById("agenda");
+        const thead = table.querySelector("thead");
+        const tbody = table.querySelector("tbody");
+
+        // Encabezados
+        const headers = rows[0].split(",");
+        const headerRow = document.createElement("tr");
+        headers.forEach(h => {
+          const th = document.createElement("th");
+          th.textContent = h;
+          headerRow.appendChild(th);
+        });
+        thead.appendChild(headerRow);
+
+        // Filas de datos
+        for (let i = 1; i < rows.length; i++) {
+          const cols = rows[i].split(",");
+          const row = document.createElement("tr");
+          cols.forEach(c => {
+            const td = document.createElement("td");
+            td.textContent = c;
+            row.appendChild(td);
+          });
+          tbody.appendChild(row);
+        }
+      });
+  </script>
+</body>
+</html>
+```
+
+---
+
+## 🟧 ¿Dónde puedes alojar esto?
+
+* En tu **servidor Cycloid** (por ejemplo en `/agenda/index.html`)
+* En un hosting gratuito como **GitHub Pages**
+* O abrirlo directamente en tu navegador como un archivo local si es solo de prueba
+
+---
+
+## ✅ ¿Qué puedes agregar después?
+
+* Filtro por fecha o cliente
+* Botón para exportar a PDF
+* Tabla responsive con DataTables
+* Cambiar idioma, formato de fechas, etc.
+
+---
+mira las credenciales que ya obtuve:
+
+Publicar en la Web
+Este documento está publicado en la Web.
+
+Publica tu contenido en la Web para que cualquier persona lo pueda ver. Puedes crear un vínculo a tu documento o incorporarlo. Más información
+
+Víncular
+
+Incorporar
+Hoja 1
+Valores separados por comas (.csv)
+Nota: Es posible que los visualizadores puedan acceder a los datos subyacentes de los gráficos publicados. Más información
+
+https://docs.google.com/spreadsheets/d/e/2PACX-1vQ8L2llrzRuxxJKtdQV1y7gJiTRL0KO7_jA4nX-KaqA65J4aFE_sceAkBkQUQDK53TxrrmmBGO_6vpF/pub?gid=0&single=true&output=csv

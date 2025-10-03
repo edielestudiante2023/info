@@ -1,0 +1,602 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>Agenda de Consultores - Cycloid Talent SAS</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="icon" type="image/x-icon" href="images/favicon.ico" />
+
+		<!-- DataTables CSS -->
+		<link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
+		<link rel="stylesheet" href="https://cdn.datatables.net/datetime/1.5.1/css/dataTables.dateTime.min.css">
+
+		<style>
+			* {
+				margin: 0;
+				padding: 0;
+				box-sizing: border-box;
+			}
+
+			body {
+				font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+				background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+				min-height: 100vh;
+				padding: 20px;
+			}
+
+			.container {
+				max-width: 1400px;
+				margin: 0 auto;
+				background: white;
+				border-radius: 15px;
+				box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+				overflow: hidden;
+			}
+
+			/* Header */
+			.header {
+				background: linear-gradient(135deg, #f2752e 0%, #e65c1b 100%);
+				padding: 30px 40px;
+				color: white;
+			}
+
+			.logo-section {
+				display: flex;
+				align-items: center;
+				margin-bottom: 20px;
+			}
+
+			.logo-section img {
+				height: 50px;
+				width: auto;
+				margin-right: 15px;
+				filter: brightness(0) invert(1);
+			}
+
+			.logo-section h1 {
+				font-size: 1.8em;
+				font-weight: 600;
+			}
+
+			.header p {
+				font-size: 1.1em;
+				opacity: 0.95;
+			}
+
+
+			/* Filters Section */
+			.filters-section {
+				padding: 30px 40px;
+				background: #f8f9fa;
+				border-bottom: 2px solid #e9ecef;
+			}
+
+			.filters-grid {
+				display: grid;
+				grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+				gap: 20px;
+			}
+
+			.filter-group {
+				display: flex;
+				flex-direction: column;
+			}
+
+			.filter-group label {
+				font-weight: 600;
+				margin-bottom: 8px;
+				color: #333;
+				font-size: 0.95em;
+			}
+
+			.filter-group select,
+			.filter-group input {
+				padding: 12px;
+				border: 2px solid #ddd;
+				border-radius: 8px;
+				font-size: 1em;
+				transition: border-color 0.3s;
+			}
+
+			.filter-group select:focus,
+			.filter-group input:focus {
+				outline: none;
+				border-color: #f2752e;
+			}
+
+			.filter-actions {
+				display: flex;
+				gap: 10px;
+				align-items: flex-end;
+			}
+
+			.btn-filter {
+				padding: 12px 25px;
+				background: #f2752e;
+				color: white;
+				border: none;
+				border-radius: 8px;
+				cursor: pointer;
+				font-weight: 600;
+				transition: background 0.3s;
+			}
+
+			.btn-filter:hover {
+				background: #e65c1b;
+			}
+
+			.btn-clear {
+				padding: 12px 25px;
+				background: #6c757d;
+				color: white;
+				border: none;
+				border-radius: 8px;
+				cursor: pointer;
+				font-weight: 600;
+				transition: background 0.3s;
+			}
+
+			.btn-clear:hover {
+				background: #5a6268;
+			}
+
+			/* Table Section */
+			.table-section {
+				padding: 40px;
+			}
+
+			#agenda-table {
+				width: 100% !important;
+			}
+
+			.dataTables_wrapper {
+				padding: 0;
+			}
+
+			table.dataTable thead th {
+				background: #f2752e;
+				color: white;
+				font-weight: 600;
+				padding: 15px;
+				border-bottom: 3px solid #e65c1b;
+			}
+
+			table.dataTable tbody td {
+				padding: 12px 15px;
+				vertical-align: middle;
+			}
+
+			table.dataTable tbody tr:hover {
+				background-color: #fff3e0 !important;
+			}
+
+			.loading {
+				text-align: center;
+				padding: 60px 20px;
+				font-size: 1.3em;
+				color: #f2752e;
+			}
+
+			.loading::after {
+				content: '...';
+				animation: dots 1.5s steps(4, end) infinite;
+			}
+
+			@keyframes dots {
+				0%, 20% { content: '.'; }
+				40% { content: '..'; }
+				60%, 100% { content: '...'; }
+			}
+
+			/* Responsive */
+			@media screen and (max-width: 768px) {
+				body {
+					padding: 5px;
+				}
+
+				.container {
+					border-radius: 8px;
+				}
+
+				.header,
+				.filters-section,
+				.table-section {
+					padding: 15px;
+				}
+
+				.logo-section {
+					flex-direction: column;
+					align-items: flex-start;
+				}
+
+				.logo-section img {
+					height: 35px;
+					margin-bottom: 10px;
+				}
+
+				.logo-section h1 {
+					font-size: 1.3em;
+				}
+
+				.header p {
+					font-size: 0.95em;
+				}
+
+				.filters-grid {
+					grid-template-columns: 1fr;
+					gap: 15px;
+				}
+
+				.filter-actions {
+					flex-direction: row;
+					gap: 10px;
+				}
+
+				.btn-filter,
+				.btn-clear {
+					flex: 1;
+					padding: 14px 20px;
+					font-size: 0.95em;
+				}
+
+				.table-section {
+					padding: 10px;
+					overflow-x: auto;
+				}
+
+				table.dataTable {
+					font-size: 0.85em;
+				}
+
+				table.dataTable thead th {
+					padding: 10px 8px;
+					font-size: 0.9em;
+				}
+
+				table.dataTable tbody td {
+					padding: 10px 8px;
+					white-space: nowrap;
+				}
+
+				/* Ocultar algunas columnas en móvil si es necesario */
+				.dataTables_wrapper .dataTables_length,
+				.dataTables_wrapper .dataTables_filter {
+					margin-bottom: 15px;
+				}
+
+				.dataTables_wrapper .dataTables_info,
+				.dataTables_wrapper .dataTables_paginate {
+					margin-top: 15px;
+					font-size: 0.85em;
+				}
+			}
+
+			@media screen and (max-width: 480px) {
+				.logo-section h1 {
+					font-size: 1.1em;
+				}
+
+				.header p {
+					font-size: 0.85em;
+				}
+
+				table.dataTable {
+					font-size: 0.75em;
+				}
+
+				table.dataTable thead th,
+				table.dataTable tbody td {
+					padding: 8px 5px;
+				}
+
+				.filter-actions {
+					flex-direction: column;
+				}
+
+				.btn-filter,
+				.btn-clear {
+					width: 100%;
+				}
+			}
+		</style>
+	</head>
+	<body>
+		<div class="container">
+			<!-- Header -->
+			<div class="header">
+				<div class="logo-section">
+					<img src="images/CYCLOID TALENT-sin fondo.png" alt="Cycloid Talent SAS" />
+					<h1>Agenda de Consultores Cycloid</h1>
+				</div>
+				<p>Sistema de programación de actividades y visitas</p>
+			</div>
+
+			<!-- Filters Section -->
+			<div class="filters-section">
+				<div class="filters-grid">
+					<div class="filter-group">
+						<label for="consultor-filter">Consultor:</label>
+						<select id="consultor-filter">
+							<option value="">Todos los consultores</option>
+						</select>
+					</div>
+
+					<div class="filter-group">
+						<label for="fecha-inicio">Fecha de inicio:</label>
+						<input type="date" id="fecha-inicio" />
+					</div>
+
+					<div class="filter-group">
+						<label for="fecha-fin">Fecha de fin:</label>
+						<input type="date" id="fecha-fin" />
+					</div>
+
+					<div class="filter-actions">
+						<button class="btn-filter" onclick="aplicarFiltros()">Filtrar</button>
+						<button class="btn-clear" onclick="limpiarFiltros()">Limpiar</button>
+					</div>
+				</div>
+			</div>
+
+			<!-- Table Section -->
+			<div class="table-section">
+				<div class="loading" id="loading">
+					Cargando datos de la agenda
+				</div>
+
+				<table id="agenda-table" class="display" style="display: none;">
+					<thead>
+						<tr></tr>
+					</thead>
+					<tbody></tbody>
+				</table>
+			</div>
+		</div>
+
+		<!-- Scripts -->
+		<script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+		<script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+		<script src="https://cdn.datatables.net/datetime/1.5.1/js/dataTables.dateTime.min.js"></script>
+
+		<script>
+			const CSV_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQ8L2llrzRuxxJKtdQV1y7gJiTRL0KO7_jA4nX-KaqA65J4aFE_sceAkBkQUQDK53TxrrmmBGO_6vpF/pub?gid=0&single=true&output=csv";
+			const EXCLUDED_COLUMNS = ["Fecha de Fin", "Calendario", "Descripción", "Ubicación"];
+
+			let dataTable;
+			let allData = [];
+			let columnIndices = {};
+
+			function parseCSV(text) {
+				const rows = [];
+				let currentRow = [];
+				let currentField = '';
+				let insideQuotes = false;
+
+				for (let i = 0; i < text.length; i++) {
+					const char = text[i];
+					const nextChar = text[i + 1];
+
+					if (char === '"') {
+						if (insideQuotes && nextChar === '"') {
+							currentField += '"';
+							i++;
+						} else {
+							insideQuotes = !insideQuotes;
+						}
+					} else if (char === ',' && !insideQuotes) {
+						currentRow.push(currentField.trim());
+						currentField = '';
+					} else if (char === '\n' && !insideQuotes) {
+						currentRow.push(currentField.trim());
+						if (currentRow.some(field => field !== '')) {
+							rows.push(currentRow);
+						}
+						currentRow = [];
+						currentField = '';
+					} else {
+						currentField += char;
+					}
+				}
+
+				if (currentField || currentRow.length > 0) {
+					currentRow.push(currentField.trim());
+					if (currentRow.some(field => field !== '')) {
+						rows.push(currentRow);
+					}
+				}
+
+				return rows;
+			}
+
+			function parseFecha(fechaStr) {
+				if (!fechaStr) return null;
+
+				// Formato: DD/MM/YYYY HH:MM:SS
+				const regex = /(\d{1,2})\/(\d{1,2})\/(\d{4})\s+(\d{1,2}):(\d{1,2}):(\d{1,2})/;
+				const match = fechaStr.match(regex);
+
+				if (match) {
+					const dia = parseInt(match[1]);
+					const mes = parseInt(match[2]) - 1; // Los meses en JS van de 0-11
+					const anio = parseInt(match[3]);
+					const hora = parseInt(match[4]);
+					const minuto = parseInt(match[5]);
+					const segundo = parseInt(match[6]);
+
+					return new Date(anio, mes, dia, hora, minuto, segundo);
+				}
+
+				return null;
+			}
+
+			// Variable global para mantener el filtro activo
+			let filtroActivo = null;
+
+			function aplicarFiltros() {
+				const consultor = $('#consultor-filter').val();
+				const fechaInicio = $('#fecha-inicio').val();
+				const fechaFin = $('#fecha-fin').val();
+
+				if (!dataTable) return;
+
+				// Remover filtro anterior si existe
+				if (filtroActivo !== null) {
+					$.fn.dataTable.ext.search.splice(filtroActivo, 1);
+					filtroActivo = null;
+				}
+
+				// Crear nuevo filtro
+				const nuevoFiltro = function(settings, data, dataIndex) {
+					const invitadosCol = columnIndices["Invitados"];
+					const fechaCol = columnIndices["Fecha de Inicio"];
+
+					// Filtro por consultor
+					if (consultor && !data[invitadosCol].includes(consultor)) {
+						return false;
+					}
+
+					// Filtro por rango de fechas
+					if (fechaInicio || fechaFin) {
+						const fechaEvento = parseFecha(data[fechaCol]);
+
+						if (!fechaEvento) return false;
+
+						if (fechaInicio) {
+							const inicio = new Date(fechaInicio + 'T00:00:00');
+							const eventoSinHora = new Date(fechaEvento.getFullYear(), fechaEvento.getMonth(), fechaEvento.getDate());
+
+							if (eventoSinHora < inicio) return false;
+						}
+
+						if (fechaFin) {
+							const fin = new Date(fechaFin + 'T23:59:59');
+							const eventoSinHora = new Date(fechaEvento.getFullYear(), fechaEvento.getMonth(), fechaEvento.getDate(), 23, 59, 59);
+
+							if (eventoSinHora > fin) return false;
+						}
+					}
+
+					return true;
+				};
+
+				$.fn.dataTable.ext.search.push(nuevoFiltro);
+				filtroActivo = $.fn.dataTable.ext.search.length - 1;
+
+				dataTable.draw();
+			}
+
+			function limpiarFiltros() {
+				$('#consultor-filter').val('');
+				$('#fecha-inicio').val('');
+				$('#fecha-fin').val('');
+
+				// Remover todos los filtros personalizados
+				$.fn.dataTable.ext.search = [];
+				filtroActivo = null;
+
+				if (dataTable) {
+					dataTable.search('').draw();
+				}
+			}
+
+			// Cargar datos
+			fetch(CSV_URL)
+				.then(response => response.text())
+				.then(data => {
+					const rows = parseCSV(data);
+
+					if (rows.length === 0) {
+						$('#loading').text('No hay datos disponibles.');
+						return;
+					}
+
+					const headers = rows[0];
+
+					// Identificar columnas a mantener
+					const columnsToKeep = [];
+					headers.forEach((header, index) => {
+						if (!EXCLUDED_COLUMNS.includes(header)) {
+							columnsToKeep.push(index);
+							columnIndices[header] = columnsToKeep.length - 1;
+						}
+					});
+
+					const filteredHeaders = columnsToKeep.map(i => headers[i]);
+
+					// Crear encabezados
+					const theadRow = $('#agenda-table thead tr');
+					filteredHeaders.forEach(h => {
+						theadRow.append(`<th>${h}</th>`);
+					});
+
+					// Filtrar datos
+					const tbody = $('#agenda-table tbody');
+					for (let i = 1; i < rows.length; i++) {
+						const filteredRow = columnsToKeep.map(index => rows[i][index] || "");
+						allData.push(filteredRow);
+
+						const tr = $('<tr></tr>');
+						filteredRow.forEach(cell => {
+							tr.append(`<td>${cell}</td>`);
+						});
+						tbody.append(tr);
+					}
+
+					// Extraer consultores únicos
+					const invitadoIndex = columnIndices["Invitados"];
+					const consultoresSet = new Set();
+
+					allData.forEach(row => {
+						const invitados = row[invitadoIndex];
+						if (invitados) {
+							invitados.split(",").forEach(inv => {
+								const trimmed = inv.trim();
+								if (trimmed) consultoresSet.add(trimmed);
+							});
+						}
+					});
+
+					// Llenar select de consultores
+					const select = $('#consultor-filter');
+					Array.from(consultoresSet).sort().forEach(consultor => {
+						select.append(`<option value="${consultor}">${consultor}</option>`);
+					});
+
+					// Inicializar DataTable
+					$('#loading').hide();
+					$('#agenda-table').show();
+
+					// Encontrar el índice de la columna "Fecha de Inicio"
+					const fechaInicioColIndex = columnIndices["Fecha de Inicio"];
+
+					dataTable = $('#agenda-table').DataTable({
+						pageLength: 10,
+						lengthMenu: [[10, 25, 50, -1], [10, 25, 50, "Todos"]],
+						language: {
+							url: '//cdn.datatables.net/plug-ins/1.13.6/i18n/es-ES.json'
+						},
+						order: [[fechaInicioColIndex, 'asc']],
+						responsive: true,
+						autoWidth: false,
+						scrollX: true,
+						columnDefs: [{
+							targets: fechaInicioColIndex,
+							type: 'date',
+							render: function(data, type, row) {
+								if (type === 'sort' || type === 'type') {
+									const fecha = parseFecha(data);
+									return fecha ? fecha.getTime() : 0;
+								}
+								return data;
+							}
+						}],
+						dom: '<"top"lf>rt<"bottom"ip><"clear">'
+					});
+				})
+				.catch(error => {
+					$('#loading').text('Error al cargar los datos. Por favor, intente más tarde.');
+					console.error('Error:', error);
+				});
+		</script>
+	</body>
+</html>

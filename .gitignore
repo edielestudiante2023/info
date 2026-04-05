@@ -1,0 +1,37 @@
+# === Sistema operativo ===
+.DS_Store
+Thumbs.db
+Desktop.ini
+*.stackdump
+
+# === Editores e IDEs ===
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# === Claude Code ===
+.claude/
+
+# === Archivos temporales ===
+tmp_*
+*.tmp
+*.bak
+*.log
+nohup.out
+
+# === Archivos de notas/bocetos ===
+z_*.txt
+y_*.txt
+Z_*.TXT
+ZZ_*.txt
+
+# === Dependencias (si se agregan en el futuro) ===
+node_modules/
+vendor/
+
+# === Variables de entorno ===
+.env
+.env.local
+.env.production

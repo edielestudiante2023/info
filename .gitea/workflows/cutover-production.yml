@@ -1,0 +1,116 @@
+name: Cutover to Production
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  validate:
+    name: Validate HTML & Assets
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Verify all HTML files exist and are valid
+        run: |
+          echo "=== Verificando archivos HTML ==="
+          errors=0
+          for file in *.html; do
+            if [ ! -s "$file" ]; then
+              echo "ERROR: $file esta vacio o no existe"
+              errors=$((errors + 1))
+            else
+              echo "OK: $file ($(wc -c < "$file") bytes)"
+            fi
+          done
+          if [ $errors -gt 0 ]; then
+            echo "FALLO: $errors archivos con problemas"
+            exit 1
+          fi
+
+      - name: Verify critical assets
+        run: |
+          files=(
+            "assets/css/main.css"
+            "assets/css/fontawesome-all.min.css"
+            "assets/js/jquery.min.js"
+            "assets/js/main.js"
+            "images/favicon.ico"
+          )
+          for file in "${files[@]}"; do
+            if [ ! -f "$file" ]; then
+              echo "ERROR: Falta $file"
+              exit 1
+            fi
+          done
+
+  secrets-scan:
+    name: Secrets Scan
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Scan for hardcoded credentials
+        run: |
+          PATTERNS=(
+            "password\s*[:=]"
+            "api[_-]?key\s*[:=]"
+            "SG\.[a-zA-Z0-9_-]{22,}"
+            "sk-[a-zA-Z0-9]{20,}"
+            "sk-ant-[a-zA-Z0-9]{20,}"
+          )
+          found=0
+          for pattern in "${PATTERNS[@]}"; do
+            results=$(grep -rniE "$pattern" --include="*.html" --include="*.js" --include="*.css" --include="*.json" . 2>/dev/null || true)
+            if [ -n "$results" ]; then
+              echo "ALERTA: $results"
+              found=$((found + 1))
+            fi
+          done
+          if [ $found -gt 0 ]; then
+            echo "FALLO: Credenciales detectadas"
+            exit 1
+          fi
+          echo "OK: Sin credenciales hardcodeadas"
+
+  deploy-production:
+    name: Deploy to Production
+    needs: [validate, secrets-scan]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Deploy via SSH
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.PROD_SSH_KEY }}
+          HOST: ${{ secrets.PROD_HOST }}
+          USER: ${{ secrets.PROD_USER }}
+          PATH_DEPLOY: ${{ secrets.PROD_PATH }}
+        run: |
+          mkdir -p ~/.ssh
+          echo "$SSH_PRIVATE_KEY" > ~/.ssh/deploy_key
+          chmod 600 ~/.ssh/deploy_key
+          ssh-keyscan -H "$HOST" >> ~/.ssh/known_hosts 2>/dev/null
+
+          ssh -i ~/.ssh/deploy_key "$USER@$HOST" "
+            cd $PATH_DEPLOY &&
+            git fetch origin main &&
+            git reset --hard origin/main &&
+            echo 'Deploy PRODUCCION completado: $(date)'
+          "
+
+      - name: Verify deployment
+        env:
+          PROD_URL: ${{ secrets.PROD_URL }}
+        run: |
+          if [ -n "$PROD_URL" ]; then
+            STATUS=$(curl -s -o /dev/null -w "%{http_code}" "$PROD_URL" || echo "000")
+            if [ "$STATUS" = "200" ]; then
+              echo "Verificacion OK: $PROD_URL responde HTTP 200"
+            else
+              echo "ALERTA: $PROD_URL responde HTTP $STATUS"
+              exit 1
+            fi
+          else
+            echo "PROD_URL no configurada, omitiendo verificacion HTTP"
+          fi

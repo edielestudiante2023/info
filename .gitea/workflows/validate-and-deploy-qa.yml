@@ -1,0 +1,117 @@
+name: Validate and Deploy to Dev/QA
+
+on:
+  push:
+    branches: [develop, 'feature/*']
+  pull_request:
+    branches: [develop]
+
+jobs:
+  validate:
+    name: Validate HTML & Assets
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Verify all HTML files exist and are valid
+        run: |
+          echo "=== Verificando archivos HTML ==="
+          errors=0
+          for file in *.html; do
+            if [ ! -s "$file" ]; then
+              echo "ERROR: $file esta vacio o no existe"
+              errors=$((errors + 1))
+            else
+              echo "OK: $file ($(wc -c < "$file") bytes)"
+            fi
+          done
+          if [ $errors -gt 0 ]; then
+            echo "FALLO: $errors archivos con problemas"
+            exit 1
+          fi
+          echo "Todos los HTML validados correctamente"
+
+      - name: Verify critical assets exist
+        run: |
+          echo "=== Verificando assets criticos ==="
+          files=(
+            "assets/css/main.css"
+            "assets/css/fontawesome-all.min.css"
+            "assets/js/jquery.min.js"
+            "assets/js/main.js"
+            "images/favicon.ico"
+          )
+          errors=0
+          for file in "${files[@]}"; do
+            if [ ! -f "$file" ]; then
+              echo "ERROR: Falta $file"
+              errors=$((errors + 1))
+            else
+              echo "OK: $file"
+            fi
+          done
+          if [ $errors -gt 0 ]; then
+            echo "FALLO: $errors assets faltantes"
+            exit 1
+          fi
+
+  secrets-scan:
+    name: Secrets Scan
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Scan for hardcoded credentials
+        run: |
+          echo "=== Buscando credenciales hardcodeadas ==="
+          PATTERNS=(
+            "password\s*[:=]"
+            "api[_-]?key\s*[:=]"
+            "secret\s*[:=]"
+            "token\s*[:=].*['\"][a-zA-Z0-9]{20,}"
+            "SG\.[a-zA-Z0-9_-]{22,}"
+            "sk-[a-zA-Z0-9]{20,}"
+            "sk-ant-[a-zA-Z0-9]{20,}"
+          )
+          found=0
+          for pattern in "${PATTERNS[@]}"; do
+            results=$(grep -rniE "$pattern" --include="*.html" --include="*.js" --include="*.css" --include="*.json" . 2>/dev/null || true)
+            if [ -n "$results" ]; then
+              echo "ALERTA: Patron '$pattern' encontrado:"
+              echo "$results"
+              found=$((found + 1))
+            fi
+          done
+          if [ $found -gt 0 ]; then
+            echo "FALLO: Se encontraron $found patrones sospechosos"
+            exit 1
+          fi
+          echo "No se encontraron credenciales hardcodeadas"
+
+  deploy-qa:
+    name: Deploy to Dev/QA
+    needs: [validate, secrets-scan]
+    runs-on: ubuntu-latest
+    if: github.event_name == 'push' && github.ref == 'refs/heads/develop'
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Deploy via SSH
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.QA_SSH_KEY }}
+          HOST: ${{ secrets.QA_HOST }}
+          USER: ${{ secrets.QA_USER }}
+          PATH_DEPLOY: ${{ secrets.QA_PATH }}
+        run: |
+          mkdir -p ~/.ssh
+          echo "$SSH_PRIVATE_KEY" > ~/.ssh/deploy_key
+          chmod 600 ~/.ssh/deploy_key
+          ssh-keyscan -H "$HOST" >> ~/.ssh/known_hosts 2>/dev/null
+
+          ssh -i ~/.ssh/deploy_key "$USER@$HOST" "
+            cd $PATH_DEPLOY &&
+            git fetch origin develop &&
+            git checkout develop &&
+            git pull origin develop &&
+            echo 'Deploy QA completado: $(date)'
+          "

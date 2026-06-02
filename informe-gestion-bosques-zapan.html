@@ -264,12 +264,49 @@
 			}
 			.toolbar button:hover { background: var(--brand-dark); }
 
+			/* ---------- Quote box ---------- */
+			.quote {
+				background: #fff8f3;
+				border-left: 5px solid var(--brand);
+				border-radius: 0 8px 8px 0;
+				padding: 18px 22px;
+				margin: 16px 0 16px 46px;
+				font-style: italic;
+				color: #444;
+				font-size: 1.05em;
+			}
+			.quote .cite { display: block; margin-top: 10px; font-style: normal; font-size: .82em; color: var(--muted); }
+
+			/* ---------- Timeline ---------- */
+			.timeline-block { padding: 32px 48px; border-bottom: 1px solid var(--line); background: #fcfcfd; }
+			.timeline-block h3 {
+				font-size: .85em; text-transform: uppercase; letter-spacing: 1.5px; color: var(--muted); margin-bottom: 20px;
+			}
+			.timeline { list-style: none; margin: 0; padding: 0; }
+			.timeline li { position: relative; padding: 0 0 20px 28px; border-left: 2px solid var(--line); }
+			.timeline li:last-child { border-left-color: transparent; padding-bottom: 0; }
+			.timeline li::before {
+				content: ''; position: absolute; left: -7px; top: 3px;
+				width: 12px; height: 12px; border-radius: 50%; background: var(--brand); border: 2px solid #fff;
+			}
+			.timeline .tl-date { font-weight: 700; color: var(--brand-dark); }
+			.timeline .tl-text { color: #555; }
+
+			/* ---------- Anexo table ---------- */
+			.table-wrap { overflow-x: auto; margin-top: 8px; }
+			.mail-table { width: 100%; border-collapse: collapse; font-size: .92em; min-width: 560px; }
+			.mail-table th, .mail-table td { border: 1px solid var(--line); padding: 10px 12px; text-align: left; vertical-align: top; }
+			.mail-table th { background: var(--brand); color: #fff; font-weight: 600; }
+			.mail-table tbody tr:nth-child(even) { background: #fafafa; }
+			.mail-table .q { font-style: italic; color: #444; }
+
 			/* ---------- Responsive ---------- */
 			@media screen and (max-width: 640px) {
 				body { padding: 10px 6px; }
-				.cover, .intro, .progress, .section, .conclusion, .footer { padding-left: 22px; padding-right: 22px; }
+				.cover, .intro, .progress, .section, .conclusion, .footer, .timeline-block { padding-left: 22px; padding-right: 22px; }
 				.cover h1 { font-size: 1.5em; }
 				.section > p.lead { margin-left: 0; }
+				.quote { margin-left: 0; }
 			}
 
 			/* ---------- Print ---------- */
@@ -326,6 +363,18 @@
 				</div>
 				<div class="bar-track"><div class="bar-fill"></div></div>
 				<div class="bar-caption"><span>Inicio: 64.10%</span><span>Resultado consolidado: 86.25 / 100</span></div>
+			</div>
+
+			<!-- Línea de tiempo contractual -->
+			<div class="timeline-block">
+				<h3>Línea de tiempo contractual</h3>
+				<ul class="timeline">
+					<li><span class="tl-date">Septiembre 2025</span> — <span class="tl-text">Transición de administración: reunión con la Sra. Estrella Hernández y el Consejo, entrega de plataforma (usuario y contraseña) y de copia del contrato vigente. Como gesto comercial por el cambio de administración, no se factura el mes de agosto.</span></li>
+					<li><span class="tl-date">5 de diciembre de 2025</span> — <span class="tl-text">Cycloid Talent envía propuesta de renovación 2026, conservando el mismo valor sin ajuste como incentivo de fidelidad.</span></li>
+					<li><span class="tl-date">5 de diciembre de 2025</span> — <span class="tl-text">La Administración responde dando por terminado el contrato de mutuo acuerdo al vencimiento, agradeciendo la gestión y el acompañamiento brindados.</span></li>
+					<li><span class="tl-date">30 de diciembre de 2025</span> — <span class="tl-text">Finalización del contrato por vencimiento natural.</span></li>
+					<li><span class="tl-date">19 de febrero de 2026</span> — <span class="tl-text">Cierre financiero: confirmación de pago y entrega del Paz y Salvo 2025.</span></li>
+				</ul>
 			</div>
 
 			<!-- 1. Gestión estratégica -->
@@ -478,6 +527,19 @@
 					<div class="tags"><span class="tag date">9 de septiembre de 2025</span></div>
 					<p class="note"><strong>Motivo:</strong> Entrega de plataforma por cambio de correo institucional de la administración.</p>
 				</div>
+
+				<div class="card">
+					<h3>Reunión con Administración y Consejo (transición de administración)</h3>
+					<div class="tags"><span class="tag date">Septiembre 2025</span></div>
+					<p class="people"><strong>Participantes:</strong> Sra. Estrella Hernández (Administradora) · Consejo de Administración · Cycloid Talent (Diana Cuestas) · Natalia Jiménez.</p>
+					<p class="note">Temas y gestiones realizadas:</p>
+					<ul>
+						<li>Entrega de usuario y contraseña de la plataforma.</li>
+						<li>Entrega al correo de la copia del contrato vigente dejado por la administración anterior (Duván).</li>
+						<li>Acuerdo comercial: no facturación del mes de agosto por el cambio de administración; meses de junio y julio quedan al día.</li>
+						<li>Visita de seguimiento de Natalia Jiménez y coordinación de nuevas actividades.</li>
+					</ul>
+				</div>
 			</section>
 
 			<!-- 3. Gestión de emergencias -->
@@ -602,6 +664,108 @@
 						<li>Facturación y gestión administrativa.</li>
 					</ul>
 					<p class="note">Lo anterior evidencia comunicación permanente entre Cycloid Talent y la administración del conjunto.</p>
+				</div>
+			</section>
+
+			<!-- 7. Actividades condicionadas a la coordinación del cliente -->
+			<section class="section">
+				<h2><span class="num">7</span> Actividades Condicionadas a la Coordinación del Cliente</h2>
+				<p class="lead">Algunas actividades dependían de la coordinación y el contacto que la administración debía facilitar; tras la transición de administración no se contó con dicho apoyo.</p>
+
+				<div class="card">
+					<h3>Capacitación a empresa de seguridad — no ejecutada por falta de coordinación</h3>
+					<p class="note">La capacitación a la empresa de seguridad requería contacto y coordinación directa que, como ocurre en todos los conjuntos, la administración debe facilitar. Tras la transición de administración no se contó con ese apoyo para agendarla, por lo que no fue posible dictarla.</p>
+				</div>
+
+				<div class="card">
+					<h3>Continuidad del acompañamiento (septiembre – diciembre 2025)</h3>
+					<p class="note">No obstante lo anterior, durante los tres meses finales del contrato se mantuvo el acompañamiento y se ejecutaron actividades con su correspondiente auto-reporte, entre ellas:</p>
+					<ul>
+						<li>Auditoría a proveedores (ver Sección 5).</li>
+						<li>Informe a la Alta Dirección (ver Sección 1).</li>
+						<li>Actividades de acompañamiento y auto-reporte en plataforma.</li>
+					</ul>
+				</div>
+			</section>
+
+			<!-- 8. Cierre contractual y terminación de mutuo acuerdo -->
+			<section class="section">
+				<h2><span class="num">8</span> Cierre Contractual y Terminación de Mutuo Acuerdo</h2>
+				<p class="lead">El contrato finalizó por vencimiento natural, con voluntad de continuidad por parte de Cycloid Talent y reconocimiento expreso de la gestión por parte del cliente.</p>
+
+				<div class="card">
+					<h3>Propuesta de renovación 2026 — Cycloid Talent</h3>
+					<div class="tags"><span class="tag date">5 de diciembre de 2025</span></div>
+					<p class="people"><strong>Remitente:</strong> Diana Cuestas (Cycloid Talent).</p>
+					<p class="note">Se presentó propuesta de renovación para el periodo del 2 de enero al 30 de diciembre de 2026, conservando el mismo valor de 2025 sin ajuste, como incentivo a la fidelidad del cliente. Incluía: acompañamiento permanente en SG-SST, visitas presenciales cada dos meses, actualización documental, ejecución del plan de trabajo anual, capacitaciones y reportes e indicadores de seguimiento.</p>
+				</div>
+
+				<div class="card">
+					<h3>Respuesta de la Administración — Terminación de mutuo acuerdo</h3>
+					<div class="tags"><span class="tag date">5 de diciembre de 2025</span></div>
+					<p class="people"><strong>Remitente:</strong> Estrella Hernández (Administradora).</p>
+					<p class="note">En común acuerdo entre la Administración y el Consejo de Administración, se decidió dar por terminado el contrato vigente hasta el 30 de diciembre de 2025, agradeciendo la gestión y el acompañamiento brindados durante la ejecución del contrato.</p>
+				</div>
+
+				<div class="quote">
+					“Agradecemos sinceramente el tiempo, la gestión y el acompañamiento brindado durante la ejecución del contrato, así como el apoyo prestado al Conjunto Residencial Bosques de Zapan II Manzana 7.”
+					<span class="cite">— Estrella Hernández, Administradora. Correo del 5 de diciembre de 2025.</span>
+				</div>
+
+				<div class="card">
+					<h3>Conclusión defensiva</h3>
+					<p class="note">El contrato no terminó por incumplimiento, sino por decisión del cliente al vencimiento natural del plazo. El propio cliente reconoce por escrito la gestión y el acompañamiento prestados por Cycloid Talent S.A.S.</p>
+				</div>
+			</section>
+
+			<!-- 9. Trazabilidad comercial y financiera -->
+			<section class="section">
+				<h2><span class="num">9</span> Trazabilidad Comercial y Financiera</h2>
+
+				<div class="card">
+					<h3>Gestión durante la transición de administración</h3>
+					<div class="tags"><span class="tag date">Agosto – septiembre 2025</span></div>
+					<p class="note">Como gesto comercial por el cambio de administración, no se facturó el mes de agosto de 2025; los meses de junio y julio quedaron al día.</p>
+				</div>
+
+				<div class="card">
+					<h3>Paz y Salvo 2025</h3>
+					<div class="tags"><span class="tag date">19 de febrero de 2026</span></div>
+					<p class="people"><strong>Remitente:</strong> Diana Cuestas (Cycloid Talent).</p>
+					<p class="note">Se confirmó la recepción del pago y se entregó el Paz y Salvo 2025 para el trámite administrativo correspondiente, dejando la relación cerrada sin pendientes económicos ni reclamaciones.</p>
+				</div>
+			</section>
+
+			<!-- Anexo: correos clave -->
+			<section class="section">
+				<h2><span class="num">A</span> Anexo — Correos Clave</h2>
+				<p class="lead">Evidencia documental de las comunicaciones más relevantes para el cierre contractual.</p>
+				<div class="table-wrap">
+					<table class="mail-table">
+						<thead>
+							<tr><th>Fecha</th><th>Remitente</th><th>Asunto</th><th>Extracto / Contenido</th></tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>5 dic 2025</td>
+								<td>Diana Cuestas (Cycloid Talent)</td>
+								<td>Renovación Contrato Cycloid Talent SAS 2026</td>
+								<td class="q">Propuesta de renovación (2 ene – 30 dic 2026), conservando el mismo valor de 2025 sin ajuste como incentivo a la fidelidad del cliente.</td>
+							</tr>
+							<tr>
+								<td>5 dic 2025</td>
+								<td>Estrella Hernández (Administradora)</td>
+								<td>Re: Renovación Contrato Cycloid Talent SAS 2026</td>
+								<td class="q">“…se tomó la decisión de dar por terminado el contrato vigente hasta el 30 de diciembre de 2025. Agradecemos sinceramente el tiempo, la gestión y el acompañamiento brindado durante la ejecución del contrato…”</td>
+							</tr>
+							<tr>
+								<td>19 feb 2026</td>
+								<td>Diana Cuestas (Cycloid Talent)</td>
+								<td>Paz y Salvo 2025</td>
+								<td class="q">Confirmación de recepción del pago y entrega del Paz y Salvo 2025 para el trámite administrativo.</td>
+							</tr>
+						</tbody>
+					</table>
 				</div>
 			</section>
 

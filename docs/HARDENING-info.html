@@ -1,0 +1,717 @@
+<!DOCTYPE html>
+        <html>
+        <head>
+            <meta charset="UTF-8">
+            <title>HARDENING DE REPOSITORIO &mdash; info</title>
+            <style>
+/* From extension vscode.github */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+.vscode-dark img[src$=\#gh-light-mode-only],
+.vscode-light img[src$=\#gh-dark-mode-only],
+.vscode-high-contrast:not(.vscode-high-contrast-light) img[src$=\#gh-light-mode-only],
+.vscode-high-contrast-light img[src$=\#gh-dark-mode-only] {
+	display: none;
+}
+
+</style>
+            
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/markdown.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/highlight.css">
+<style>
+            body {
+                font-family: -apple-system, BlinkMacSystemFont, 'Segoe WPC', 'Segoe UI', system-ui, 'Ubuntu', 'Droid Sans', sans-serif;
+                font-size: 14px;
+                line-height: 1.6;
+            }
+        </style>
+        <style>
+.task-list-item {
+    list-style-type: none;
+}
+
+.task-list-item-checkbox {
+    margin-left: -20px;
+    vertical-align: middle;
+    pointer-events: none;
+}
+</style>
+<style>
+:root {
+  --color-note: #0969da;
+  --color-tip: #1a7f37;
+  --color-warning: #9a6700;
+  --color-severe: #bc4c00;
+  --color-caution: #d1242f;
+  --color-important: #8250df;
+}
+
+</style>
+<style>
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-note: #2f81f7;
+    --color-tip: #3fb950;
+    --color-warning: #d29922;
+    --color-severe: #db6d28;
+    --color-caution: #f85149;
+    --color-important: #a371f7;
+  }
+}
+
+</style>
+<style>
+.markdown-alert {
+  padding: 0.5rem 1rem;
+  margin-bottom: 16px;
+  color: inherit;
+  border-left: .25em solid #888;
+}
+
+.markdown-alert>:first-child {
+  margin-top: 0
+}
+
+.markdown-alert>:last-child {
+  margin-bottom: 0
+}
+
+.markdown-alert .markdown-alert-title {
+  display: flex;
+  font-weight: 500;
+  align-items: center;
+  line-height: 1
+}
+
+.markdown-alert .markdown-alert-title .octicon {
+  margin-right: 0.5rem;
+  display: inline-block;
+  overflow: visible !important;
+  vertical-align: text-bottom;
+  fill: currentColor;
+}
+
+.markdown-alert.markdown-alert-note {
+  border-left-color: var(--color-note);
+}
+
+.markdown-alert.markdown-alert-note .markdown-alert-title {
+  color: var(--color-note);
+}
+
+.markdown-alert.markdown-alert-important {
+  border-left-color: var(--color-important);
+}
+
+.markdown-alert.markdown-alert-important .markdown-alert-title {
+  color: var(--color-important);
+}
+
+.markdown-alert.markdown-alert-warning {
+  border-left-color: var(--color-warning);
+}
+
+.markdown-alert.markdown-alert-warning .markdown-alert-title {
+  color: var(--color-warning);
+}
+
+.markdown-alert.markdown-alert-tip {
+  border-left-color: var(--color-tip);
+}
+
+.markdown-alert.markdown-alert-tip .markdown-alert-title {
+  color: var(--color-tip);
+}
+
+.markdown-alert.markdown-alert-caution {
+  border-left-color: var(--color-caution);
+}
+
+.markdown-alert.markdown-alert-caution .markdown-alert-title {
+  color: var(--color-caution);
+}
+
+</style>
+        
+        </head>
+        <body class="vscode-body vscode-light">
+            <h1 id="hardening-de-repositorio--info">HARDENING DE REPOSITORIO — info</h1>
+<p><strong>Fecha:</strong> 2026-04-05
+<strong>Aplicativo:</strong> info — Sitio web corporativo Cycloid Talent SAS
+<strong>Empresa:</strong> Cycloid Talent SAS
+<strong>Preparado para:</strong> Edwin Lopez (consultor de infraestructura)</p>
+<hr>
+<h2 id="tabla-de-contenido">TABLA DE CONTENIDO</h2>
+<ol>
+<li>Descripcion del aplicativo</li>
+<li>Inventario de servicios externos</li>
+<li>Documentacion del proyecto (README, CONTRIBUTING, .gitignore)</li>
+<li>Ramas de trabajo</li>
+<li>Pipelines CI/CD (Gitea)</li>
+<li>Organizacion del repositorio</li>
+<li>Hallazgos y acciones pendientes</li>
+</ol>
+<blockquote>
+<p><strong>Nota:</strong> Este aplicativo no tiene base de datos. Se omite la fase de mapa de BD.</p>
+</blockquote>
+<hr>
+<h2 id="1-descripcion-del-aplicativo">1. DESCRIPCION DEL APLICATIVO</h2>
+<h3 id="stack-tecnologico">Stack tecnologico</h3>
+<table>
+<thead>
+<tr>
+<th>Componente</th>
+<th>Tecnologia</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Frontend</td>
+<td>HTML5, CSS3 (SCSS), JavaScript</td>
+</tr>
+<tr>
+<td>Template</td>
+<td>HTML5 UP Editorial (CCA 3.0)</td>
+</tr>
+<tr>
+<td>Librerias JS</td>
+<td>jQuery 3.7.0, DataTables 1.13.6</td>
+</tr>
+<tr>
+<td>Iconos</td>
+<td>FontAwesome 5+ (webfonts)</td>
+</tr>
+<tr>
+<td>Datos externos</td>
+<td>Google Sheets (CSV publico)</td>
+</tr>
+<tr>
+<td>Servidor web</td>
+<td>Nginx (Ubuntu 24.04, <a href="http://server1.cycloidtalent.com">server1.cycloidtalent.com</a>)</td>
+</tr>
+<tr>
+<td>Hosting</td>
+<td>Hetzner (IP: 66.29.154.174)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="paginas-del-sitio-7">Paginas del sitio (7)</h3>
+<table>
+<thead>
+<tr>
+<th>Pagina</th>
+<th>Descripcion</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>index.html</code></td>
+<td>Landing principal — servicios SST, soluciones, contacto</td>
+</tr>
+<tr>
+<td><code>cocolab2025.html</code></td>
+<td>Guia sobre Resolucion 3461/2025 (Comites de Convivencia Laboral)</td>
+</tr>
+<tr>
+<td><code>agenda.html</code></td>
+<td>Agenda de consultores — lectura en tiempo real de Google Sheets via CSV</td>
+</tr>
+<tr>
+<td><code>qrbrigadista.html</code></td>
+<td>QR para inscripcion a capacitacion de brigada de emergencia</td>
+</tr>
+<tr>
+<td><code>qrInduccionSST.html</code></td>
+<td>QR para induccion SST en propiedad horizontal</td>
+</tr>
+<tr>
+<td><code>qrEvSimulacro.html</code></td>
+<td>QR para evaluacion de simulacro de evacuacion</td>
+</tr>
+<tr>
+<td><code>visita1.html</code></td>
+<td>QR para registro de primera visita</td>
+</tr>
+</tbody>
+</table>
+<h3 id="estructura-del-proyecto">Estructura del proyecto</h3>
+<pre><code>info/
+├── assets/
+│   ├── css/              # main.css, fontawesome-all.min.css
+│   ├── js/               # jQuery 3.7.0, DataTables, scripts del template
+│   ├── sass/             # Fuentes SCSS del template Editorial
+│   └── webfonts/         # FontAwesome (eot, svg, ttf, woff, woff2)
+├── images/               # Logos, QR codes, favicon
+├── docs/                 # Documentacion tecnica
+├── .gitea/workflows/     # Pipelines CI/CD
+├── index.html            # Landing principal
+├── cocolab2025.html      # Pagina COCOLAB 2025
+├── agenda.html           # Agenda con Google Sheets
+├── qrbrigadista.html     # QR Brigadista
+├── qrInduccionSST.html   # QR Induccion SST
+├── qrEvSimulacro.html    # QR Evaluacion Simulacro
+├── visita1.html          # QR Visita
+├── LICENSE.txt           # Licencia CCA 3.0 (HTML5 UP)
+├── README.md             # Documentacion principal
+├── CONTRIBUTING.md       # Guia de contribucion
+└── .gitignore            # Exclusiones de git
+</code></pre>
+<h3 id="caracteristicas-tecnicas">Caracteristicas tecnicas</h3>
+<ul>
+<li><strong>Sitio 100% estatico</strong> — No requiere PHP, Node.js ni base de datos</li>
+<li><strong>Sin autenticacion</strong> — Todas las paginas son publicas</li>
+<li><strong>Sin cron jobs</strong> — No hay tareas programadas</li>
+<li><strong>Sin variables de entorno</strong> — No se necesita <code>.env</code></li>
+<li><strong>Unica integracion externa:</strong> Google Sheets CSV (publico, sin API key)</li>
+</ul>
+<h3 id="servidor-de-produccion">Servidor de produccion</h3>
+<table>
+<thead>
+<tr>
+<th>Dato</th>
+<th>Valor</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>IP</td>
+<td>66.29.154.174</td>
+</tr>
+<tr>
+<td>Hostname</td>
+<td><a href="http://server1.cycloidtalent.com">server1.cycloidtalent.com</a></td>
+</tr>
+<tr>
+<td>OS</td>
+<td>Ubuntu 24.04.3 LTS</td>
+</tr>
+<tr>
+<td>Web server</td>
+<td>Nginx</td>
+</tr>
+<tr>
+<td>Ruta del proyecto</td>
+<td><code>/www/wwwroot/info/</code></td>
+</tr>
+<tr>
+<td>Acceso SSH</td>
+<td>root (llave ed25519)</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="2-inventario-de-servicios-externos">2. INVENTARIO DE SERVICIOS EXTERNOS</h2>
+<h3 id="servicios-identificados">Servicios identificados</h3>
+<table>
+<thead>
+<tr>
+<th>Servicio</th>
+<th>Uso</th>
+<th>Archivo</th>
+<th>Metodo</th>
+<th>Requiere API Key</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Google Sheets</td>
+<td>Agenda de consultores</td>
+<td><code>agenda.html</code></td>
+<td>Fetch CSV publico via JS</td>
+<td>No</td>
+</tr>
+</tbody>
+</table>
+<h3 id="url-de-google-sheets">URL de Google Sheets</h3>
+<pre><code>https://docs.google.com/spreadsheets/d/e/2PACX-1vQ8L2llrzRuxxJKtdQV1y7gJiTRL0KO7_jA4nX-KaqA65J4aFE_sceAkBkQUQDK53TxrrmmBGO_6vpF/pub?gid=0&amp;single=true&amp;output=csv
+</code></pre>
+<p>Esta es una URL de publicacion publica de Google Sheets. No contiene credenciales y no requiere autenticacion.</p>
+<h3 id="evaluacion-de-seguridad">Evaluacion de seguridad</h3>
+<ul>
+<li><strong>No hay API keys</strong> en el codigo</li>
+<li><strong>No hay credenciales hardcodeadas</strong></li>
+<li><strong>No hay variables de entorno</strong> referenciadas</li>
+<li><strong>No hay servicios de pago</strong> integrados</li>
+<li><strong>Riesgo: BAJO</strong> — El unico servicio externo es una hoja de calculo publica</li>
+</ul>
+<h3 id="contacto-hardcodeado-en-html-es-intencional">Contacto (hardcodeado en HTML, es intencional)</h3>
+<ul>
+<li>Email: <code>cycloidtalent.sas@gmail.com</code> (enlace mailto en index.html)</li>
+<li>Telefono: <code>322 907 4371</code> (enlace tel en index.html)</li>
+</ul>
+<hr>
+<h2 id="3-documentacion-del-proyecto">3. DOCUMENTACION DEL PROYECTO</h2>
+<h3 id="archivos-creados-en-el-repositorio">Archivos creados en el repositorio</h3>
+<table>
+<thead>
+<tr>
+<th>Archivo</th>
+<th>Descripcion</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>README.md</code></td>
+<td>Documentacion principal: stack, paginas, estructura, instalacion, deploy</td>
+</tr>
+<tr>
+<td><code>CONTRIBUTING.md</code></td>
+<td>Guia de contribucion: flujo de ramas, convencion de commits, reglas</td>
+</tr>
+<tr>
+<td><code>.gitignore</code></td>
+<td>Exclusiones: OS, IDEs, temporales, .claude/, .env</td>
+</tr>
+</tbody>
+</table>
+<h3 id="readmemd-incluye"><a href="http://README.html">README.md</a> incluye</h3>
+<ul>
+<li>Stack tecnologico completo</li>
+<li>7 paginas con descripcion</li>
+<li>Estructura de carpetas</li>
+<li>Servicios externos documentados</li>
+<li>Requisitos previos e instrucciones de instalacion local</li>
+<li>Instrucciones de deploy a produccion</li>
+<li>Links a documentacion adicional</li>
+</ul>
+<h3 id="contributingmd-incluye"><a href="http://CONTRIBUTING.html">CONTRIBUTING.md</a> incluye</h3>
+<ul>
+<li>Flujo de ramas (main → develop → feature/ → hotfix/)</li>
+<li>Convencion de commits (feat:, fix:, docs:, style:, refactor:, chore:)</li>
+<li>Convencion de nombres de ramas</li>
+<li>5 reglas (no push directo, no credenciales, no temporales, no destructivos)</li>
+<li>Proceso de revision con pipeline CI/CD</li>
+</ul>
+<h3 id="gitignore-incluye">.gitignore incluye</h3>
+<ul>
+<li>Archivos de SO (.DS_Store, Thumbs.db, *.stackdump)</li>
+<li>Editores e IDEs (.vscode/, .idea/)</li>
+<li>Claude Code (.claude/)</li>
+<li>Archivos temporales (tmp_*, *.log, nohup.out)</li>
+<li>Archivos de notas (z_<em>, y_</em>, Z_<em>, ZZ_</em>)</li>
+<li>Dependencias futuras (node_modules/, vendor/)</li>
+<li>Variables de entorno (.env, .env.local, .env.production)</li>
+</ul>
+<hr>
+<h2 id="4-ramas-de-trabajo">4. RAMAS DE TRABAJO</h2>
+<h3 id="estructura-creada">Estructura creada</h3>
+<pre><code>main          &lt;- Produccion. Solo codigo validado y estable.
+develop       &lt;- Integracion. Aqui se unen los cambios antes de ir a main.
+feature/xxx   &lt;- Nuevas funcionalidades. Se crean desde develop.
+hotfix/xxx    &lt;- Correcciones urgentes. Se crean desde main.
+</code></pre>
+<h3 id="estado-actual">Estado actual</h3>
+<table>
+<thead>
+<tr>
+<th>Rama</th>
+<th>Estado</th>
+<th>Commit actual</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>main</td>
+<td>Existente, en remoto (origin/main)</td>
+<td>26a25fe (imagene qr simulacro)</td>
+</tr>
+<tr>
+<td>develop</td>
+<td>Creada localmente, pendiente push</td>
+<td>Mismo commit que main</td>
+</tr>
+<tr>
+<td>cycloid</td>
+<td>Legacy — sera reemplazada por develop</td>
+<td>Mismo commit que main</td>
+</tr>
+</tbody>
+</table>
+<h3 id="proteccion-de-ramas-pendiente-en-gitea">Proteccion de ramas (pendiente en Gitea)</h3>
+<ul>
+<li><strong>main:</strong> protegida, requiere PR, no push directo</li>
+<li><strong>develop:</strong> protegida, requiere PR desde feature/</li>
+</ul>
+<h3 id="flujo-de-trabajo">Flujo de trabajo</h3>
+<ul>
+<li>Nueva funcionalidad: <code>develop</code> → <code>feature/nombre</code> → PR a <code>develop</code> → PR a <code>main</code></li>
+<li>Hotfix urgente: <code>main</code> → <code>hotfix/nombre</code> → PR a <code>main</code> + PR a <code>develop</code></li>
+</ul>
+<hr>
+<h2 id="5-pipelines-cicd">5. PIPELINES CI/CD</h2>
+<h3 id="plataforma-gitea-con-gitea-runner-act_runner">Plataforma: Gitea con Gitea Runner (act_runner)</h3>
+<h3 id="pipeline-1-validar-y-deploy-a-devqa">Pipeline 1: Validar y Deploy a Dev/QA</h3>
+<p><strong>Archivo:</strong> <code>.gitea/workflows/validate-and-deploy-qa.yml</code>
+<strong>Trigger:</strong> Push/PR a develop o feature/*</p>
+<pre><code>git push → Gitea → Runner → Validate HTML + Secrets Scan → Deploy SSH → QA
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>Job</th>
+<th>Que hace</th>
+<th>Bloquea si falla</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>validate</td>
+<td>Verifica que todos los HTML existan y no esten vacios + assets criticos</td>
+<td>Si</td>
+</tr>
+<tr>
+<td>secrets-scan</td>
+<td>Busca credenciales hardcodeadas (API keys, passwords, tokens)</td>
+<td>Si</td>
+</tr>
+<tr>
+<td>deploy-qa</td>
+<td>SSH al servidor QA y ejecuta git pull</td>
+<td>Solo en push a develop</td>
+</tr>
+</tbody>
+</table>
+<h3 id="pipeline-2-cutover-a-produccion">Pipeline 2: Cutover a Produccion</h3>
+<p><strong>Archivo:</strong> <code>.gitea/workflows/cutover-production.yml</code>
+<strong>Trigger:</strong> Push a main (despues de merge de PR desde develop)</p>
+<pre><code>PR develop → main → Validate → Secrets Scan → Deploy SSH → Produccion (Hetzner)
+                                                          → Verificacion HTTP post-deploy
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>Job</th>
+<th>Que hace</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>validate</td>
+<td>Verifica HTML y assets criticos</td>
+</tr>
+<tr>
+<td>secrets-scan</td>
+<td>Busca credenciales hardcodeadas</td>
+</tr>
+<tr>
+<td>deploy-production</td>
+<td>SSH al Hetzner + git reset --hard origin/main + verificacion HTTP</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Todo por pipeline, nada manual.</strong></p>
+<h3 id="secrets-necesarios-en-gitea">Secrets necesarios en Gitea</h3>
+<p><strong>Para Dev/QA:</strong> QA_HOST, QA_USER, QA_SSH_KEY, QA_PATH
+<strong>Para Produccion:</strong> PROD_HOST, PROD_USER, PROD_SSH_KEY, PROD_PATH, PROD_URL</p>
+<h3 id="flujo-completo">Flujo completo</h3>
+<pre><code>feature/xxx → push → Validacion → PR a develop → Validacion → merge
+                                                                 ↓
+                                          Deploy automatico a QA
+                                                                 ↓
+                                              Pruebas en QA
+                                                                 ↓
+                                          PR develop → main → Validacion → merge
+                                                                             ↓
+                                                     Cutover automatico a Hetzner
+                                                                             ↓
+                                                          Verificacion post-deploy
+                                                                             ↓
+                                                              EN PRODUCCION
+</code></pre>
+<hr>
+<h2 id="6-organizacion-del-repositorio">6. ORGANIZACION DEL REPOSITORIO</h2>
+<h3 id="estado-del-repositorio">Estado del repositorio</h3>
+<table>
+<thead>
+<tr>
+<th>Aspecto</th>
+<th>Estado actual</th>
+<th>Accion</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Visibilidad</td>
+<td>PUBLICO en GitHub</td>
+<td>Migrar a Gitea privado</td>
+</tr>
+<tr>
+<td>.gitignore</td>
+<td>Creado (excluye tmp, basura, .claude, IDEs)</td>
+<td>OK</td>
+</tr>
+<tr>
+<td>Credenciales en codigo</td>
+<td>Ninguna encontrada</td>
+<td>OK</td>
+</tr>
+<tr>
+<td>Credenciales en historial git</td>
+<td>Ninguna encontrada</td>
+<td>OK</td>
+</tr>
+</tbody>
+</table>
+<h3 id="archivos-basura-trackeados-en-git-pendiente-limpieza">Archivos basura trackeados en git (pendiente limpieza)</h3>
+<table>
+<thead>
+<tr>
+<th>Archivo</th>
+<th>Tipo</th>
+<th>Accion recomendada</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>text.txt</code></td>
+<td>Notas de setup de Google Sheets</td>
+<td>Eliminar (informacion ya en docs/)</td>
+</tr>
+<tr>
+<td><code>README.txt</code></td>
+<td>Creditos del template HTML5 UP</td>
+<td>Eliminar (creditos ya en LICENSE.txt)</td>
+</tr>
+<tr>
+<td><code>.vscode/settings.json</code></td>
+<td>Config local del editor</td>
+<td>Eliminar del tracking (ya en .gitignore)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="archivos-que-si-deben-quedarse">Archivos que SI deben quedarse</h3>
+<ul>
+<li>Todos los <code>.html</code> — paginas funcionales del sitio</li>
+<li><code>assets/</code> completo — CSS, JS, SCSS, webfonts</li>
+<li><code>images/</code> completo — logos y QR codes</li>
+<li><code>LICENSE.txt</code> — licencia del template</li>
+<li><code>README.md</code> — documentacion principal</li>
+<li><code>CONTRIBUTING.md</code> — guia de contribucion</li>
+<li><code>.gitignore</code> — exclusiones</li>
+</ul>
+<hr>
+<h2 id="7-hallazgos-y-acciones-pendientes">7. HALLAZGOS Y ACCIONES PENDIENTES</h2>
+<h3 id="prioridad-alta">Prioridad ALTA</h3>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Accion</th>
+<th>Responsable</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Hacer repo privado en GitHub o migrar a Gitea privado</td>
+<td>Consultor/Cliente</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Push de rama <code>develop</code> al remoto</td>
+<td>Cliente</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Configurar proteccion de ramas en Gitea</td>
+<td>Consultor</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Configurar secrets en Gitea para pipelines CI/CD</td>
+<td>Consultor</td>
+</tr>
+</tbody>
+</table>
+<h3 id="prioridad-media">Prioridad MEDIA</h3>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Accion</th>
+<th>Responsable</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>5</td>
+<td>Eliminar <code>text.txt</code> del repo (commit de limpieza)</td>
+<td>Cliente</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Eliminar <code>README.txt</code> del repo (creditos ya en LICENSE.txt)</td>
+<td>Cliente</td>
+</tr>
+<tr>
+<td>7</td>
+<td>Eliminar <code>.vscode/settings.json</code> del tracking</td>
+<td>Cliente</td>
+</tr>
+<tr>
+<td>8</td>
+<td>Eliminar rama <code>cycloid</code> (reemplazada por <code>develop</code>)</td>
+<td>Cliente</td>
+</tr>
+</tbody>
+</table>
+<h3 id="prioridad-baja">Prioridad BAJA</h3>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Accion</th>
+<th>Responsable</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>9</td>
+<td>Agregar HTTPS/SSL al dominio si no esta configurado</td>
+<td>Consultor</td>
+</tr>
+<tr>
+<td>10</td>
+<td>Considerar minificacion de CSS/JS para produccion</td>
+<td>Cliente</td>
+</tr>
+<tr>
+<td>11</td>
+<td>Agregar meta tags Open Graph para redes sociales</td>
+<td>Cliente</td>
+</tr>
+</tbody>
+</table>
+<h3 id="observaciones-generales">Observaciones generales</h3>
+<ul>
+<li><strong>Seguridad:</strong> El repositorio no contiene credenciales ni datos sensibles. El riesgo principal es que sea publico en GitHub sin necesidad.</li>
+<li><strong>Complejidad:</strong> Baja. Es un sitio estatico con 7 paginas HTML, sin backend ni base de datos.</li>
+<li><strong>Estado:</strong> Funcional. Todas las paginas estan completas y el sitio esta desplegado en produccion.</li>
+<li><strong>Mantenimiento:</strong> Minimo. Solo se actualiza cuando se agregan nuevas paginas o QR codes.</li>
+</ul>
+<hr>
+<h2 id="checklist-de-entregables">CHECKLIST DE ENTREGABLES</h2>
+<h3 id="archivos-funcionales-en-el-repositorio-obligatorios">Archivos funcionales en el repositorio (obligatorios)</h3>
+<ul class="contains-task-list">
+<li class="task-list-item enabled"><input class="task-list-item-checkbox" checked=""type="checkbox"> <code>README.md</code> — Documentacion principal profesional</li>
+<li class="task-list-item enabled"><input class="task-list-item-checkbox" checked=""type="checkbox"> <code>CONTRIBUTING.md</code> — Guia de contribucion con flujo de ramas</li>
+<li class="task-list-item enabled"><input class="task-list-item-checkbox"type="checkbox"> <code>.env.example</code> — No aplica (sitio estatico sin variables de entorno)</li>
+<li class="task-list-item enabled"><input class="task-list-item-checkbox" checked=""type="checkbox"> <code>.gitea/workflows/validate-and-deploy-qa.yml</code> — Pipeline Dev/QA</li>
+<li class="task-list-item enabled"><input class="task-list-item-checkbox" checked=""type="checkbox"> <code>.gitea/workflows/cutover-production.yml</code> — Pipeline produccion</li>
+<li class="task-list-item enabled"><input class="task-list-item-checkbox" checked=""type="checkbox"> <code>.gitignore</code> — Creado y actualizado</li>
+<li class="task-list-item enabled"><input class="task-list-item-checkbox" checked=""type="checkbox"> Rama <code>develop</code> creada</li>
+</ul>
+<h3 id="documento-para-el-consultor-obligatorio">Documento para el consultor (obligatorio)</h3>
+<ul class="contains-task-list">
+<li class="task-list-item enabled"><input class="task-list-item-checkbox" checked=""type="checkbox"> <code>docs/HARDENING-info.md</code> — Este documento</li>
+</ul>
+<hr>
+<p><em>Documento generado el 2026-04-05. Preparado como entregable del proceso de hardening del repositorio info.</em></p>
+
+            
+            
+        </body>
+        </html>

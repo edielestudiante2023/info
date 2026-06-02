@@ -1,0 +1,623 @@
+<!DOCTYPE HTML>
+<!--
+	Informe de Gestión Ejecutada SG-SST
+	Conjunto Residencial Bosques del Zapán II Manzana VII
+	Cycloid Talent S.A.S.
+-->
+<html lang="es">
+	<head>
+		<title>Informe de Gestión Ejecutada SG-SST - Bosques del Zapán II Mz VII | Cycloid Talent SAS</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<meta name="description" content="Inventario de gestión ejecutada del SG-SST del Conjunto Residencial Bosques del Zapán II Manzana VII por Cycloid Talent S.A.S. - Evidencia documental, actas, auditorías y resultados." />
+		<meta name="keywords" content="SG-SST, Cycloid Talent, Bosques del Zapán, gestión ejecutada, evidencia documental, auditorías, simulacro, estándares mínimos" />
+		<link rel="icon" type="image/x-icon" href="images/favicon.ico" />
+		<style>
+			:root {
+				--brand: #f2752e;
+				--brand-dark: #e65c1b;
+				--ink: #2b2b2b;
+				--muted: #6c757d;
+				--line: #e9ecef;
+				--bg: #f4f5f7;
+				--card: #ffffff;
+				--ok: #2e7d32;
+			}
+
+			* { margin: 0; padding: 0; box-sizing: border-box; }
+
+			body {
+				font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+				background: var(--bg);
+				color: var(--ink);
+				line-height: 1.6;
+				padding: 24px 16px;
+			}
+
+			.sheet {
+				max-width: 1000px;
+				margin: 0 auto;
+				background: var(--card);
+				border-radius: 14px;
+				box-shadow: 0 10px 40px rgba(0,0,0,0.12);
+				overflow: hidden;
+			}
+
+			/* ---------- Header ---------- */
+			.cover {
+				background: linear-gradient(135deg, var(--brand) 0%, var(--brand-dark) 100%);
+				color: #fff;
+				padding: 40px 48px 36px;
+			}
+
+			.cover .brand {
+				display: flex;
+				align-items: center;
+				gap: 14px;
+				margin-bottom: 28px;
+			}
+
+			.cover .brand img {
+				height: 46px;
+				width: auto;
+				filter: brightness(0) invert(1);
+			}
+
+			.cover .brand strong { font-size: 1.25em; font-weight: 600; letter-spacing: .3px; }
+
+			.cover .eyebrow {
+				text-transform: uppercase;
+				letter-spacing: 2px;
+				font-size: .78em;
+				opacity: .9;
+				margin-bottom: 8px;
+			}
+
+			.cover h1 {
+				font-size: 2em;
+				font-weight: 700;
+				line-height: 1.2;
+				margin-bottom: 6px;
+			}
+
+			.cover h2 {
+				font-size: 1.1em;
+				font-weight: 500;
+				opacity: .95;
+			}
+
+			.cover .meta {
+				display: flex;
+				flex-wrap: wrap;
+				gap: 10px 24px;
+				margin-top: 24px;
+				padding-top: 20px;
+				border-top: 1px solid rgba(255,255,255,.3);
+				font-size: .9em;
+			}
+
+			.cover .meta span { display: inline-flex; align-items: center; gap: 6px; }
+			.cover .meta strong { font-weight: 600; }
+
+			/* ---------- Intro ---------- */
+			.intro {
+				padding: 28px 48px;
+				background: #fff8f3;
+				border-bottom: 1px solid var(--line);
+				font-size: 1.02em;
+				color: #444;
+			}
+
+			/* ---------- Progress / KPIs ---------- */
+			.progress {
+				padding: 32px 48px;
+				border-bottom: 1px solid var(--line);
+			}
+
+			.progress h3 {
+				font-size: .85em;
+				text-transform: uppercase;
+				letter-spacing: 1.5px;
+				color: var(--muted);
+				margin-bottom: 18px;
+			}
+
+			.kpis {
+				display: grid;
+				grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+				gap: 14px;
+				margin-bottom: 24px;
+			}
+
+			.kpi {
+				border: 1px solid var(--line);
+				border-radius: 10px;
+				padding: 16px;
+				text-align: center;
+			}
+
+			.kpi .val { font-size: 1.6em; font-weight: 700; color: var(--brand); }
+			.kpi .lbl { font-size: .78em; color: var(--muted); margin-top: 4px; }
+			.kpi.highlight { background: var(--brand); border-color: var(--brand); }
+			.kpi.highlight .val, .kpi.highlight .lbl { color: #fff; }
+
+			.bar-track {
+				background: var(--line);
+				border-radius: 20px;
+				height: 14px;
+				overflow: hidden;
+			}
+			.bar-fill {
+				height: 100%;
+				width: 86.25%;
+				background: linear-gradient(90deg, var(--brand), var(--brand-dark));
+				border-radius: 20px;
+			}
+			.bar-caption {
+				display: flex;
+				justify-content: space-between;
+				font-size: .8em;
+				color: var(--muted);
+				margin-top: 6px;
+			}
+
+			/* ---------- Sections ---------- */
+			.section { padding: 36px 48px; border-bottom: 1px solid var(--line); }
+			.section:last-of-type { border-bottom: none; }
+
+			.section > h2 {
+				display: flex;
+				align-items: center;
+				gap: 12px;
+				font-size: 1.35em;
+				color: var(--brand-dark);
+				margin-bottom: 8px;
+			}
+
+			.section .num {
+				flex: none;
+				width: 34px; height: 34px;
+				background: var(--brand);
+				color: #fff;
+				border-radius: 50%;
+				display: inline-flex;
+				align-items: center;
+				justify-content: center;
+				font-size: .9em;
+				font-weight: 700;
+			}
+
+			.section > p.lead {
+				color: #555;
+				margin: 4px 0 22px 46px;
+			}
+
+			/* ---------- Cards ---------- */
+			.card {
+				border: 1px solid var(--line);
+				border-left: 4px solid var(--brand);
+				border-radius: 8px;
+				padding: 18px 20px;
+				margin-bottom: 16px;
+				background: #fff;
+			}
+
+			.card h3 {
+				font-size: 1.05em;
+				color: var(--ink);
+				margin-bottom: 6px;
+			}
+
+			.card .tags {
+				display: flex;
+				flex-wrap: wrap;
+				gap: 8px;
+				margin-bottom: 10px;
+			}
+
+			.tag {
+				font-size: .76em;
+				padding: 3px 10px;
+				border-radius: 20px;
+				background: #fff1e8;
+				color: var(--brand-dark);
+				font-weight: 600;
+			}
+			.tag.date { background: #eef3f8; color: #345; }
+			.tag.score { background: #e7f5e8; color: var(--ok); }
+
+			.card ul { margin: 6px 0 0 20px; }
+			.card ul li { margin-bottom: 3px; }
+			.card p.note { color: #555; margin-top: 6px; }
+			.card .people { font-size: .92em; color: #555; margin-top: 6px; }
+
+			/* ---------- Conclusion ---------- */
+			.conclusion {
+				padding: 36px 48px;
+				background: #fff8f3;
+			}
+			.conclusion h2 { color: var(--brand-dark); margin-bottom: 14px; font-size: 1.35em; }
+			.conclusion p { color: #444; }
+
+			.footer {
+				padding: 20px 48px 28px;
+				text-align: center;
+				font-size: .82em;
+				color: var(--muted);
+				background: #fafafa;
+			}
+
+			.toolbar {
+				max-width: 1000px;
+				margin: 0 auto 16px;
+				text-align: right;
+			}
+			.toolbar button {
+				background: var(--brand);
+				color: #fff;
+				border: none;
+				padding: 10px 20px;
+				border-radius: 8px;
+				font-weight: 600;
+				cursor: pointer;
+				font-size: .9em;
+			}
+			.toolbar button:hover { background: var(--brand-dark); }
+
+			/* ---------- Responsive ---------- */
+			@media screen and (max-width: 640px) {
+				body { padding: 10px 6px; }
+				.cover, .intro, .progress, .section, .conclusion, .footer { padding-left: 22px; padding-right: 22px; }
+				.cover h1 { font-size: 1.5em; }
+				.section > p.lead { margin-left: 0; }
+			}
+
+			/* ---------- Print ---------- */
+			@media print {
+				body { background: #fff; padding: 0; }
+				.toolbar { display: none; }
+				.sheet { box-shadow: none; border-radius: 0; max-width: 100%; }
+				.section, .card { break-inside: avoid; }
+				.cover { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+			}
+		</style>
+	</head>
+	<body>
+
+		<div class="toolbar">
+			<button onclick="window.print()">Imprimir / Guardar PDF</button>
+		</div>
+
+		<div class="sheet">
+
+			<!-- Cover -->
+			<header class="cover">
+				<div class="brand">
+					<img src="images/CYCLOID TALENT-sin fondo.png" alt="Cycloid Talent SAS" />
+					<strong>Cycloid Talent</strong>&nbsp;SAS
+				</div>
+				<div class="eyebrow">Inventario de Gestión Ejecutada</div>
+				<h1>Informe de Gestión Ejecutada SG-SST</h1>
+				<h2>Conjunto Residencial Bosques del Zapán II — Manzana VII</h2>
+				<div class="meta">
+					<span><strong>Contratista:</strong> Cycloid Talent S.A.S.</span>
+					<span><strong>Objeto:</strong> Administración del SG-SST</span>
+					<span><strong>Corte:</strong> 13 de enero de 2026</span>
+				</div>
+			</header>
+
+			<!-- Intro -->
+			<div class="intro">
+				El presente informe tiene como objetivo consolidar las actividades ejecutadas por Cycloid Talent S.A.S.
+				dentro del contrato de administración del Sistema de Gestión de Seguridad y Salud en el Trabajo (SG-SST),
+				agrupando las evidencias documentales generadas durante la prestación del servicio. Cada afirmación está
+				respaldada por un documento, una fecha y una evidencia concreta.
+			</div>
+
+			<!-- Progress -->
+			<div class="progress">
+				<h3>Evolución del cumplimiento — Estándares mínimos</h3>
+				<div class="kpis">
+					<div class="kpi"><div class="val">64.10%</div><div class="lbl">Oct 2024</div></div>
+					<div class="kpi"><div class="val">74.25%</div><div class="lbl">Feb 2025</div></div>
+					<div class="kpi"><div class="val">77.75%</div><div class="lbl">May 2025</div></div>
+					<div class="kpi"><div class="val">80.25%</div><div class="lbl">Ago–Sep 2025</div></div>
+					<div class="kpi highlight"><div class="val">86.25%</div><div class="lbl">Consolidado 2025</div></div>
+				</div>
+				<div class="bar-track"><div class="bar-fill"></div></div>
+				<div class="bar-caption"><span>Inicio: 64.10%</span><span>Resultado consolidado: 86.25 / 100</span></div>
+			</div>
+
+			<!-- 1. Gestión estratégica -->
+			<section class="section">
+				<h2><span class="num">1</span> Gestión Estratégica del SG-SST</h2>
+				<p class="lead">Actividades orientadas a la planeación, seguimiento, medición y mejoramiento continuo del Sistema de Gestión de Seguridad y Salud en el Trabajo.</p>
+
+				<div class="card">
+					<h3>Informe Cierre Mes — Octubre 2024</h3>
+					<div class="tags"><span class="tag date">Octubre 2024</span><span class="tag score">Resultado del sistema: 64.10%</span></div>
+				</div>
+
+				<div class="card">
+					<h3>Informe Cierre Mes — Febrero 2025</h3>
+					<div class="tags"><span class="tag date">Cierre: 31 ene 2025</span><span class="tag score">Resultado del sistema: 74.25%</span></div>
+					<p class="note">Actividades cerradas:</p>
+					<ul>
+						<li>Actualización de matriz de peligros y evaluación de riesgos.</li>
+						<li>Matriz de elementos de protección personal.</li>
+						<li>Asignación de responsabilidades SG-SST.</li>
+						<li>Programa anual de capacitación.</li>
+						<li>Archivo documental SG-SST.</li>
+						<li>Actualización del manual de contratistas.</li>
+					</ul>
+				</div>
+
+				<div class="card">
+					<h3>Informe Cierre Mes — Mayo 2025</h3>
+					<div class="tags"><span class="tag date">Cierre: 15 may 2025</span><span class="tag score">Resultado del sistema: 77.75%</span></div>
+					<p class="note">Actividades ejecutadas:</p>
+					<ul>
+						<li>Investigación de accidentes y enfermedades laborales.</li>
+						<li>Capacitación al Vigía SST.</li>
+						<li>Seguimiento al curso virtual de 50 horas en SST.</li>
+					</ul>
+				</div>
+
+				<div class="card">
+					<h3>Informe Cierre Mes — Agosto 2025</h3>
+					<div class="tags"><span class="tag date">Agosto 2025</span><span class="tag score">Resultado del sistema: 80.25%</span></div>
+					<p class="note">Actividades realizadas:</p>
+					<ul>
+						<li>Socialización de gestión con nueva administración.</li>
+						<li>Actualización de plataforma.</li>
+						<li>Actualización de avances del SG-SST.</li>
+					</ul>
+				</div>
+
+				<div class="card">
+					<h3>Informe Cierre Mes — Septiembre 2025</h3>
+					<div class="tags"><span class="tag date">Septiembre 2025</span><span class="tag score">Resultado del sistema: 80.25%</span></div>
+					<p class="note">Actividades ejecutadas:</p>
+					<ul>
+						<li>Actas de visita.</li>
+						<li>Actualización Plan de Emergencias Familiar.</li>
+						<li>Cierre documental de actividades en plataforma.</li>
+					</ul>
+				</div>
+
+				<div class="card">
+					<h3>Informe de Resultados 2025</h3>
+					<div class="tags"><span class="tag score">86.25 / 100 en estándares mínimos</span></div>
+					<p class="note">Indicadores presentados:</p>
+					<ul>
+						<li>Evolución de estándares mínimos.</li>
+						<li>Indicador de plan de trabajo.</li>
+						<li>Indicador de capacitaciones.</li>
+						<li>Simulacro 2025.</li>
+						<li>Auditorías a proveedores.</li>
+					</ul>
+				</div>
+
+				<div class="card">
+					<h3>Informe a la Alta Dirección</h3>
+					<div class="tags"><span class="tag date">13 de enero de 2026</span></div>
+					<p class="note">Documento elaborado para revisión gerencial del SG-SST y evaluación del desempeño anual del sistema.</p>
+				</div>
+			</section>
+
+			<!-- 2. Visitas, reuniones y seguimiento -->
+			<section class="section">
+				<h2><span class="num">2</span> Visitas, Reuniones y Seguimiento</h2>
+
+				<div class="card">
+					<h3>Acta de Visita y Seguimiento</h3>
+					<div class="tags"><span class="tag date">24 de septiembre de 2024</span></div>
+					<p class="note"><strong>Objetivo:</strong> Desarrollar acciones y planes de trabajo para el aseguramiento del SG-SST.</p>
+					<p class="people"><strong>Participantes:</strong> Administración · Consultor Cycloid Talent · Vigía SST.</p>
+				</div>
+
+				<div class="card">
+					<h3>Acta de Visita y Seguimiento</h3>
+					<div class="tags"><span class="tag date">18 de octubre de 2024</span></div>
+					<p class="note">Temas tratados:</p>
+					<ul>
+						<li>Entrega de plataforma.</li>
+						<li>Socialización de indicadores.</li>
+						<li>Entrega de usuario y contraseña.</li>
+						<li>Explicación del funcionamiento del sistema.</li>
+					</ul>
+				</div>
+
+				<div class="card">
+					<h3>Acta de Revisión por la Dirección</h3>
+					<div class="tags"><span class="tag date">17 de febrero de 2025</span></div>
+					<p class="note">Temas tratados:</p>
+					<ul>
+						<li>Informe anual.</li>
+						<li>Revisión de actividades.</li>
+						<li>Secretaría de Salud.</li>
+						<li>Plan de trabajo 2025.</li>
+						<li>Capacitaciones.</li>
+					</ul>
+				</div>
+
+				<div class="card">
+					<h3>Acta de Seguimiento Consejo SG-SST</h3>
+					<div class="tags"><span class="tag date">15 de mayo de 2025</span></div>
+					<p class="people"><strong>Participantes:</strong> Duvan Ramírez · Luis Fernando Rincón Bermúdez · Natalia Jiménez.</p>
+					<p class="note">Temas:</p>
+					<ul>
+						<li>Socialización de avances SG-SST.</li>
+						<li>Gestión 2025.</li>
+						<li>Plan de trabajo.</li>
+						<li>Entrega de acceso a plataforma.</li>
+					</ul>
+					<p class="note">Compromisos:</p>
+					<ul>
+						<li>Auditoría empresa de vigilancia.</li>
+						<li>Auditoría empresa de aseo.</li>
+						<li>Socialización plan de emergencias.</li>
+						<li>Registro de ingreso de personal.</li>
+					</ul>
+				</div>
+
+				<div class="card">
+					<h3>Acta de Seguimiento</h3>
+					<div class="tags"><span class="tag date">26 de agosto de 2025</span></div>
+					<p class="note">Temas:</p>
+					<ul>
+						<li>Capacitación brigada.</li>
+						<li>Primeros auxilios.</li>
+						<li>Actualización de plataforma.</li>
+						<li>Avances SG-SST.</li>
+					</ul>
+				</div>
+
+				<div class="card">
+					<h3>Acta de Entrega de Plataforma</h3>
+					<div class="tags"><span class="tag date">9 de septiembre de 2025</span></div>
+					<p class="note"><strong>Motivo:</strong> Entrega de plataforma por cambio de correo institucional de la administración.</p>
+				</div>
+			</section>
+
+			<!-- 3. Gestión de emergencias -->
+			<section class="section">
+				<h2><span class="num">3</span> Gestión de Emergencias</h2>
+
+				<div class="card">
+					<h3>Plan de Emergencias General</h3>
+					<p class="note">Documento elaborado para la copropiedad. Contenido:</p>
+					<ul>
+						<li>Identificación de amenazas.</li>
+						<li>Evaluación de vulnerabilidad.</li>
+						<li>Procedimientos de evacuación.</li>
+						<li>Brigadas.</li>
+						<li>Directorio de emergencias.</li>
+						<li>Planes de contingencia.</li>
+					</ul>
+				</div>
+
+				<div class="card">
+					<h3>Plan de Emergencia Familiar</h3>
+					<div class="tags"><span class="tag date">Actualización: septiembre de 2025</span></div>
+					<p class="note">Contenido:</p>
+					<ul>
+						<li>Identificación de amenazas.</li>
+						<li>Evaluación de riesgos familiares.</li>
+						<li>Lista de chequeo.</li>
+						<li>Procedimientos de actuación.</li>
+						<li>Puntos de encuentro.</li>
+					</ul>
+				</div>
+
+				<div class="card">
+					<h3>Simulacro de Emergencia — Evaluación Simulacro de Evacuación</h3>
+					<div class="tags"><span class="tag date">22 de octubre de 2025</span><span class="tag">Evento simulado: Sismo</span></div>
+					<p class="people"><strong>Participantes:</strong> Contratistas de vigilancia · Contratistas de aseo.</p>
+					<p class="note">Evaluaciones realizadas:</p>
+					<ul>
+						<li>Tiempos de respuesta.</li>
+						<li>Recursos disponibles.</li>
+						<li>Puntos de encuentro.</li>
+						<li>Brigadistas.</li>
+						<li>Procedimientos de evacuación.</li>
+					</ul>
+				</div>
+			</section>
+
+			<!-- 4. Capacitaciones -->
+			<section class="section">
+				<h2><span class="num">4</span> Capacitaciones Desarrolladas</h2>
+
+				<div class="card">
+					<h3>Preparación Brigada y Simulacro</h3>
+					<div class="tags"><span class="tag date">10 de octubre de 2024</span><span class="tag">8 asistentes</span><span class="tag">Duración: 2 horas</span></div>
+				</div>
+
+				<div class="card">
+					<h3>Brigada de Emergencia — Reporte de Capacitación</h3>
+					<div class="tags"><span class="tag date">18 de octubre de 2025</span></div>
+					<p class="people"><strong>Capacitador:</strong> Eleyson Segura.</p>
+				</div>
+
+				<div class="card">
+					<h3>Manejo de Residuos</h3>
+					<div class="tags"><span class="tag date">27 de noviembre de 2025</span><span class="tag score">95% de calificación</span></div>
+					<p class="people"><strong>Capacitador:</strong> URBASER.</p>
+				</div>
+
+				<div class="card">
+					<h3>Curso Brigada Básica</h3>
+					<p class="note"><strong>Evidencia adicional:</strong> Correos enviados durante noviembre y diciembre de 2024 a múltiples participantes del conjunto residencial para acceso al curso virtual de Brigada Básica.</p>
+				</div>
+			</section>
+
+			<!-- 5. Auditorías -->
+			<section class="section">
+				<h2><span class="num">5</span> Auditoría de Contratistas y Proveedores</h2>
+
+				<div class="card">
+					<h3>Auditoría SERVILIN LTDA</h3>
+					<div class="tags"><span class="tag date">4 de diciembre de 2025</span><span class="tag score">95% de cumplimiento</span></div>
+					<p class="note">Aspectos evaluados:</p>
+					<ul>
+						<li>Seguridad social.</li>
+						<li>Contratos laborales.</li>
+						<li>Dotación.</li>
+						<li>Exámenes médicos.</li>
+						<li>Inducciones SST.</li>
+						<li>Inspecciones de seguridad.</li>
+					</ul>
+				</div>
+
+				<div class="card">
+					<h3>Auditoría SEAM PROFESSIONAL SAS</h3>
+					<div class="tags"><span class="tag date">19 de enero de 2026</span><span class="tag score">100% de cumplimiento</span></div>
+					<p class="note">Aspectos evaluados:</p>
+					<ul>
+						<li>Seguridad social.</li>
+						<li>Contratos laborales.</li>
+						<li>Dotación.</li>
+						<li>Perfil de cargo.</li>
+						<li>Matriz de peligros.</li>
+						<li>Inspecciones de seguridad.</li>
+						<li>Inducciones SST.</li>
+					</ul>
+				</div>
+			</section>
+
+			<!-- 6. Comunicaciones -->
+			<section class="section">
+				<h2><span class="num">6</span> Comunicaciones y Trazabilidad</h2>
+				<p class="lead">Se identifican más de 40 correos electrónicos enviados al correo institucional del conjunto relacionados con:</p>
+				<div class="card">
+					<ul>
+						<li>Firma de documentos SG-SST.</li>
+						<li>Cursos de brigada.</li>
+						<li>Dotación de botiquines.</li>
+						<li>Mantenimiento de extintores.</li>
+						<li>Seguimiento de actividades.</li>
+						<li>Entrega de documentación.</li>
+						<li>Recordatorios de compromisos.</li>
+						<li>Facturación y gestión administrativa.</li>
+					</ul>
+					<p class="note">Lo anterior evidencia comunicación permanente entre Cycloid Talent y la administración del conjunto.</p>
+				</div>
+			</section>
+
+			<!-- Conclusion -->
+			<div class="conclusion">
+				<h2>Conclusión</h2>
+				<p>La evidencia documental disponible demuestra la ejecución efectiva de actividades de consultoría, seguimiento, capacitación, inspección, auditoría, gestión documental, gestión de emergencias, seguimiento contractual y administración del SG-SST por parte de Cycloid Talent S.A.S.</p>
+				<p style="margin-top:12px;">Durante la vigencia del servicio se generaron informes periódicos, actas de seguimiento, auditorías, capacitaciones, planes de emergencia, simulacros, evaluaciones de estándares mínimos, actualizaciones documentales y comunicaciones formales, permitiendo una evolución del sistema desde niveles cercanos al <strong>64%</strong> hasta alcanzar resultados superiores al <strong>86%</strong> en el cumplimiento de estándares mínimos del SG-SST.</p>
+			</div>
+
+			<footer class="footer">
+				&copy; 2026 Cycloid Talent S.A.S. — Especialistas en Seguridad y Salud en el Trabajo.<br />
+				Informe de Gestión Ejecutada SG-SST · Conjunto Residencial Bosques del Zapán II Manzana VII.
+			</footer>
+
+		</div>
+
+	</body>
+</html>

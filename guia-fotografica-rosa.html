@@ -1,0 +1,298 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Guía para tomar fotografías útiles en una evaluación ergonómica con metodología ROSA.">
+  <title>Guía de fotografías para evaluación ROSA | Cycloid Talent</title>
+  <link rel="icon" type="image/x-icon" href="images/favicon.ico">
+  <style>
+    :root {
+      --ink: #12233d;
+      --muted: #52647a;
+      --blue: #1769aa;
+      --blue-dark: #0d416e;
+      --sky: #eaf5ff;
+      --line: #d8e2ec;
+      --green: #157a5e;
+      --amber: #f7b733;
+      --white: #fff;
+      --shadow: 0 14px 36px rgba(19, 49, 79, .12);
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: #f6f9fc;
+      font-family: Arial, Helvetica, sans-serif;
+      line-height: 1.55;
+    }
+
+    .container { width: min(1140px, calc(100% - 36px)); margin: 0 auto; }
+    .topbar { background: var(--white); border-bottom: 1px solid var(--line); }
+    .topbar .container { min-height: 70px; display: flex; align-items: center; gap: 14px; }
+    .brand-logo { width: 45px; height: 45px; object-fit: contain; }
+    .brand { color: var(--ink); font-size: .94rem; }
+    .brand strong { display: block; font-size: 1.08rem; }
+
+    .hero { color: var(--white); background: linear-gradient(120deg, var(--blue-dark), #1c76b5 58%, #3a9ccf); padding: 72px 0 62px; }
+    .eyebrow { margin: 0 0 11px; color: #ccecff; font-size: .86rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; }
+    h1 { max-width: 780px; margin: 0; font-size: clamp(2rem, 5vw, 3.65rem); line-height: 1.12; letter-spacing: -.035em; }
+    .hero .lead { max-width: 780px; margin: 22px 0 0; font-size: clamp(1.04rem, 2.4vw, 1.3rem); }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 30px; }
+    .button { display: inline-block; padding: 12px 19px; color: var(--ink); background: var(--white); border-radius: 7px; font-weight: 700; text-decoration: none; }
+    .button.outline { color: var(--white); background: transparent; border: 1px solid rgba(255,255,255,.75); }
+
+    main { padding: 56px 0 78px; }
+    section + section { margin-top: 62px; }
+    .section-heading { max-width: 760px; margin-bottom: 25px; }
+    h2 { margin: 0 0 10px; color: var(--ink); font-size: clamp(1.65rem, 3.4vw, 2.35rem); line-height: 1.16; }
+    .section-heading p { margin: 0; color: var(--muted); font-size: 1.05rem; }
+
+    .notice { display: grid; grid-template-columns: 43px 1fr; gap: 14px; padding: 19px 21px; background: #fff8e9; border: 1px solid #f6d78b; border-radius: 10px; }
+    .notice-icon { width: 37px; height: 37px; display: grid; place-items: center; color: #865e00; background: #ffe9ad; border-radius: 50%; font-weight: 800; }
+    .notice p { margin: 0; }
+
+    .photo-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+    .photo-step { position: relative; padding: 25px 23px 22px; background: var(--white); border: 1px solid var(--line); border-radius: 11px; box-shadow: 0 4px 12px rgba(17,45,72,.04); }
+    .step-number { display: inline-grid; width: 34px; height: 34px; place-items: center; margin-bottom: 14px; color: var(--white); background: var(--blue); border-radius: 50%; font-weight: 800; }
+    .photo-step h3 { margin: 0 0 8px; font-size: 1.17rem; }
+    .photo-step p { margin: 0; color: var(--muted); }
+    .photo-step strong { color: var(--blue-dark); }
+
+    .checklist { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px 18px; padding: 0; margin: 25px 0 0; list-style: none; }
+    .checklist li { display: flex; align-items: flex-start; gap: 10px; color: var(--muted); }
+    .checklist li::before { content: "✓"; flex: 0 0 auto; width: 24px; height: 24px; display: grid; place-items: center; color: var(--green); background: #e4f5ef; border-radius: 50%; font-weight: 800; }
+
+    .method-intro { padding: 27px 29px; color: var(--white); background: var(--ink); border-radius: 12px; }
+    .method-intro h2 { color: var(--white); }
+    .method-intro p { max-width: 850px; margin: 9px 0 0; color: #dcebf8; }
+    .method-intro b { color: #fff; }
+    .category-list { margin-top: 19px; }
+    details { margin-bottom: 14px; overflow: hidden; background: var(--white); border: 1px solid var(--line); border-radius: 10px; }
+    summary { display: flex; align-items: center; justify-content: space-between; gap: 14px; padding: 18px 21px; cursor: pointer; font-weight: 800; list-style: none; }
+    summary::-webkit-details-marker { display: none; }
+    summary::after { content: "+"; color: var(--blue); font-size: 1.6rem; line-height: 1; }
+    details[open] summary { border-bottom: 1px solid var(--line); background: #fbfdff; }
+    details[open] summary::after { content: "−"; }
+    .category-caption { display: block; margin-top: 2px; color: var(--muted); font-size: .9rem; font-weight: 400; }
+    .image-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; padding: 20px; }
+    figure { display: flex; flex-direction: column; margin: 0; overflow: hidden; background: #fff; border: 1px solid var(--line); border-radius: 8px; }
+    figure img { width: 100%; height: 195px; object-fit: contain; background: #f2f6fa; }
+    figcaption { padding: 12px 13px 14px; font-size: .9rem; font-weight: 700; line-height: 1.35; }
+
+    .send-box { padding: 30px; background: var(--sky); border: 1px solid #bbdbf1; border-radius: 12px; }
+    .send-box h2 { margin-bottom: 9px; }
+    .send-box p { max-width: 790px; margin: 0; color: var(--muted); }
+    .copy-line { display: inline-block; margin-top: 17px; padding: 10px 13px; color: var(--blue-dark); background: var(--white); border: 1px solid #c8dfef; border-radius: 6px; font-weight: 700; }
+    footer { padding: 28px 0; color: #d6e5f0; background: var(--ink); font-size: .9rem; }
+    footer p { margin: 0; }
+
+    @media (max-width: 840px) {
+      .photo-grid, .image-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 570px) {
+      .container { width: min(100% - 28px, 1140px); }
+      .topbar .container { min-height: 60px; }
+      .hero { padding: 52px 0 47px; }
+      main { padding-top: 38px; }
+      .photo-grid, .image-grid, .checklist { grid-template-columns: 1fr; }
+      .image-grid { padding: 14px; gap: 14px; }
+      figure img { height: 210px; }
+      .method-intro, .send-box { padding: 22px 19px; }
+      summary { padding: 16px; }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="container">
+      <img class="brand-logo" src="images/CYCLOID%20TALENT-sin%20fondo.png" alt="">
+      <div class="brand"><strong>Cycloid Talent SAS</strong>Guía de evaluación ergonómica</div>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="container">
+      <p class="eyebrow">Antes de enviar sus fotografías</p>
+      <h1>Guía de fotografías para su evaluación ROSA</h1>
+      <p class="lead">Estas imágenes permiten conocer cómo utiliza su puesto de trabajo y realizar una evaluación ergonómica más precisa. Por favor, siga esta guía mientras toma las fotos.</p>
+      <div class="hero-actions">
+        <a class="button" href="#fotos-necesarias">Ver las fotos necesarias</a>
+        <a class="button outline" href="#que-evaluamos">Conocer qué se evalúa</a>
+      </div>
+    </div>
+  </section>
+
+  <main class="container">
+    <section aria-labelledby="fotos-necesarias" id="fotos-necesarias">
+      <div class="section-heading">
+        <h2>Envíe 3 fotografías de su puesto en uso</h2>
+        <p>Pida a otra persona que tome las fotos mientras usted trabaja normalmente. No es necesario que aparezca su rostro; lo importante es que se vea su postura y el puesto completo.</p>
+      </div>
+
+      <div class="notice">
+        <div class="notice-icon" aria-hidden="true">!</div>
+        <p><strong>Muy importante:</strong> la foto no debe cortar las piernas. Deben verse claramente la cadera, las rodillas, los pies, la silla, la parte inferior de la mesa y el piso. Evite que la mesa o algún objeto tape sus rodillas.</p>
+      </div>
+
+      <div class="photo-grid" style="margin-top: 22px">
+        <article class="photo-step">
+          <span class="step-number">1</span>
+          <h3>Vista lateral completa</h3>
+          <p>Desde un costado, fotografíe su postura habitual. Deben verse <strong>cabeza, espalda, cadera, rodillas, pies, silla, escritorio, pantalla y teclado</strong>.</p>
+        </article>
+        <article class="photo-step">
+          <span class="step-number">2</span>
+          <h3>Vista frontal del puesto</h3>
+          <p>Desde el frente, muestre cómo quedan sus <strong>brazos, hombros, muñecas, teclado, mouse y pantalla</strong> mientras trabaja.</p>
+        </article>
+        <article class="photo-step">
+          <span class="step-number">3</span>
+          <h3>Vista de silla y piernas</h3>
+          <p>Desde un lado o ligeramente detrás, muestre el <strong>respaldo, apoyo lumbar, reposabrazos, asiento, rodillas y pies</strong>. Si algo queda oculto, tome una foto adicional.</p>
+        </article>
+      </div>
+
+      <ul class="checklist" aria-label="Lista de verificación antes de enviar las fotos">
+        <li>Use luz suficiente; evite tomar la foto a contraluz.</li>
+        <li>Muestre el puesto como lo usa normalmente, sin preparar una postura especial.</li>
+        <li>Aléjese lo necesario: es preferible una foto amplia a una recortada.</li>
+        <li>Si usa portátil, incluya la pantalla, teclado y cualquier base o accesorio.</li>
+        <li>Si usa teléfono con frecuencia, muestre dónde está y cómo lo utiliza.</li>
+        <li>Revise las fotos antes de enviarlas y repita las que estén borrosas o incompletas.</li>
+      </ul>
+    </section>
+
+    <section aria-labelledby="que-evaluamos" id="que-evaluamos">
+      <div class="method-intro">
+        <h2>¿Qué revisamos en la metodología ROSA?</h2>
+        <p>ROSA es una metodología de evaluación del puesto de oficina. Observamos el ajuste y uso de la <b>silla</b>, la postura de <b>piernas, espalda, hombros, brazos y muñecas</b>, y la ubicación de <b>pantalla, teclado, mouse y teléfono</b>. Las referencias visuales siguientes muestran situaciones que ayudan a identificar cada aspecto.</p>
+      </div>
+      <div class="category-list" id="rosa-categories" aria-live="polite"></div>
+    </section>
+
+    <section class="send-box" aria-labelledby="envio">
+      <h2 id="envio">Antes de enviar</h2>
+      <p>Compruebe que las tres vistas permitan observar el puesto completo y que las rodillas y los pies no estén ocultos. Si tiene dudas, agregue una foto adicional: una imagen completa facilita una evaluación más confiable.</p>
+      <span class="copy-line">Envíe las fotos por el medio indicado por su evaluador.</span>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container"><p>Cycloid Talent SAS · Guía informativa para la toma de fotografías en evaluación ergonómica ROSA.</p></div>
+  </footer>
+
+  <script>
+    const categories = [
+      {
+        name: 'Altura del asiento y espacio para las piernas', folder: 'ALTURA_DEL_ASIENTO',
+        note: 'Pies, rodillas y espacio disponible debajo de la mesa.',
+        images: [
+          'Rodillas flectadas 90.png', 'Rodilla mayor a 90.png', 'Rodilla menor a 90.png',
+          'Pies sin contacto en el suelo.png', 'Espacio insuficiente para las piernas bajo la mesa.png', 'La altura del asiento no es regulable.png'
+        ]
+      },
+      {
+        name: 'Profundidad del asiento', folder: 'PRODUNDIDAD_DEL_ASIENTO',
+        note: 'Relación entre el borde del asiento y la parte posterior de las rodillas.',
+        images: [
+          'Aproximadamente 8 cm de espacio entre el asiento y la parte trasera de las rodillas.png',
+          'Asiento muy corto. Más de 8 cm de espacio entre el asiento y la parte trasera de las rodillas.png',
+          'Asiento muy largo. Menos de 8 cm de espacio entre el asiento y la parte trasera de las rodillas.png',
+          'La profundidad del asiento no es regulable.png'
+        ]
+      },
+      {
+        name: 'Espaldar y apoyo lumbar', folder: 'ESPALDAR DE LA SILLA',
+        note: 'Uso del respaldo, inclinación y apoyo en la zona lumbar.',
+        images: [
+          'Respaldo reclinado entre 95 y 110 y apoyo lumbar adecuado..png',
+          'Respaldo reclinado menos de 95 O más de 110 grados.png', 'Sin respaldo o respaldo no utilizado para apoyar la espalda.png',
+          'Sin apoyo lumbar o apoyo lumbar no situado en la parte baja de la espalda.png',
+          'Respaldo no ajustable..png', 'Superficie de trabajo demasiado alta. Los hombros están encogidos.png'
+        ]
+      },
+      {
+        name: 'Reposabrazos', folder: 'REPOSABRAZOS',
+        note: 'Altura, separación, superficie y ajuste de los apoyos para los brazos.',
+        images: [
+          'Codos bien apoyados en línea con los hombros.png', 'Reposabrazos demasiado altos.png', 'Reposabrazos demasiado bajos.png',
+          'Reposabrazos demasiado separados.png', 'Reposabrazos no ajustables.png', 'La superficie del reposabrazos es dura o está dañada.png'
+        ]
+      },
+      {
+        name: 'Pantalla y documentos', folder: 'PANTALLA',
+        note: 'Altura, distancia, alineación, reflejos y uso de documentos.',
+        images: [
+          'Pantalla a entre 45 y 75 cm.png', 'Pantalla demasiado alta.png', 'Pantalla muy baja.png', 'Pantalla muy lejos A más de 75 cm.png',
+          'Pantalla desviada lateralmente.png', 'Brillos o reflejos en la pantalla.png', 'Es necesario manejar documentos y no existe un atril o soporte para ellos.png'
+        ]
+      },
+      {
+        name: 'Teclado y mouse', folder: 'TECLADO',
+        note: 'Postura de hombros y muñecas, alcance y altura de los periféricos.',
+        images: [
+          'Las muñecas están rectas y los hombros relajados.png', 'Las muñecas están desviadas lateralmente.png',
+          'Las muñecas están extendidas más de 15 grados.png', 'El teclado está demasiado alto.png',
+          'El teclado o la plataforma sobre la que reposa no son ajustables.png', 'Se deben alcanzar objetos alejados.png'
+        ]
+      },
+      {
+        name: 'Mouse', folder: 'MOUSE',
+        note: 'Alineación, alcance, tamaño y puntos de presión al usar el mouse.',
+        images: [
+          'El mouse está alineado con el hombro.png', 'El mouse no está alineado con el hombro o está lejos del cuerpo.png',
+          'El mouse y teclado están a diferentes alturas.png', 'Mouse muy pequeño.png', 'Reposamos duro o existen puntos de presión en la mano al usar el mouse.png'
+        ]
+      },
+      {
+        name: 'Teléfono', folder: 'TELEFONO',
+        note: 'Ubicación y forma de uso del teléfono o celular durante la jornada.',
+        images: [
+          'El teléfono está lejos.png', 'El teléfono no tiene función manos libres.png',
+          'El teléfono se sujeta entre el cuello y el hombro.png', 'Se usa el celular sujetándolo con el antebrazo.png'
+        ]
+      }
+    ];
+
+    const filenameCorrections = {
+      'El teclado está demasiado alto.png': 'EI teclado está demasiado alto.png',
+      'El teclado o la plataforma sobre la que reposa no son ajustables.png': 'EI teclado o la plataforma sobre la que reposa no son ajustables.png',
+      'El mouse está alineado con el hombro.png': 'EI mouse está alineado con el hombro.png',
+      'El mouse no está alineado con el hombro o está lejos del cuerpo.png': 'EI mouse no está alineado con el hombro o está lejos del cuerpo.png',
+      'El mouse y teclado están a diferentes alturas.png': 'EI mouse y teclado están a diferentes alturas.png',
+      'El teléfono está lejos.png': 'EI teléfono está lejos.png',
+      'El teléfono no tiene función manos libres.png': 'EI teléfono no tiene función manos libres.png',
+      'El teléfono se sujeta entre el cuello y el hombro.png': 'EI teléfono se sujeta entre el cuello y el hombro.png'
+    };
+
+    const label = (filename) => filename.replace(/\.png$/i, '').replace(/^EI /, 'El ');
+    const categoryContainer = document.getElementById('rosa-categories');
+    categories.forEach((category, index) => {
+      const detail = document.createElement('details');
+      if (index === 0) detail.open = true;
+      const summary = document.createElement('summary');
+      summary.innerHTML = `<span>${category.name}<span class="category-caption">${category.note}</span></span>`;
+      const grid = document.createElement('div');
+      grid.className = 'image-grid';
+      category.images.forEach((displayName) => {
+        const sourceName = filenameCorrections[displayName] || displayName;
+        const figure = document.createElement('figure');
+        const image = document.createElement('img');
+        image.loading = 'lazy';
+        image.src = encodeURI(`images/rosa-detalle/${category.folder}/${sourceName}`);
+        image.alt = label(displayName);
+        const caption = document.createElement('figcaption');
+        caption.textContent = label(displayName);
+        figure.append(image, caption);
+        grid.appendChild(figure);
+      });
+      detail.append(summary, grid);
+      categoryContainer.appendChild(detail);
+    });
+  </script>
+</body>
+</html>

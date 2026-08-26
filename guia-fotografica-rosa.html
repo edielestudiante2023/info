@@ -55,6 +55,13 @@
     .notice-icon { width: 37px; height: 37px; display: grid; place-items: center; color: #865e00; background: #ffe9ad; border-radius: 50%; font-weight: 800; }
     .notice p { margin: 0; }
 
+    .ideal-reference { margin: 0; padding: 0; }
+    .ideal-reference > p { max-width: 790px; margin: 0 0 20px; color: var(--muted); font-size: 1.05rem; }
+    .ideal-images { display: grid; grid-template-columns: repeat(2, 1fr); gap: 22px; }
+    .ideal-images figure { box-shadow: var(--shadow); }
+    .ideal-images figure img { height: auto; aspect-ratio: 1 / 1; object-fit: contain; background: #edf2f6; }
+    .ideal-images figcaption { padding: 16px; color: var(--blue-dark); font-size: 1rem; }
+
     .photo-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
     .photo-step { position: relative; padding: 25px 23px 22px; background: var(--white); border: 1px solid var(--line); border-radius: 11px; box-shadow: 0 4px 12px rgba(17,45,72,.04); }
     .step-number { display: inline-grid; width: 34px; height: 34px; place-items: center; margin-bottom: 14px; color: var(--white); background: var(--blue); border-radius: 50%; font-weight: 800; }
@@ -98,7 +105,7 @@
       .topbar .container { min-height: 60px; }
       .hero { padding: 52px 0 47px; }
       main { padding-top: 38px; }
-      .photo-grid, .image-grid, .checklist { grid-template-columns: 1fr; }
+      .photo-grid, .image-grid, .ideal-images, .checklist { grid-template-columns: 1fr; }
       .image-grid { padding: 14px; gap: 14px; }
       figure img { height: 210px; }
       .method-intro, .send-box { padding: 22px 19px; }
@@ -127,6 +134,23 @@
   </section>
 
   <main class="container">
+    <section class="ideal-reference" aria-labelledby="postura-ideal">
+      <div class="section-heading">
+        <h2 id="postura-ideal">Así debe verse su puesto de trabajo</h2>
+      </div>
+      <p>Antes de tomar las fotos, revise estas referencias. Buscamos que la imagen permita observar la postura completa, la silla, el escritorio y todos los elementos de trabajo.</p>
+      <div class="ideal-images">
+        <figure>
+          <img src="images/rosa-detalle/referencias-iniciales/postura-ideal-lateral.png" alt="Referencia de postura ideal en vista lateral, con ángulos de cuello, espalda, brazos, rodillas y pies.">
+          <figcaption>Vista lateral: permite observar claramente postura, pantalla, silla, rodillas y pies.</figcaption>
+        </figure>
+        <figure>
+          <img src="images/rosa-detalle/referencias-iniciales/postura-ideal-diagonal-trasera.png" alt="Referencia de postura ideal en vista diagonal posterior, con puntos de evaluación ergonómica.">
+          <figcaption>Vista diagonal posterior: ayuda a observar espalda, apoyo lumbar, brazos y postura general.</figcaption>
+        </figure>
+      </div>
+    </section>
+
     <section aria-labelledby="fotos-necesarias" id="fotos-necesarias">
       <div class="section-heading">
         <h2>Envíe 3 fotografías de su puesto en uso</h2>

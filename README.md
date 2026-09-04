@@ -20,6 +20,7 @@ Sitio web corporativo de **Cycloid Talent SAS**, empresa colombiana especializad
 | `index.html` | Landing principal — servicios, soluciones, contacto |
 | `cocolab2025.html` | Guia sobre Resolucion 3461/2025 (COCOLAB) |
 | `agenda.html` | Agenda de consultores — lectura en tiempo real de Google Sheets |
+| `primer-respondiente.html` | Landing de inscripción a capacitación gratuita de primer respondiente |
 | `qrbrigadista.html` | QR para inscripcion a capacitacion de brigada de emergencia |
 | `qrInduccionSST.html` | QR para induccion SST en propiedad horizontal |
 | `qrEvSimulacro.html` | QR para evaluacion de simulacro |
@@ -39,6 +40,7 @@ info/
 ├── index.html            # Landing principal
 ├── cocolab2025.html      # Pagina COCOLAB 2025
 ├── agenda.html           # Agenda con Google Sheets
+├── primer-respondiente.html # Capacitación en primer respondiente
 ├── qrbrigadista.html     # QR Brigadista
 ├── qrInduccionSST.html   # QR Induccion SST
 ├── qrEvSimulacro.html    # QR Evaluacion Simulacro

@@ -1,0 +1,541 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="description" content="Plan de Emergencia Familiar 2026 de Cycloid Talent: guía paso a paso para que tu hogar llegue preparado al Simulacro Nacional de Evacuación del 21 de octubre de 2026. Incluye descarga del documento completo.">
+  <meta name="theme-color" content="#082c4c">
+  <title>Plan de Emergencia Familiar 2026 | Cycloid Talent</title>
+  <link rel="icon" type="image/x-icon" href="images/favicon.ico">
+  <link rel="stylesheet" href="assets/css/fontawesome-all.min.css">
+  <style>
+    :root{--navy:#082c4c;--blue:#0879bf;--cyan:#36b9d4;--sky:#eaf7fb;--red:#d9474e;--ink:#16354a;--muted:#587083;--white:#fff;--line:#d9e7ed;--green:#16815e;--amber:#c95a22;--shadow:0 18px 48px rgba(8,44,76,.13)}
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;background:#f5f9fb;color:var(--ink);font-family:Arial,Helvetica,sans-serif;line-height:1.6}
+    a{color:inherit}
+    img{max-width:100%}
+    .container{width:min(880px,calc(100% - 32px));margin-inline:auto}
+    .skip{position:fixed;z-index:60;top:-5rem;left:1rem;padding:.75rem 1rem;background:#fff;color:var(--navy);border-radius:.4rem;font-weight:700}
+    .skip:focus{top:1rem}
+
+    /* Header */
+    header{color:#fff;background:var(--navy)}
+    .nav{min-height:70px;display:flex;align-items:center;justify-content:space-between;gap:1rem}
+    .brand{display:flex;align-items:center;gap:.7rem;text-decoration:none}
+    .brand img{width:42px;height:42px;object-fit:contain}
+    .brand strong{display:block;font-size:1rem;line-height:1.1}
+    .brand span{display:block;color:#bad5e4;font-size:.68rem;letter-spacing:.08em;text-transform:uppercase}
+    .hero{position:relative;overflow:hidden;padding:3.2rem 0 3rem;background:linear-gradient(125deg,#082c4c 0%,#0b5682 62%,#0879a6 100%)}
+    .hero:before{position:absolute;content:"";width:30rem;height:30rem;right:-13rem;top:-17rem;border:1px solid rgba(255,255,255,.22);border-radius:50%;box-shadow:0 0 0 3.5rem rgba(255,255,255,.045),0 0 0 7rem rgba(255,255,255,.025)}
+    .hero-inner{position:relative}
+    .eyebrow{margin:0 0 .8rem;color:#a8eafb;font-size:.74rem;font-weight:700;letter-spacing:.13em;text-transform:uppercase}
+    .hero h1{margin:0;font-size:clamp(1.7rem,6vw,2.9rem);line-height:1.08;letter-spacing:-.02em;overflow-wrap:break-word}
+    .hero p.lead{margin:1.1rem 0 0;color:#d8ecf5;font-size:1.06rem;max-width:36rem}
+    .drill-badge{display:flex;align-items:flex-start;gap:.55rem;max-width:100%;margin:1.3rem 0 0;padding:.65rem .85rem;color:#fff4cf;background:var(--amber);border:1px solid #ffbc62;border-radius:.5rem;font-size:.9rem;font-weight:700;line-height:1.4;box-shadow:0 6px 16px rgba(0,0,0,.18)}
+    .drill-badge i{margin-top:.15rem}
+    .drill-badge strong{color:#fff}
+    .actions{display:flex;flex-wrap:wrap;gap:.6rem;margin-top:1.5rem}
+    .button{display:inline-flex;align-items:center;justify-content:center;gap:.5rem;padding:.8rem 1rem;border:1px solid transparent;border-radius:.5rem;font-size:.92rem;font-weight:700;text-decoration:none;cursor:pointer;transition:transform .16s ease,background .16s ease}
+    .button:hover{transform:translateY(-2px)}
+    .button-primary{color:var(--navy);background:#fff}
+    .button-primary:hover{background:#e2f6ff}
+    .button-ghost{color:#fff;background:transparent;border-color:rgba(255,255,255,.55)}
+    .button-ghost:hover{background:rgba(255,255,255,.12)}
+
+    /* Intro */
+    main{padding:2.6rem 0 0}
+    .card{background:#fff;border:1px solid var(--line);border-radius:.9rem;box-shadow:0 6px 16px rgba(9,55,77,.05);padding:1.6rem 1.4rem}
+    .section-label{margin:0 0 .5rem;color:var(--blue);font-size:.72rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase}
+    h2.block-title{margin:0;color:var(--navy);font-size:clamp(1.4rem,4.5vw,1.9rem);line-height:1.16;letter-spacing:-.02em}
+    .intro p{color:var(--muted);font-size:1rem}
+    .intro p:first-of-type{margin-top:.7rem}
+    .how{display:grid;gap:.7rem;margin:1.2rem 0 0;padding:0;list-style:none}
+    .how li{display:flex;gap:.7rem;align-items:flex-start;color:var(--ink);font-size:.96rem}
+    .how li i{flex:none;margin-top:.15rem;width:1.6rem;height:1.6rem;display:grid;place-items:center;color:var(--blue);background:var(--sky);border-radius:.45rem;font-size:.82rem}
+
+    /* Láminas */
+    .lamina{margin:2.4rem 0 0}
+    .lamina .step{display:inline-flex;align-items:center;gap:.5rem;margin:0 0 .55rem;color:var(--blue);font-size:.72rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase}
+    .lamina h3{margin:0;color:var(--navy);font-size:clamp(1.25rem,4vw,1.55rem);line-height:1.2;letter-spacing:-.02em}
+    .lamina .comentario{margin:.7rem 0 1.1rem;color:var(--muted);font-size:1rem}
+    .lamina .comentario strong{color:var(--ink)}
+    .shot{position:relative;display:block;width:100%;padding:0;border:1px solid var(--line);border-radius:.8rem;overflow:hidden;background:#fff;cursor:zoom-in;box-shadow:0 8px 22px rgba(9,55,77,.08);transition:transform .16s ease,box-shadow .16s ease}
+    .shot:hover{transform:translateY(-3px);box-shadow:0 14px 32px rgba(9,55,77,.14)}
+    .shot img{display:block;width:100%;height:auto;aspect-ratio:1400/1867}
+    .shot .expand{position:absolute;right:.6rem;bottom:.6rem;display:inline-flex;align-items:center;gap:.4rem;padding:.42rem .6rem;color:#fff;background:rgba(8,44,76,.82);border-radius:.4rem;font-size:.76rem;font-weight:700;backdrop-filter:blur(2px)}
+    .shot:focus-visible{outline:3px solid var(--cyan);outline-offset:2px}
+
+    /* Video primer respondiente */
+    .video-block{margin:3rem 0 0;overflow:hidden;background:#fff;border:1px solid var(--line);border-radius:1rem;box-shadow:0 6px 16px rgba(9,55,77,.05)}
+    .video-block .vb-copy{padding:1.6rem 1.4rem 1.2rem}
+    .video-block .section-label{color:var(--red)}
+    .video-block h2{margin:0;color:var(--navy);font-size:clamp(1.35rem,4.2vw,1.8rem);line-height:1.18;letter-spacing:-.02em}
+    .video-block p{margin:.7rem 0 0;color:var(--muted);font-size:1rem}
+    .video-frame{position:relative;width:100%;aspect-ratio:16/9;background:#04121e}
+    .video-frame iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+    .video-block .vb-foot{display:flex;flex-wrap:wrap;gap:.6rem;align-items:center;padding:1rem 1.4rem 1.4rem}
+    .video-block .vb-foot a{display:inline-flex;align-items:center;gap:.45rem;color:var(--blue);font-size:.9rem;font-weight:700;text-decoration:none}
+    .video-block .vb-foot a:hover{text-decoration:underline}
+
+    /* Cierre */
+    .closing{margin:3rem 0 0;padding:2rem 1.5rem;background:var(--navy);border-radius:1rem;color:#fff;text-align:center}
+    .closing h2{margin:0;color:#fff;font-size:clamp(1.4rem,4.5vw,1.9rem);line-height:1.18}
+    .closing p{margin:.8rem auto 0;max-width:34rem;color:#c8e1ec;font-size:1rem}
+    .closing .actions{justify-content:center}
+    .eval-link{display:block;margin:1.6rem auto 0;color:var(--muted);font-size:.92rem;text-align:center}
+    .eval-link a{color:var(--blue);font-weight:700;text-decoration:none}
+    .notice{margin:1.6rem 0 0;color:var(--muted);font-size:.8rem;text-align:center}
+    footer{margin-top:3rem;padding:1.6rem 0;background:#061f35;color:#b5d1de;font-size:.82rem}
+    footer .container{display:flex;flex-wrap:wrap;justify-content:space-between;gap:.6rem}
+    footer p{margin:0}
+
+    /* Toast */
+    .toast{position:fixed;left:50%;bottom:1.4rem;translate:-50% 0;z-index:80;padding:.7rem 1.1rem;color:#fff;background:#0c2336;border-radius:.5rem;font-size:.9rem;font-weight:700;box-shadow:0 12px 30px rgba(0,0,0,.3);opacity:0;pointer-events:none;transition:opacity .2s ease,translate .2s ease}
+    .toast.show{opacity:1;translate:-50% -.4rem}
+
+    /* Visor pantalla completa */
+    .viewer{position:fixed;inset:0;z-index:100;display:flex;flex-direction:column;background:#05121d;touch-action:none;user-select:none;-webkit-user-select:none}
+    .viewer[hidden]{display:none}
+    .viewer-bar{flex:none;display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:calc(env(safe-area-inset-top) + .7rem) 1rem .7rem;color:#fff}
+    .viewer-count{font-size:.9rem;font-weight:700;letter-spacing:.03em;color:#cfe6f2}
+    .viewer-tools{display:flex;gap:.4rem}
+    .vbtn{width:2.6rem;height:2.6rem;display:grid;place-items:center;color:#fff;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.18);border-radius:.55rem;font-size:1rem;cursor:pointer;transition:background .15s ease}
+    .vbtn:hover{background:rgba(255,255,255,.24)}
+    .vbtn:disabled{opacity:.35;cursor:default}
+    .viewer-stage{position:relative;flex:1;overflow:hidden;display:grid;place-items:center}
+    .viewer-stage img{max-width:100%;max-height:100%;object-fit:contain;transform-origin:0 0;will-change:transform;-webkit-user-drag:none;user-drag:none}
+    .viewer-nav{position:absolute;top:50%;transform:translateY(-50%);width:2.8rem;height:2.8rem;display:grid;place-items:center;color:#fff;background:rgba(8,44,76,.55);border:1px solid rgba(255,255,255,.2);border-radius:50%;font-size:1.05rem;cursor:pointer}
+    .viewer-nav:hover{background:rgba(8,44,76,.8)}
+    .viewer-nav.prev{left:.6rem}
+    .viewer-nav.next{right:.6rem}
+    .viewer-nav[disabled]{opacity:.3;cursor:default}
+    .viewer-hint{flex:none;padding:.5rem 1rem calc(env(safe-area-inset-bottom) + .7rem);color:#9fc2d4;font-size:.78rem;text-align:center}
+    @media (max-width:600px){
+      .viewer-nav{display:none}
+      .card{padding:1.3rem 1.1rem}
+      .closing{padding:1.7rem 1.1rem}
+    }
+    @media (min-width:720px){
+      .lamina{display:grid;grid-template-columns:1fr;gap:0}
+    }
+  </style>
+</head>
+<body>
+  <a class="skip" href="#contenido">Ir al contenido</a>
+  <header>
+    <div class="container nav">
+      <a class="brand" href="index.html" aria-label="Cycloid Talent, inicio"><img src="images/CYCLOID%20TALENT-sin%20fondo.png" alt=""><span><strong>Cycloid Talent</strong>Seguridad y Salud en el Trabajo</span></a>
+    </div>
+    <section class="hero">
+      <div class="container hero-inner">
+        <p class="eyebrow">Preparación para emergencias en casa</p>
+        <h1>Plan de Emergencia Familiar 2026</h1>
+        <p class="lead">Una guía paso a paso para que tu hogar sepa qué hacer antes, durante y después de una emergencia. Prepararnos hoy nos ayuda a actuar mejor mañana.</p>
+        <p class="drill-badge"><i class="fas fa-people-arrows" aria-hidden="true"></i> Llega preparado al <strong>Simulacro Nacional de Evacuación · 21 de octubre de 2026</strong></p>
+        <div class="actions">
+          <a class="button button-primary" href="docs/PLAN_DE_EMERGENCIA_FAMILIAR_2026.pdf" download><i class="fas fa-file-download" aria-hidden="true"></i> Descargar el documento completo</a>
+          <button class="button button-ghost" type="button" data-share><i class="fas fa-share-alt" aria-hidden="true"></i> Compartir</button>
+        </div>
+      </div>
+    </section>
+  </header>
+
+  <main id="contenido">
+    <section class="container intro card" aria-labelledby="intro-titulo">
+      <p class="section-label">Cómo aprovechar esta guía</p>
+      <h2 class="block-title" id="intro-titulo">El 21 de octubre, tu familia también practica.</h2>
+      <p>El <strong>Simulacro Nacional de Evacuación</strong> es un ejercicio en el que, el mismo día, millones de personas en Colombia practican su respuesta ante una emergencia. Casi siempre se piensa en la empresa o el colegio, pero una emergencia también puede encontrarnos en casa, de noche o en fin de semana. Este plan familiar es la herramienta para que tu hogar llegue preparado a esa fecha.</p>
+      <p>Cada hogar es distinto: el plan se construye según quiénes lo integran, cómo es la vivienda y qué riesgos hay alrededor. Recórrelo con calma, en familia, y déjalo por escrito.</p>
+      <ul class="how">
+        <li><i class="fas fa-hand-pointer" aria-hidden="true"></i> <span>Toca cualquier lámina para <strong>verla en pantalla completa</strong>, con acercamiento para leer los detalles.</span></li>
+        <li><i class="fas fa-file-download" aria-hidden="true"></i> <span>Descarga el <strong>documento completo</strong> para imprimirlo o diligenciarlo en el celular.</span></li>
+        <li><i class="fas fa-calendar-check" aria-hidden="true"></i> <span>La meta: el <strong>21 de octubre de 2026</strong> tu familia ensaya lo que aquí definió.</span></li>
+      </ul>
+    </section>
+
+    <div class="container" id="laminas">
+
+      <article class="lamina">
+        <p class="step"><i class="fas fa-book-open" aria-hidden="true"></i> El material</p>
+        <h3>1. Con qué vamos a trabajar</h3>
+        <p class="comentario">Estas son las 12 láminas del Plan de Emergencia Familiar. La idea de fondo: las decisiones difíciles —por dónde salir, dónde reunirnos, quién ayuda a quién— <strong>se toman antes, con calma</strong>, no en medio de la emergencia.</p>
+      </article>
+
+      <article class="lamina">
+        <p class="step"><i class="fas fa-question-circle" aria-hidden="true"></i> Fundamento</p>
+        <h3>2. ¿Qué es un plan de emergencia familiar?</h3>
+        <p class="comentario">Es el acuerdo de quienes viven bajo un mismo techo sobre cómo <strong>prevenir, prepararse y actuar</strong>. Esta lámina resume los seis componentes que vas a construir: riesgos, rutas de evacuación, punto de encuentro, responsabilidades, kit de emergencia y forma de comunicarse.</p>
+      </article>
+
+      <article class="lamina">
+        <p class="step"><i class="fas fa-users" aria-hidden="true"></i> Paso 1</p>
+        <h3>3. Conozcamos nuestro hogar</h3>
+        <p class="comentario">Antes de planear hay que saber a quién protegemos. Anota quiénes están habitualmente en casa, edades y teléfonos, y sobre todo <strong>quién necesitaría apoyo para evacuar</strong>: niñas y niños, personas mayores, personas con discapacidad, quienes dependen de medicamentos y las mascotas. En el simulacro, cada una de esas personas debe tener un acompañante asignado.</p>
+      </article>
+
+      <article class="lamina">
+        <p class="step"><i class="fas fa-exclamation-triangle" aria-hidden="true"></i> Paso 2</p>
+        <h3>4. Identifiquemos nuestros riesgos</h3>
+        <p class="comentario">Enumera qué podría pasar en tu hogar o a su alrededor: <strong>naturales</strong> (sismo, inundación, movimiento en masa, tormenta), <strong>tecnológicos</strong> (incendio, fuga de gas, falla eléctrica) y <strong>del entorno</strong> (vías de alto tránsito, árboles, redes eléctricas, industrias o estaciones de servicio cercanas). Marca los de atención alta: esos son los escenarios que conviene practicar.</p>
+      </article>
+
+      <article class="lamina">
+        <p class="step"><i class="fas fa-clipboard-check" aria-hidden="true"></i> Paso 3 · A</p>
+        <h3>5. Revisemos nuestra vivienda</h3>
+        <p class="comentario">Lista de chequeo del estado de la casa: estructura y circulación (salidas despejadas, puertas que abren fácil, lámparas aseguradas), instalaciones (saber <strong>dónde está el tablero eléctrico y cómo cerrar el agua y el gas</strong>) y objetos (muebles altos anclados, inflamables bien guardados). Cada casilla sin marcar es una tarea pendiente.</p>
+      </article>
+
+      <article class="lamina">
+        <p class="step"><i class="fas fa-tools" aria-hidden="true"></i> Paso 3 · B</p>
+        <h3>6. Hagamos nuestro hogar más seguro</h3>
+        <p class="comentario">Continúa con el entorno (riesgos de viviendas vecinas, árboles o postes que podrían caer, antecedentes de inundación) y con la tabla <strong>“lo que debemos mejorar”</strong>: situación encontrada, acción necesaria, responsable y fecha. Así la revisión se convierte en compromisos concretos.</p>
+      </article>
+
+      <article class="lamina">
+        <p class="step"><i class="fas fa-route" aria-hidden="true"></i> Paso 4</p>
+        <h3>7. Nuestra ruta de evacuación</h3>
+        <p class="comentario">Define por dónde sale cada persona y hacia dónde. Establece un <strong>punto de encuentro principal y uno alterno</strong>, en lugares conocidos, accesibles y lejos de cosas que puedan caer o incendiarse; el punto puede cambiar según el tipo de emergencia. Esta es la parte que se pone a prueba el día del simulacro: <strong>cronometra</strong> cuánto tardan en salir y en reunirse todos.</p>
+      </article>
+
+      <article class="lamina">
+        <p class="step"><i class="fas fa-pencil-ruler" aria-hidden="true"></i> Paso 5</p>
+        <h3>8. Dibujemos nuestro plan</h3>
+        <p class="comentario">Lleva todo a un plano sencillo de la vivienda: marca rutas, salidas, extintor, llaves de agua, gas y electricidad, zonas de protección y puntos de peligro. <strong>Pégalo en un lugar visible.</strong> Un dibujo claro sirve incluso para quien no sabe leer o para una visita.</p>
+      </article>
+
+      <article class="lamina">
+        <p class="step"><i class="fas fa-tasks" aria-hidden="true"></i> Paso 6</p>
+        <h3>9. Organicémonos</h3>
+        <p class="comentario">Reparte responsabilidades con un <strong>responsable y un alterno</strong> para cada tarea: llevar el kit, apoyar a quien lo necesita, sacar a los animales, llamar a emergencias y verificar que estén todos en el punto de encuentro. Acuerda qué hacer si la emergencia los encuentra separados: un contacto familiar, un lugar de reencuentro y un plan B si no hay señal. Ninguna tarea vale más que la vida de quien la realiza.</p>
+      </article>
+
+      <article class="lamina">
+        <p class="step"><i class="fas fa-briefcase-medical" aria-hidden="true"></i> Paso 7</p>
+        <h3>10. Nuestro kit para emergencias</h3>
+        <p class="comentario">Prepara un morral en un lugar conocido y de fácil acceso: agua, alimentos no perecederos, botiquín, medicamentos, linterna y pilas, radio, silbato, copias de documentos, elementos de higiene, abrigo, efectivo, cargador y lo específico para bebés, personas dependientes y mascotas. <strong>Anota la fecha de revisión y la próxima.</strong></p>
+      </article>
+
+      <article class="lamina">
+        <p class="step"><i class="fas fa-running" aria-hidden="true"></i> Paso 8</p>
+        <h3>11. Practiquemos</h3>
+        <p class="comentario">Tener el plan escrito no basta: hay que ensayarlo, y el <strong>21 de octubre de 2026</strong> es la ocasión ideal. Durante el ejercicio verifica si todos reconocieron la situación, usaron la ruta, llegaron al punto de encuentro y se apoyaron entre sí. Registra fecha, tiempo de evacuación, qué salió bien y qué mejorar.</p>
+      </article>
+
+      <article class="lamina">
+        <p class="step"><i class="fas fa-shield-alt" aria-hidden="true"></i> Cierre</p>
+        <h3>12. Nuestro hogar está mejor preparado</h3>
+        <p class="comentario">Si diligenciaste las láminas anteriores ya tienes lo esencial: conoces tus riesgos, sabes cómo evacuar, tienes punto de encuentro, repartiste tareas, armaste el kit y sabes cómo comunicarte. Falta lo más importante: <strong>practicarlo y actualizarlo</strong> al menos una vez al año.</p>
+      </article>
+
+    </div>
+
+    <section class="container video-block" aria-labelledby="video-titulo">
+      <div class="vb-copy">
+        <p class="section-label">Un paso más</p>
+        <h2 id="video-titulo">¿Quieres tener los conceptos básicos como primer respondiente?</h2>
+        <p>Preparamos este video para ti: qué hacer en los primeros minutos de una emergencia, cómo pedir ayuda y cómo actuar con seguridad mientras llegan los organismos de socorro. Es el complemento perfecto para tu plan familiar.</p>
+      </div>
+      <div class="video-frame">
+        <iframe src="https://www.youtube-nocookie.com/embed/QlP2gcaLmX0" title="Conceptos básicos como primer respondiente · Cycloid Talent" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>
+      </div>
+      <div class="vb-foot">
+        <a href="https://youtu.be/QlP2gcaLmX0" target="_blank" rel="noopener"><i class="fab fa-youtube" aria-hidden="true"></i> Ver en YouTube</a>
+        <a href="primer-respondiente.html"><i class="fas fa-user-graduate" aria-hidden="true"></i> Conoce la capacitación presencial gratuita</a>
+      </div>
+    </section>
+
+    <section class="container closing" aria-labelledby="cierre-titulo">
+      <h2 id="cierre-titulo">Descarga el plan y diligéncialo en familia</h2>
+      <p>El documento completo trae todas las tablas y listas de chequeo para escribir directamente. Imprímelo o llénalo desde el celular antes del 21 de octubre.</p>
+      <div class="actions">
+        <a class="button button-primary" href="docs/PLAN_DE_EMERGENCIA_FAMILIAR_2026.pdf" download><i class="fas fa-file-download" aria-hidden="true"></i> Descargar el documento completo</a>
+        <button class="button button-ghost" type="button" data-share><i class="fas fa-share-alt" aria-hidden="true"></i> Compartir</button>
+      </div>
+    </section>
+
+    <p class="container eval-link">Después de practicar, cuéntanos cómo les fue en la <a href="qrEvSimulacro.html">evaluación de simulacro</a>.</p>
+    <p class="container notice">Este material es una guía de preparación familiar y no reemplaza las indicaciones de los organismos de emergencia ni los protocolos de su comunidad o edificio.</p>
+  </main>
+
+  <footer><div class="container"><p>© 2026 Cycloid Talent SAS. Todos los derechos reservados.</p><p>Especialistas en Seguridad y Salud en el Trabajo.</p></div></footer>
+
+  <!-- Visor a pantalla completa -->
+  <div class="viewer" id="viewer" hidden role="dialog" aria-modal="true" aria-label="Lámina en pantalla completa">
+    <div class="viewer-bar">
+      <span class="viewer-count" id="viewerCount">1 / 12</span>
+      <div class="viewer-tools">
+        <button class="vbtn" type="button" id="zoomOut" aria-label="Alejar"><i class="fas fa-search-minus" aria-hidden="true"></i></button>
+        <button class="vbtn" type="button" id="zoomIn" aria-label="Acercar"><i class="fas fa-search-plus" aria-hidden="true"></i></button>
+        <button class="vbtn" type="button" id="viewerClose" aria-label="Cerrar"><i class="fas fa-times" aria-hidden="true"></i></button>
+      </div>
+    </div>
+    <div class="viewer-stage" id="viewerStage">
+      <button class="viewer-nav prev" type="button" id="viewerPrev" aria-label="Lámina anterior"><i class="fas fa-chevron-left" aria-hidden="true"></i></button>
+      <img id="viewerImg" alt="">
+      <button class="viewer-nav next" type="button" id="viewerNext" aria-label="Lámina siguiente"><i class="fas fa-chevron-right" aria-hidden="true"></i></button>
+    </div>
+    <p class="viewer-hint">Desliza para cambiar de lámina · doble toque o pellizca para acercar · Esc para cerrar</p>
+  </div>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script>
+  (function(){
+    "use strict";
+    var TOTAL = 12;
+    var BASE = "images/plan-emergencia-familiar/";
+    var titles = [
+      "Con qué vamos a trabajar","¿Qué es un plan de emergencia familiar?","Conozcamos nuestro hogar",
+      "Identifiquemos nuestros riesgos","Revisemos nuestra vivienda","Hagamos nuestro hogar más seguro",
+      "Nuestra ruta de evacuación","Dibujemos nuestro plan","Organicémonos",
+      "Nuestro kit para emergencias","Practiquemos","Nuestro hogar está mejor preparado"
+    ];
+
+    /* --- Insertar cada imagen como botón dentro de su lámina --- */
+    var laminas = document.querySelectorAll("#laminas .lamina");
+    laminas.forEach(function(lam, i){
+      var n = i + 1;
+      var btn = document.createElement("button");
+      btn.type = "button";
+      btn.className = "shot";
+      btn.setAttribute("aria-label", "Ver en pantalla completa: lámina " + n + ", " + titles[i]);
+      btn.dataset.index = String(i);
+      btn.innerHTML =
+        '<img src="' + BASE + n + '.jpg" width="1400" height="1867" loading="lazy" decoding="async" alt="Lámina ' + n + ' del Plan de Emergencia Familiar: ' + titles[i] + '">' +
+        '<span class="expand"><i class="fas fa-expand" aria-hidden="true"></i> Ampliar</span>';
+      lam.appendChild(btn);
+      btn.addEventListener("click", function(){ open(i); });
+    });
+
+    /* --- Toast --- */
+    var toastEl = document.getElementById("toast");
+    var toastT;
+    function toast(msg){
+      toastEl.textContent = msg;
+      toastEl.classList.add("show");
+      clearTimeout(toastT);
+      toastT = setTimeout(function(){ toastEl.classList.remove("show"); }, 2400);
+    }
+
+    /* --- Compartir --- */
+    function share(){
+      var data = {
+        title: "Plan de Emergencia Familiar 2026 · Cycloid Talent",
+        text: "Guía para preparar a tu familia antes del Simulacro Nacional de Evacuación del 21 de octubre de 2026.",
+        url: location.href
+      };
+      if (navigator.share){
+        navigator.share(data).catch(function(){});
+      } else if (navigator.clipboard && navigator.clipboard.writeText){
+        navigator.clipboard.writeText(location.href).then(function(){ toast("Enlace copiado"); }).catch(function(){ window.prompt("Copia el enlace:", location.href); });
+      } else {
+        window.prompt("Copia el enlace:", location.href);
+      }
+    }
+    document.querySelectorAll("[data-share]").forEach(function(b){ b.addEventListener("click", share); });
+
+    /* --- Visor --- */
+    var viewer = document.getElementById("viewer");
+    var stage = document.getElementById("viewerStage");
+    var img = document.getElementById("viewerImg");
+    var countEl = document.getElementById("viewerCount");
+    var prevBtn = document.getElementById("viewerPrev");
+    var nextBtn = document.getElementById("viewerNext");
+    var closeBtn = document.getElementById("viewerClose");
+    var zoomInBtn = document.getElementById("zoomIn");
+    var zoomOutBtn = document.getElementById("zoomOut");
+
+    var current = 0;
+    var scale = 1, tx = 0, ty = 0;
+    var MIN = 1, MAX = 5;
+    var lastOpener = null;
+
+    function apply(){
+      img.style.transform = "translate(" + tx + "px," + ty + "px) scale(" + scale + ")";
+      stage.style.cursor = scale > 1 ? "grab" : "zoom-in";
+    }
+    function resetZoom(){ scale = 1; tx = 0; ty = 0; apply(); }
+
+    function clampPan(){
+      var r = img.getBoundingClientRect();
+      var s = stage.getBoundingClientRect();
+      var maxX = Math.max(0, (r.width - s.width) / 2);
+      var maxY = Math.max(0, (r.height - s.height) / 2);
+      if (tx > maxX) tx = maxX; if (tx < -maxX) tx = -maxX;
+      if (ty > maxY) ty = maxY; if (ty < -maxY) ty = -maxY;
+    }
+
+    function load(i){
+      current = (i + TOTAL) % TOTAL;
+      resetZoom();
+      img.src = BASE + (current + 1) + ".jpg";
+      img.alt = "Lámina " + (current + 1) + ": " + titles[current];
+      countEl.textContent = (current + 1) + " / " + TOTAL;
+      prevBtn.disabled = nextBtn.disabled = false;
+    }
+
+    function open(i){
+      lastOpener = document.activeElement;
+      viewer.hidden = false;
+      document.body.style.overflow = "hidden";
+      load(i);
+      if (viewer.requestFullscreen){ viewer.requestFullscreen().catch(function(){}); }
+      closeBtn.focus();
+    }
+    function close(){
+      viewer.hidden = true;
+      document.body.style.overflow = "";
+      img.src = "";
+      if (document.fullscreenElement){ document.exitFullscreen().catch(function(){}); }
+      if (lastOpener && lastOpener.focus){ lastOpener.focus(); }
+    }
+    function next(){ load(current + 1); }
+    function prev(){ load(current - 1); }
+
+    closeBtn.addEventListener("click", close);
+    nextBtn.addEventListener("click", next);
+    prevBtn.addEventListener("click", prev);
+    zoomInBtn.addEventListener("click", function(){ zoomAt(stage.clientWidth/2, stage.clientHeight/2, 1.6); });
+    zoomOutBtn.addEventListener("click", function(){ zoomAt(stage.clientWidth/2, stage.clientHeight/2, 1/1.6); });
+
+    document.addEventListener("keydown", function(e){
+      if (viewer.hidden) return;
+      if (e.key === "Escape") close();
+      else if (e.key === "ArrowRight") next();
+      else if (e.key === "ArrowLeft") prev();
+      else if (e.key === "+" || e.key === "=") zoomAt(stage.clientWidth/2, stage.clientHeight/2, 1.6);
+      else if (e.key === "-") zoomAt(stage.clientWidth/2, stage.clientHeight/2, 1/1.6);
+    });
+    document.addEventListener("fullscreenchange", function(){
+      if (!document.fullscreenElement && !viewer.hidden){ /* el usuario salió de fullscreen: mantener el visor */ }
+    });
+
+    function zoomAt(px, py, factor){
+      var prevScale = scale;
+      scale = Math.min(MAX, Math.max(MIN, scale * factor));
+      if (scale === prevScale) return;
+      var s = stage.getBoundingClientRect();
+      var cx = px - s.width / 2;
+      var cy = py - s.height / 2;
+      var ratio = scale / prevScale;
+      tx = cx - (cx - tx) * ratio;
+      ty = cy - (cy - ty) * ratio;
+      if (scale === MIN){ tx = 0; ty = 0; } else { clampPan(); }
+      apply();
+    }
+
+    /* rueda para acercar (escritorio) */
+    stage.addEventListener("wheel", function(e){
+      if (viewer.hidden) return;
+      e.preventDefault();
+      var rect = stage.getBoundingClientRect();
+      zoomAt(e.clientX - rect.left, e.clientY - rect.top, e.deltaY < 0 ? 1.15 : 1/1.15);
+    }, { passive:false });
+
+    /* --- Gestos táctiles: arrastrar, deslizar, pellizcar, doble toque --- */
+    var pointers = new Map();
+    var startDist = 0, startScale = 1, startMid = null;
+    var panStart = null, panOrigin = null;
+    var swipeStartX = 0, swipeStartY = 0, swipeTime = 0, swiping = false;
+    var lastTap = 0;
+
+    stage.addEventListener("pointerdown", function(e){
+      if (viewer.hidden) return;
+      stage.setPointerCapture(e.pointerId);
+      pointers.set(e.pointerId, { x:e.clientX, y:e.clientY });
+
+      if (pointers.size === 2){
+        var pts = Array.from(pointers.values());
+        startDist = dist(pts[0], pts[1]);
+        startScale = scale;
+        startMid = mid(pts[0], pts[1]);
+        swiping = false;
+      } else if (pointers.size === 1){
+        if (scale > 1){
+          panStart = { x:e.clientX, y:e.clientY };
+          panOrigin = { x:tx, y:ty };
+          stage.style.cursor = "grabbing";
+        } else {
+          swiping = true;
+          swipeStartX = e.clientX;
+          swipeStartY = e.clientY;
+          swipeTime = Date.now();
+        }
+      }
+    });
+
+    stage.addEventListener("pointermove", function(e){
+      if (!pointers.has(e.pointerId)) return;
+      pointers.set(e.pointerId, { x:e.clientX, y:e.clientY });
+      var pts = Array.from(pointers.values());
+
+      if (pointers.size === 2){
+        var d = dist(pts[0], pts[1]);
+        if (startDist > 0){
+          var target = Math.min(MAX, Math.max(MIN, startScale * (d / startDist)));
+          var rect = stage.getBoundingClientRect();
+          var factor = target / scale;
+          zoomAt(startMid.x - rect.left, startMid.y - rect.top, factor);
+        }
+      } else if (pointers.size === 1 && scale > 1 && panStart){
+        tx = panOrigin.x + (e.clientX - panStart.x);
+        ty = panOrigin.y + (e.clientY - panStart.y);
+        clampPan();
+        apply();
+      } else if (pointers.size === 1 && swiping){
+        var dx = e.clientX - swipeStartX;
+        var dy = e.clientY - swipeStartY;
+        if (Math.abs(dx) > 8 && Math.abs(dx) > Math.abs(dy)){
+          img.style.transform = "translate(" + dx + "px,0) scale(1)";
+        }
+      }
+    });
+
+    function endPointer(e){
+      if (!pointers.has(e.pointerId)) return;
+      var wasSwiping = swiping && pointers.size === 1;
+      var upX = e.clientX, upY = e.clientY;
+      pointers.delete(e.pointerId);
+
+      if (wasSwiping){
+        var dx = upX - swipeStartX;
+        var dy = upY - swipeStartY;
+        var dt = Date.now() - swipeTime;
+        if (Math.abs(dx) > 55 && Math.abs(dx) > Math.abs(dy) && dt < 700){
+          if (dx < 0) next(); else prev();
+        } else if (Math.abs(dx) < 10 && Math.abs(dy) < 10 && dt < 300){
+          /* toque simple: detectar doble toque */
+          var now = Date.now();
+          if (now - lastTap < 300){
+            var rect = stage.getBoundingClientRect();
+            if (scale > 1) resetZoom();
+            else zoomAt(upX - rect.left, upY - rect.top, 2.6);
+            lastTap = 0;
+          } else {
+            lastTap = now;
+          }
+        } else {
+          apply();
+        }
+        swiping = false;
+      }
+
+      if (pointers.size < 2){ startDist = 0; startMid = null; }
+      if (pointers.size === 0){ panStart = null; if (scale <= 1) apply(); }
+    }
+    stage.addEventListener("pointerup", endPointer);
+    stage.addEventListener("pointercancel", endPointer);
+
+    stage.addEventListener("dblclick", function(e){
+      var rect = stage.getBoundingClientRect();
+      if (scale > 1) resetZoom();
+      else zoomAt(e.clientX - rect.left, e.clientY - rect.top, 2.6);
+    });
+
+    function dist(a, b){ var dx=a.x-b.x, dy=a.y-b.y; return Math.hypot(dx, dy); }
+    function mid(a, b){ return { x:(a.x+b.x)/2, y:(a.y+b.y)/2 }; }
+  })();
+  </script>
+</body>
+</html>

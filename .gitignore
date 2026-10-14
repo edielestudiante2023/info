@@ -35,3 +35,6 @@ vendor/
 .env
 .env.local
 .env.production
+
+# === Archivos multimedia pesados (se suben directo al servidor, no via git) ===
+simulacro-21-oct/*

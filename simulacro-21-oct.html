@@ -27,6 +27,8 @@
     .btn-row{display:flex;flex-direction:column;gap:.7rem}
     .contact-row{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:1rem 0;border-bottom:1px solid var(--line)}
     .contact-row:last-child{border-bottom:none}
+    .contact-left{display:flex;align-items:center;gap:.9rem;min-width:0}
+    .contact-avatar{width:52px;height:52px;border-radius:50%;object-fit:cover;flex-shrink:0;border:1px solid var(--line)}
     .contact-info strong{display:block;font-size:1.05rem;color:var(--navy)}
     .contact-info span{display:block;color:var(--muted);font-size:.88rem}
     .btn-whatsapp{display:inline-flex;align-items:center;gap:.5rem;background:var(--whatsapp);color:#fff;font-weight:700;padding:.75rem 1.1rem;border-radius:.6rem;text-decoration:none;white-space:nowrap}
@@ -43,9 +45,9 @@
     <section class="hero">
       <div class="container">
         <p class="eyebrow">Emergencias · Simulacro de evacuación</p>
-        <p class="deadline"><i class="far fa-calendar-alt" aria-hidden="true"></i> 21 de octubre &mdash; <strong>9:45 a.m.</strong></p>
+        <p class="deadline"><i class="far fa-calendar-alt" aria-hidden="true"></i> 21 de octubre &mdash; Simulacro Nacional <strong>10:00 a.m.</strong></p>
         <h1>Prepárate para el simulacro de evacuación.</h1>
-        <p class="hero-copy">Debes estar listo <strong>5 minutos antes</strong> del simulacro para hacer el reporte. Aquí encuentras el video instructivo, el poster para compartir y el contacto directo de tus consultores ante cualquier duda.</p>
+        <p class="hero-copy">Quienes vayan a <strong>coordinar y observar</strong> el simulacro en su copropiedad o empresa deben estar disponibles desde las <strong>9:45 a.m.</strong> (15 minutos antes), para hacer el reporte antes de que inicie el Simulacro Nacional de Respuesta a Emergencias a las 10:00 a.m. Aquí encuentras el video instructivo, el poster para compartir y el contacto directo de tus consultores ante cualquier duda.</p>
       </div>
     </section>
   </header>
@@ -73,15 +75,24 @@
     <section class="container card" id="contacto">
       <h2>¿Dudas? Escríbele directo a tu consultor</h2>
       <div class="contact-row">
-        <div class="contact-info"><strong>Natalia Jiménez</strong><span>Consultora</span></div>
+        <div class="contact-left">
+          <img class="contact-avatar" src="images/simulacro/natalia.png" alt="Natalia Jiménez">
+          <div class="contact-info"><strong>Natalia Jiménez</strong><span>Consultora</span></div>
+        </div>
         <a class="btn-whatsapp" target="_blank" rel="noopener" href="https://wa.me/573007898742?text=Hola%20Natalia%2C%20tengo%20una%20duda%20sobre%20el%20simulacro%20de%20evacuaci%C3%B3n%20del%2021%20de%20octubre"><i class="fab fa-whatsapp" aria-hidden="true"></i> WhatsApp</a>
       </div>
       <div class="contact-row">
-        <div class="contact-info"><strong>Edison Cuervo</strong><span>Consultor</span></div>
+        <div class="contact-left">
+          <img class="contact-avatar" src="images/simulacro/edison.png" alt="Edison Cuervo">
+          <div class="contact-info"><strong>Edison Cuervo</strong><span>Consultor</span></div>
+        </div>
         <a class="btn-whatsapp" target="_blank" rel="noopener" href="https://wa.me/573132123799?text=Hola%20Edison%2C%20tengo%20una%20duda%20sobre%20el%20simulacro%20de%20evacuaci%C3%B3n%20del%2021%20de%20octubre"><i class="fab fa-whatsapp" aria-hidden="true"></i> WhatsApp</a>
       </div>
       <div class="contact-row">
-        <div class="contact-info"><strong>Servicio al cliente</strong><span>Línea corporativa</span></div>
+        <div class="contact-left">
+          <img class="contact-avatar" src="images/simulacro/corporativa.jpg" alt="Servicio al cliente">
+          <div class="contact-info"><strong>Servicio al cliente</strong><span>Línea corporativa</span></div>
+        </div>
         <a class="btn-whatsapp" target="_blank" rel="noopener" href="https://wa.me/573117919191?text=Hola%2C%20tengo%20una%20duda%20sobre%20el%20simulacro%20de%20evacuaci%C3%B3n%20del%2021%20de%20octubre"><i class="fab fa-whatsapp" aria-hidden="true"></i> WhatsApp</a>
       </div>
     </section>
